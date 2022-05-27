@@ -60,7 +60,7 @@ plugins:
 
 author:
   name   : "Sahil Ramani"
-  avatar : "/assets/images/cpu.png"
+  avatar : "/assets/images/bio-photo.jpg"
   bio    : "Software Engineer by day. Married Software Engineer by night. Welcome to my wild side, programmatically speaking."
   links:
     - label: "Website"
