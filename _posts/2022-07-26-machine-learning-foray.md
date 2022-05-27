@@ -1,3 +1,15 @@
+---
+title: "My Foray Into Machine Learning"
+last_modified_at: 2022-07-26T00:00:00-05:00
+categories:
+  - Machine Learning
+  - Programming
+tags:
+  - coursera
+  - machine learning
+  - udacity
+---
+
 New beginnings. That’s what this is about. I’m learning new things now, and have enrolled in some courses to teach me machine learning from scratch. The things I’ve done so far to teach myself machine learning from the basics:
 
 1. [__CS231n course on Youtube__](https://www.youtube.com/playlist?list=PL3FW7Lu3i5JvHM8ljYj-zLfQRF3EO8sYv) -This is a great introduction to the basics of Machine Learning. However, it seemed like most of the people taking the course were really strong on the underlying mathematical background or were familiar with the topic. Most of these lectures were light on background and contained dense information, requiring a lot of independent research to brush up on fundamentals. 
