@@ -6,6 +6,10 @@ categories:
 tags:
   - machine learning
   - udacity
+toc: true
+toc_label: "Udacity Deep Learning Nanodegree"
+toc_sticky: true
+toc_icon: "cog"
 ---
 
 As of yesterday, 10/22/2020, I finally graduated from the [**Udacity Deep Learning Nanodegree**](https://www.udacity.com/course/deep-learning-nanodegree--nd101).
