@@ -1,6 +1,5 @@
 ---
 title: "My Foray Into Machine Learning"
-last_modified_at: 2022-07-26T00:00:00-05:00
 categories:
   - Machine Learning
   - Programming
