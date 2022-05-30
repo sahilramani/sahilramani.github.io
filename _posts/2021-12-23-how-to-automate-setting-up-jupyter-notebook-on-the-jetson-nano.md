@@ -17,8 +17,8 @@ tags:
   - torchvision
 ---
 
-# Preface
-This is a scripted version of the instructions posted in [**this article**][2]. It’s easier, but way less informative. If you need more details on what went into the creation of this script, please refer the linked article.
+> ### This is a scripted version of the instructions posted in [**this article**][2]. It's easier, but way less informative. If you need more details on what went into the creation of this script, please refer the linked article.  
+<br/>  
 
 # Repository
 The repository containing the code used in this blog post is here: [**Jetson Nano**][1]
@@ -50,7 +50,7 @@ If you want to install a few additional (useful) things on your jetson nano, try
 ## I WANT IT ALL!
     ./jetson_setup.sh --pytorch --torchvision --tensorflow --jupyterlab
 
-### It’s done, now what?
+### It's done, now what?
 Now that the script is done, all you need to do is fire up Jupyter Notebook
 
     conda activate jupyter
