@@ -13,7 +13,7 @@ tags:
 ---
 
 # Jetson Nano
-If you read my previous post, you probably know I just completed Udacity’s Deep Learning Nanodegree. I had previously procured the Jetson Nano so I decided to put it to use on my Nanodegree.
+If you read my previous post, you probably know I just completed Udacity's Deep Learning Nanodegree. I had previously procured the Jetson Nano so I decided to put it to use on my Nanodegree.
 
 ![Jetson Nano Developer Kit](/assets/images/jetson-nano-developer-kit.png)
 
@@ -21,10 +21,10 @@ This tiny piece of hardware is a great addition for someone who set up a simple 
 
 ![Hardware Specifications for Jetson Nano](/assets/images/jetson-nano-hardware-specs.png)
 
-This pocket ML bad boy comes with a 128-core Maxwell GPU, and yes, that’s the same architecture used in the GeForce 700, 800 and 900 series cards. While on paper this feels a little dated, one must remember this is meant to be a special purpose AI machine, and it’s plenty powerful for those needs, considering the miniscule power requirements. Make no mistake, this thing can do wonders for all your personal and learning project needs.
+This pocket ML bad boy comes with a 128-core Maxwell GPU, and yes, that's the same architecture used in the GeForce 700, 800 and 900 series cards. While on paper this feels a little dated, one must remember this is meant to be a special purpose AI machine, and it's plenty powerful for those needs, considering the miniscule power requirements. Make no mistake, this thing can do wonders for all your personal and learning project needs.
 
 # Jetson Family
-If you want something beefier, the Jetson family has an impressive lineup of hardware to suit your budget/needs. From the tiny Jetson Nano we saw earlier to the chunky $699 Jetson AGX Xavier series with 64 dedicated tensor cores and a 512-core Volta GPU. That’ll crunch through those models like that fresh bag of Chipotle Nachos. If you’re in the marker for something smaller, NVIDIA also announced their tinier Jetson Nano 2GB, with only 2GB of memory. I’d stay away from it because I was frequently exceeding the 4GB limits on my Nano as-is, but it is an option.
+If you want something beefier, the Jetson family has an impressive lineup of hardware to suit your budget/needs. From the tiny Jetson Nano we saw earlier to the chunky $699 Jetson AGX Xavier series with 64 dedicated tensor cores and a 512-core Volta GPU. That'll crunch through those models like that fresh bag of Chipotle Nachos. If you're in the marker for something smaller, NVIDIA also announced their tinier Jetson Nano 2GB, with only 2GB of memory. I'd stay away from it because I was frequently exceeding the 4GB limits on my Nano as-is, but it is an option.
 
 ![Jetson Family](/assets/images/jetson-nano-family.png)
 

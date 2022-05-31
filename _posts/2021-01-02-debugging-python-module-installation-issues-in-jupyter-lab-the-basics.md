@@ -43,7 +43,7 @@ and on a new Console instance,
     File "<stdin>", line 1, in <module>
     ModuleNotFoundError: No module named 'pydub'
 
-Bummer, so the module doesn’t exist in the Jupyter instance of python.
+Bummer, so the module doesn't exist in the Jupyter instance of python.
 
 # Debugging
 The first thing that popped into my head is to confirm the python executable being used is the same across the conda environment and Jupyter. The simplest solution to identify the python executable from within a python terminal is to use the python sys module.
@@ -79,6 +79,6 @@ As we can see here, the kernel.json file defined in one of these locations conta
 In my case, the kernel spec in /home/sahil/.local/share/jupyter/kernels/python3/kernel.json was pointing to the older python version under a different directory. Once I changed it to point to the correct python executable, all was well and the module loaded correctly.
 
 # The Ultimate Solution – Anaconda
-I didn’t want to address this symptom, but the underlying problem. When I launch jupyter from within a conda environment, I want Jupyter to create kernels with the python version from within the environment automatically, rather than having to edit kernel specs everytime I switch conda environments.
+I didn't want to address this symptom, but the underlying problem. When I launch jupyter from within a conda environment, I want Jupyter to create kernels with the python version from within the environment automatically, rather than having to edit kernel specs everytime I switch conda environments.
 
-Instead of a full path, if you change the entry to just ‘python’ or ‘python3’, the kernel launched would use the python executable from within the environment from where Jupyter was launched.
+Instead of a full path, if you change the entry to just 'python' or 'python3', the kernel launched would use the python executable from within the environment from where Jupyter was launched.

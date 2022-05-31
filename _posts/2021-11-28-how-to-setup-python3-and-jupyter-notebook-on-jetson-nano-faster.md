@@ -17,19 +17,19 @@ tags:
   - torchvision
 ---
 
-> ### If you would like to set up your Jetson Nano in a more hands off manner, there’s a new installer script I’ve been working on. [**Here's the details**][1]
+> ### If you would like to set up your Jetson Nano in a more hands off manner, there's a new installer script I've been working on. [**Here's the details**][1]
 <br/>
 
 # Jupyter Notebooks
-Jupyter Notebook is a great addition to your toolset when starting off with Python and especially Machine Learning. At the risk of oversimplifying the functionality, it allows you to execute python code on a machine from the web server. Additionally, it allows the user to embed code and description in a single file, while capturing program output as you evaluate “cells” of code.
+Jupyter Notebook is a great addition to your toolset when starting off with Python and especially Machine Learning. At the risk of oversimplifying the functionality, it allows you to execute python code on a machine from the web server. Additionally, it allows the user to embed code and description in a single file, while capturing program output as you evaluate "cells" of code.
 
 # Basic Installation
 ## Step 1 : Installing the Ubuntu OS
-Follow the instructions on the [**NVIDIA Getting Started Page**][2]. Once you’re done with the steps under **"After logging in"**, come back here.
+Follow the instructions on the [**NVIDIA Getting Started Page**][2]. Once you're done with the steps under **"After logging in"**, come back here.
 
 [![Jetson Nano](/assets/images/jetson-nano-getting-started.png)][2]
 
-## Step 2: Bring the Ubuntu installation up to date (and install pip if it doesn’t exist)
+## Step 2: Bring the Ubuntu installation up to date (and install pip if it doesn't exist)
 
     sudo apt update && sudo apt upgrade
     sudo apt install python3-pip python-pip
@@ -38,11 +38,11 @@ Follow the instructions on the [**NVIDIA Getting Started Page**][2]. Once you’
 Make sure you reboot your jetson nano to apply any pending changes.
 
 ## Step 3: Anaconda / Miniforge for ARM
-Installing modules for python can be nerve-wracking. Installing, updating and removing packages can affect system stability, since the packages go into your system cache, affecting all applications using python. It’s often advisable to use a virtual environment so any packages and setting changes are contained. Any changes to an python and associated packages only persist within the environment. You also gain the flexibility of creating and using multiple environments for specific needs. Enter **Anaconda**/**miniforge**
+Installing modules for python can be nerve-wracking. Installing, updating and removing packages can affect system stability, since the packages go into your system cache, affecting all applications using python. It's often advisable to use a virtual environment so any packages and setting changes are contained. Any changes to an python and associated packages only persist within the environment. You also gain the flexibility of creating and using multiple environments for specific needs. Enter **Anaconda**/**miniforge**
 
 [![Anaconda](/assets/images/anaconda.png)][3]
 
-While on Windows, Mac and Linux, we have the flexibility of using **Anaconda**, the ARM platform has limited choices. One such choice is **miniforge**. In order to get **miniforge** running on your Jetson Nano, let’s open a terminal session and run the following commands.
+While on Windows, Mac and Linux, we have the flexibility of using **Anaconda**, the ARM platform has limited choices. One such choice is **miniforge**. In order to get **miniforge** running on your Jetson Nano, let's open a terminal session and run the following commands.
 
 > **Imporant Note** : DO NOT run the following commands as root. That can potentially cause harm to your installation
 
@@ -71,12 +71,12 @@ The reboot here is not essential, but gets around potential shell issues.
 > ### Thanks to @mondog another post, who found that setting **OPENBLAS_CORETYPE=ARMV8** in the environment fixed the issue.
 
 ## Step 6 : Configure Jupyter Notebook
-Once Jupyter Notebook is installed, it’s advisable to configure it to your needs. Let’s start by generating a configuration file for Jupyter and generating a password for your Jupyter Notebook instance. While this is optional, it’s highly recommended.
+Once Jupyter Notebook is installed, it's advisable to configure it to your needs. Let's start by generating a configuration file for Jupyter and generating a password for your Jupyter Notebook instance. While this is optional, it's highly recommended.
 
     jupyter notebook --generate-config
     jupyter notebook password
 
-Once created, we would need to edit the config file. Some settings here may differ from those on your setup, but the idea remains the same. Let’s open the configuration file.
+Once created, we would need to edit the config file. Some settings here may differ from those on your setup, but the idea remains the same. Let's open the configuration file.
 
     vim /home/sahil/.jupyter/jupyter_notebook_config.py
 
@@ -85,12 +85,12 @@ And change some values. Specifically, I would start by uncommenting and setting 
     c.NotebookApp.open_browser = False
     c.NotebookApp.ip = '*'
 
-Give it a password of your choice, and then we set the python kernel to work with Jupyter. This step is optional, but ensures we’re using the correct python version for Jupyter Notebook.
+Give it a password of your choice, and then we set the python kernel to work with Jupyter. This step is optional, but ensures we're using the correct python version for Jupyter Notebook.
 
     python -m ipykernel install --user
 
 ## Step 7 : Run Jupyter Notebook
-Once this is all done, let’s run Jupyter Notebook. If you aren’t in the virtual environment, activate the ‘jupyter’ virtual environment we created first.
+Once this is all done, let's run Jupyter Notebook. If you aren't in the virtual environment, activate the 'jupyter' virtual environment we created first.
 
     conda activate jupyter
     jupyter notebook
@@ -103,7 +103,7 @@ A lot of this section is borrowed from an NVIDIA Forum Post which describes the 
 
 [**PyTorch for Jetson**][5]
 
-Since we’re looking to install a specific version of Torch/TorchVision for Python3, I’ll stick to specific commands here.
+Since we're looking to install a specific version of Torch/TorchVision for Python3, I'll stick to specific commands here.
 
     conda activate jupyter 
     wget https://nvidia.box.com/shared/static/fjtbno0vpo676a25cgvuqc1wty0fkkg6.whl -O torch-1.10.0-cp36-cp36m-linux_aarch64.whl
@@ -120,7 +120,7 @@ Since we’re looking to install a specific version of Torch/TorchVision for Pyt
     python setup.py install --user
 
 ## TensorRT
-Now, if you want to use TensorRT in your conda environment, it’s not officially supported by NVIDIA, but you can force your environment to use the system installation
+Now, if you want to use TensorRT in your conda environment, it's not officially supported by NVIDIA, but you can force your environment to use the system installation
 
     sudo apt install tensorrt
     conda activate jupyter
@@ -131,7 +131,7 @@ Installing TensorFlow is better documented on the nvidia pages here:
 
 [**Installing TensorFlow for Jetson Platform.**][4]
 
-But here’s some commands that’ll get you the latest as of today (11/28/2021)
+But here's some commands that'll get you the latest as of today (11/28/2021)
 
     conda activate jupyter
     pip3 install --pre --extra-index-url https://developer.download.nvidia.com/compute/redist/jp/v46 tensorflow

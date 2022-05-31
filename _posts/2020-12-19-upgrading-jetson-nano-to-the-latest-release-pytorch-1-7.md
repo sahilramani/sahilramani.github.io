@@ -11,14 +11,14 @@ tags:
 ---
 
 # Introduction
-If you haven’t been following, there’s a new release of PyTorch, version 1.7, with a slew of improvements and new features. If that piqued your interest, and you have a Jetson Nano, let’s see how we can set up and install or upgrade your existing PyTorch installation.
+If you haven't been following, there's a new release of PyTorch, version 1.7, with a slew of improvements and new features. If that piqued your interest, and you have a Jetson Nano, let's see how we can set up and install or upgrade your existing PyTorch installation.
 
-Now, if you don’t have your Jetson Nano set up for PyTorch, I highly recommend reading one of my earlier posts to get you started on the topic. 
+Now, if you don't have your Jetson Nano set up for PyTorch, I highly recommend reading one of my earlier posts to get you started on the topic. 
 
 > ### [How to setup Python3 and Jupyter Notebook On Jetson Nano][1]
 <br/>
 
-When you get to Step 8, however, head on over here and we can install the latest PyTorch version. If you didn’t read that note and installed PyTorch 1.6, don’t sweat it. The new installer will automagically uninstall the older version for you.
+When you get to Step 8, however, head on over here and we can install the latest PyTorch version. If you didn't read that note and installed PyTorch 1.6, don't sweat it. The new installer will automagically uninstall the older version for you.
 
 Now, this post itself will be super minimal, because the good folks on the NVIDIA Forums have been great at posting detailed instructions. Head on over if you want to read these instructions in details.
 
@@ -43,12 +43,12 @@ How do you verify your installation? Run this in your python command-line.
     print('Tensor c = ' + str(c))
 
 # Important Notes
-These instructions are very very specific to the kind of Jetson Nano I have and the OS installed. Here’s my current setup for reference
+These instructions are very very specific to the kind of Jetson Nano I have and the OS installed. Here's my current setup for reference
 
 > ### [Supercharge Your Deep Learning Projects On The NVIDIA Jetson Nano][2]
 <br/>
 
-If you’re setting this up in a conda environment (which I would highly recommend you do), make sure you activate the correct conda environment before you run the commands.
+If you're setting this up in a conda environment (which I would highly recommend you do), make sure you activate the correct conda environment before you run the commands.
 
 [1]: https://sahilramani.com/2020/10/how-to-setup-python3-and-jupyter-notebook-on-jetson-nano/
 [2]: https://sahilramani.com/2020/10/supercharge-your-deep-learning-projects-on-the-nvidia-jetson-nano/
