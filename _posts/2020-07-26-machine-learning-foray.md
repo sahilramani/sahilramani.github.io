@@ -7,7 +7,6 @@ tags:
   - coursera
   - machine learning
   - udacity
-classes: wide
 ---
 
 New beginnings. That's what this is about. I'm learning new things now, and have enrolled in some courses to teach me machine learning from scratch. The things I've done so far to teach myself machine learning from the basics:
