@@ -65,6 +65,12 @@ analytics:
     tracking_id          : "G-N7FQ1TD86B"
     anonymize_ip         : true # true, false (default)
 
+# Comments
+comments:
+  provider: "disqus"
+  disqus:
+    shortname: "sahilramani"
+
 author:
   name   : "Sahil Ramani"
   avatar : "/assets/images/bio-photo.jpg"
