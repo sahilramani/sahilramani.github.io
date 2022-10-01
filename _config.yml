@@ -114,7 +114,6 @@ defaults:
       share: true
       related: true
       classes: wide
-      breadcrumbs: true
   # _pages
   - scope:
       path: "_pages"
@@ -129,3 +128,9 @@ category_archive:
 tag_archive:
   type: liquid
   path: /tags/
+year_archive:
+  type: liquid
+  path: /posts/
+resume:
+  type: liquid
+  path: /resume/
