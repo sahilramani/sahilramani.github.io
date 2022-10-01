@@ -114,6 +114,7 @@ defaults:
       share: true
       related: true
       classes: wide
+      breadcrumbs: true
   # _pages
   - scope:
       path: "_pages"
