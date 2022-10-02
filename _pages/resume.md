@@ -4,7 +4,7 @@ permalink: /resume/
 layout: single
 author_profile: true
 ---
-
+<br/>
 # SAHIL RAMANI
 <div style="margin-top:0px; font-size:0.8em"> Manager, ML Artistry Lighting & Rendering, Unity Technologies</div>
 
