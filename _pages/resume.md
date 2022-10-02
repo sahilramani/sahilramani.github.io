@@ -5,9 +5,8 @@ layout: single
 author_profile: true
 ---
 
-# SAHIL RAMANI # {#id} 
-### Engineering Lead, ML Artistry Lighting & Rendering, Unity Technologies
-----
+# SAHIL RAMANI
+## Manager, ML Artistry Lighting & Rendering, Unity Technologies
 
 ## Skills
 
