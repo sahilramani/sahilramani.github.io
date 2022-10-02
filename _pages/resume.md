@@ -6,7 +6,7 @@ author_profile: true
 ---
 
 # SAHIL RAMANI
-###### <div style="margin-top:0px"> Manager, ML Artistry Lighting & Rendering, Unity Technologies</div>
+<div style="margin-top:0px; font-size:0.8em"> Manager, ML Artistry Lighting & Rendering, Unity Technologies</div>
 
 ----
 
