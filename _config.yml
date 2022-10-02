@@ -32,7 +32,7 @@ remote_theme: mmistakes/minimal-mistakes
 permalink: /:year/:month/:title/
 paginate: 10 # amount of posts to show
 paginate_path: /page:num/
-timezone: # https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+timezone: America/Los_Angeles # https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 
 include:
   - _pages
@@ -57,6 +57,7 @@ plugins:
   - jekyll-feed
   - jemoji
   - jekyll-include-cache
+  - jekyll-archives
 
 # Analytics
 analytics:
@@ -76,9 +77,9 @@ author:
   avatar : "/assets/images/bio-photo.jpg"
   bio    : "Software Engineer by day. Married Software Engineer by night. Welcome to my wild side, programmatically speaking."
   links:
-    - label: "Website"
-      icon: "fas fa-fw fa-link"
-      url: "https://www.sahilramani.com/"
+    - label: "Email"
+      icon: "fas fa-fw fa-envelope-square"
+      url: "sahil.ramani-contact@yahoo.com"
     - label: "Twitter"
       icon: "fab fa-fw fa-twitter-square"
       url: "https://www.twitter.com/sahilramani"
@@ -91,6 +92,9 @@ author:
 
 footer:
   links:
+    - label: "Email"
+      icon: "fas fa-fw fa-envelope-square"
+      url: "sahil.ramani-contact@yahoo.com"
     - label: "Twitter"
       icon: "fab fa-fw fa-twitter-square"
       url: "https://www.twitter.com/sahilramani"
