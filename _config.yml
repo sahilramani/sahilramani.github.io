@@ -79,7 +79,7 @@ author:
   links:
     - label: "Email"
       icon: "fas fa-fw fa-envelope-square"
-      url: "sahil.ramani-contact@yahoo.com"
+      url: "mailto:sahil.ramani-contact@yahoo.com"
     - label: "Twitter"
       icon: "fab fa-fw fa-twitter-square"
       url: "https://www.twitter.com/sahilramani"
@@ -94,7 +94,7 @@ footer:
   links:
     - label: "Email"
       icon: "fas fa-fw fa-envelope-square"
-      url: "sahil.ramani-contact@yahoo.com"
+      url: "mailto:sahil.ramani-contact@yahoo.com"
     - label: "Twitter"
       icon: "fab fa-fw fa-twitter-square"
       url: "https://www.twitter.com/sahilramani"
