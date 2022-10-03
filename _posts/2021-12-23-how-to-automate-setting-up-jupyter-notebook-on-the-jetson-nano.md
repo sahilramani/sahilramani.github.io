@@ -19,7 +19,6 @@ tags:
 
 > This is a scripted version of the instructions posted in [**this article**][2]. It's easier, but way less informative. If you need more details on what went into the creation of this script, please refer the linked article. 
 {: .notice--warning}
-<br/>  
 
 # Repository
 The repository containing the code used in this blog post is here: [**Jetson Nano**][1]
