@@ -34,6 +34,7 @@ But, before we can get to installing Jupyter Notebook on your brand new Jetson N
 ## Step 1 : Installing the OS
 
 [![Jetson Nano Developer Kit](/assets/images/jetson-nano-getting-started.png)][4]
+*NVIDIA Jetson Nano Getting Started Guide*{: .text-center}
 
 NVIDIA provides a good guide to help us get started with the basics on the Jetson Nano here : https://developer.nvidia.com/embedded/learn/get-started-jetson-nano-devkit
 
@@ -61,6 +62,7 @@ While on Windows, Mac and Linux, we have the flexibility of using Anaconda, the 
 And then follow it by running the script.
 
 > **Important Note** : DO NOT RUN THIS SCRIPT AS ROOT
+{: .notice--danger}
 
     ./Miniforge3-Linux-aarch64.sh
 
