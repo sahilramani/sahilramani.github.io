@@ -17,8 +17,8 @@ tags:
   - torchvision
 ---
 
-> ### If you would like to set up your Jetson Nano in a more hands off manner, there's a new installer script I've been working on. [**Here's the details**][1]
-<br/>
+> If you would like to set up your Jetson Nano in a more hands off manner, there's a new installer script I've been working on. [**Here's the details**][1]
+{: .notice--warning}
 
 # Jupyter Notebooks
 Jupyter Notebook is a great addition to your toolset when starting off with Python and especially Machine Learning. At the risk of oversimplifying the functionality, it allows you to execute python code on a machine from the web server. Additionally, it allows the user to embed code and description in a single file, while capturing program output as you evaluate "cells" of code.

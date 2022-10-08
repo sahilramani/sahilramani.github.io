@@ -15,8 +15,8 @@ If you haven't been following, there's a new release of PyTorch, version 1.7, wi
 
 Now, if you don't have your Jetson Nano set up for PyTorch, I highly recommend reading one of my earlier posts to get you started on the topic. 
 
-> ### [How to setup Python3 and Jupyter Notebook On Jetson Nano][1]
-<br/>
+> [How to setup Python3 and Jupyter Notebook On Jetson Nano][1]
+{: .notice--info}
 
 When you get to Step 8, however, head on over here and we can install the latest PyTorch version. If you didn't read that note and installed PyTorch 1.6, don't sweat it. The new installer will automagically uninstall the older version for you.
 

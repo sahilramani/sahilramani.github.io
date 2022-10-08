@@ -19,11 +19,11 @@ tags:
 
 > ## [Scripted Setup][1]
 > If you would like to set up your Jetson Nano in a more hands off manner, there's a new installer script I've been working on. [**Here's the details.**][1]
-<br/>
+{: .notice--warning}
 
 > ## [Updated Instructions][2]
 > An updated version of these instructions can be found [**here**][2]. The information on this page (and comments) still work perfectly. However, this page may soon go out of date and I will remove it when it does become obsolete.
-<br/>
+{: .notice--warning}
 
 # [Jupyter Notebooks][3]
 Jupyter Notebook is a great addition to your toolset when starting off with Python and especially Machine Learning. At the risk of oversimplifying the functionality, it allows you to execute python code on a machine from the web server. Additionally, it allows the user to embed code and description in a single file, while capturing program output as you evaluate "cells" of code.
