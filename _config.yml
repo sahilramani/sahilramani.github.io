@@ -14,7 +14,7 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 title: Random Access Memories
-email: contact@sahilramani.com
+email: sahil.ramani-contact@yahoo.com
 description: >- # this means to ignore newlines until "baseurl:"
   Welcome to my digital home. I'm a game developer and software engineer by day and 
   an avid gamer, amateur photographer by night. I've recently adopted the cutest 
@@ -23,6 +23,8 @@ description: >- # this means to ignore newlines until "baseurl:"
 twitter_username: sahilramani
 github_username: sahilramani
 minimal_mistakes_skin: dark
+logo: "/assets/images/88x88.png"
+masthead_title: Random Access Memories
 search: true
 
 # Build settings
@@ -113,6 +115,7 @@ defaults:
     values:
       layout: single
       author_profile: true
+      show_date: true
       read_time: true
       comments: true
       share: true
@@ -138,3 +141,8 @@ year_archive:
 resume:
   type: liquid
   path: /resume/
+
+compress_html:
+  clippings: all
+  ignore:
+    envs: development  # disable compression in dev environment
