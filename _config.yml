@@ -28,7 +28,7 @@ search: true
 
 # Build settings
 markdown: kramdown
-remote_theme: mmistakes/minimal-mistakes
+remote_theme: hydecorp/hydejack@v9.1.6
 # Outputting
 permalink: /:year/:month/:title/
 paginate: 10 # amount of posts to show
