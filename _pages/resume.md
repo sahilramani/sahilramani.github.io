@@ -23,9 +23,9 @@ take on new challenges.
 
 ## Skills
 
-##### **Programming Languages**: C, C++, C#, Python
-##### **Machine Learning**: PyTorch, TensorFlow, NumPy
-##### **Graphics**: HLSL, GLSL, DirectX, OpenGL, Ray Tracing
+- **Programming Languages**: C, C++, C#, Python
+- **Machine Learning**: PyTorch, TensorFlow, NumPy
+- **Graphics**: HLSL, GLSL, DirectX, OpenGL, Ray Tracing
 
 ## Work Experience
 
