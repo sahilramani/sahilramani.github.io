@@ -6,7 +6,7 @@ author_profile: true
 classes: wide
 ---
 
-[Resume PDF](/assets/files/ramani_ml.pdf){: .btn .btn--primary .btn--large}
+[Download Resume PDF](/assets/files/ramani_ml.pdf){: .btn .btn--primary .btn--large}
 
 # Sahil Ramani
 
