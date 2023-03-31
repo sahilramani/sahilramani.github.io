@@ -2,11 +2,11 @@
 title: "Resume"
 permalink: /resume/
 layout: single
-author_profile: false
+author_profile: true
 classes: wide
 ---
 
-[Resume PDF](/assets/files/ramani_ml.pdf){.btn .btn--primary .btn--large}
+[Resume PDF](/assets/files/ramani_ml.pdf){: .btn .btn--primary .btn--large}
 
 # Sahil Ramani
 
@@ -23,9 +23,9 @@ take on new challenges.
 
 ## Skills
 
-#### **Programming Languages**: C, C++, C#, Python
-#### **Machine Learning**: PyTorch, TensorFlow, NumPy
-#### **Graphics**: HLSL, GLSL, DirectX, OpenGL, Ray Tracing
+##### **Programming Languages**: C, C++, C#, Python
+##### **Machine Learning**: PyTorch, TensorFlow, NumPy
+##### **Graphics**: HLSL, GLSL, DirectX, OpenGL, Ray Tracing
 
 ## Work Experience
 
