@@ -30,15 +30,19 @@ The code for Mamba lives in the mamba repository here: https://github.com/mamba-
 
 On the Jetson Nano, navigate to the location on disk where you want to download the installer, and run the following commands:
 
-    wget https://github.com/conda-forge/miniforge/releases/latest/download/Mambaforge-pypy3-Linux-aarch64.sh .
-    bash Mambaforge-pypy3-Linux-aarch64.sh
+```bash
+wget https://github.com/conda-forge/miniforge/releases/latest/download/Mambaforge-pypy3-Linux-aarch64.sh .
+bash Mambaforge-pypy3-Linux-aarch64.sh
+```
 
 Follow the instructions on the installer and you're good to go.
 
 # What can I do with Mamba?
 The answer to this question is that you can do everything Anaconda allowed you to do, creating and working with virtual environments, installing packages, working with independent python versions, you name it, just a different command, mamba
 
-    mamba --help
+```bash
+mamba --help
+```
 
 # What next?
 

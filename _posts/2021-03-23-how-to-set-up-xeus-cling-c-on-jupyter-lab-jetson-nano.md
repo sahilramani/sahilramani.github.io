@@ -34,8 +34,10 @@ Simply put, [**Xeus-Cling**][2] is a Jupyter kernel implementation based on Clin
 # Installation
 Xeus-Cling provides a simple and easy to use installation guide [3] that describes the steps you'll need to perform for your specific use case. However, if you're on the Jetson Nano, it's fairly simple. In the conda environment housing your jupyter notebook, all you have to do is run the following commands.
 
-    conda activate jupyterlab
-    conda install xeus-cling -c conda-forge
+```bash
+conda activate jupyterlab
+conda install xeus-cling -c conda-forge
+```
 
 # Running Code
 Here's an example of the code you can run in your new Xeus-Cling setup  
