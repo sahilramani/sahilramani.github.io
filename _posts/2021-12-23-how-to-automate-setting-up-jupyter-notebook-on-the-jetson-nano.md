@@ -75,7 +75,6 @@ or if you installed Jupyter Lab
 ```bash
 conda activate jupyter
 jupyter lab
-
 ```
 
 [1]: https://github.com/sahilramani/jetson-nano
