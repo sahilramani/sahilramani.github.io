@@ -1,5 +1,5 @@
 ---
-title: "How to automate setting up Jupyter Notebook on the Jetson Nano"
+title: "Ahmdahl's Law for Performance Optimization"
 categories:
   - Programming
 tags:
