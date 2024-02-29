@@ -11,46 +11,51 @@ classes: wide
 # Sahil Ramani
 
 ```
-SENIOR SOFTWARE ENGINEER · MACHINE LEARNING & GRAPHICS
+Senior Software Engineer · 3D Simulation
 650-799-3654 | sahilramani@gmail.com | www.sahilramani.com 
 ```
 ## Summary
 
-With over 12 years of software development experience, including 4 years specializing in machine learning, I am an accomplished software developer
-with a proven track record of leading teams focused on R&D projects. My expertise lies in building software at the intersection of machine learning and
-creativity. I am passionate about developing innovative solutions that push the boundaries of what’s possible with technology, and I’m always eager to
-take on new challenges.
+An avid graphics programmer and machine learning practitioner, I bring more than 12 years of comprehensive experience, with a significant focus of 9 years in the video game industry and over 4 years in leadership roles driving research and development initiatives. My expertise lies at the intersection of machine learning and real‐time graphics, and I excel at building user‐friendly software that delivers high‐quality results. I am passionate about developing innovative solutions that push the boundaries of what’s possible with technology, and I’m always eager to take on new challenges.
 
 ## Skills
 
-- **Programming Languages**: C, C++, C#, Python
-- **Machine Learning**: PyTorch, TensorFlow, NumPy
+- **Machine Learning**: PyTorch, TensorFlow, NumPy, NeRF, Gaussian Splatting, CNNs, Neural Rendering
+- **Programming Languages & Frameworks**: C#, C, C++, Python, XAML, C++/Cli, Bash Scripting
 - **Graphics**: HLSL, GLSL, DirectX, OpenGL, Ray Tracing
+- **Game Engines**: Unity3D, Unreal Engine, Godot, several proprietary engines
+- **Version Control**: Perforce, Git, SVN, Mercurial, Unity Version Control (Plastic SCM)
 
 ## Work Experience
+
+## Zoox Inc
+**SENIOR SOFTWARE ENGINEER**
+#### Foster City, CA, USA
+July 2023 - Present
+- Developed 3D Simulation and Synthetic Data generation tools, boosting Zoox model performance by over 20%.
+- Engineered frameworks for dataset quality evaluation using ML and statistical approaches, enhancing data integrity.
+- Led projects to create realistic simulated worlds, employing state‑of‑the‑art technologies like NeRF, Gaussian Splatting, and related techniques.
 
 ## Unity Technologies 
 **SENIOR SOFTWARE ENGINEER / SOFTWARE ENGINEERING MANAGER** 
 #### Seattle, WA, USA
-Aug. 2019 ‑ Present
+Aug. 2019 ‑ July 2023
 
-- Augmented the graphical capabilities at Unity using state‑of‑the‑art ML enhanced rendering techniques.
-- Accelerated machine learning training and inference by creating custom GPU kernels/ops and improving training environments.
-- Collaborated with several teams at Unity to improve artist and tech art workflows when working with large game worlds with machine learning.
-- Worked with program management across rendering and lighting teams at Unity to define roadmaps and visions for ML accelerated lighting & rendering at Unity.
-- Led a team of skilled engineers to conduct cutting‑edge research in utilizing machine learning to enhance lighting and rendering for games.
-- Fixed long‑running issues in Terrain rendering at Unity, unblocking several game studios.
-- **Patent Pending** : System and Method for Interactive Asynchronous Tile‑Based Terrain Generation
+- Developed a Unity extension using Neural Rendering to dynamically transform game visuals, featured in the Beta teaser for the future of Unity AI.
+- Significantly enhanced machine learning efficiency by designing custom GPU kernels & operations, which streamlined both training and inference
+processes, reducing overhead and accelerating performance.
+- Led a team of engineers in pioneering research to leverage machine learning for superior game lighting and rendering.
+- Implemented high‑performance, GPU‑accelerated tile‑stitching for Unity’s terrain system with zero latent allocations.
+- **Patent 18/144,734** : System and Method for Interactive Asynchronous Tile‑Based Terrain Generation
 
 ## Crystal Dynamics 
 **ENGINE LEAD, FUTURE PROJECTS / SENIOR SOFTWARE ENGINEER** 
 #### Redwood City, CA, USA
 Nov 2014 ‑ Aug 2019
 
-- Led the R&D team developing engine and tool technologies for the future of games at Crystal Dynamics.
-- Engineered a novel end‑to‑end graph‑based artist‑animated blendshape control from Maya to the game.
-- Developed a solution to support collaborative editing of game worlds in real‑time.
-- **Patent #11189068** : Macro‑based electronic map editing.
+- Directed R&D efforts at Crystal Dynamics, leading engine and tool technology advancements for next‑gen games.
+- Engineered a groundbreaking graph‑based blendshape control system from Maya to game, pivotal for Hulk’s transformation in Marvel’s Avengers.
+- **Patent #11189068** : Macro‑based electronic map editing
 
 ## Dreamworks Dedicated Unit 
 **SOFTWARE APPLICATIONS ENGINEER, ANIMATION & RIGGING TOOLS** 
@@ -78,16 +83,22 @@ July 2006 ‑ July 2009
 
 ## Education
 
-## Nanodegree, AI For Trading Online
-UDACiITY Jun 2021 ‑ May 2022
+## UDACITY 
+#### Jun 2021 ‑ May 2022
+_Online_
+Nanodegree, AI For Trading 
 
-## Nanodegree, Deep Learning Online
-UDACITY Jun 2020 ‑ Oct 2020
+## UDACITY 
+##### Jun 2020 ‑ Oct 2020
+_Online_
+Nanodegree, Deep Learning 
 
-## Masters of Science in Computer Science, Game Development Los Angeles, CA, USA
-UNiVERSITY OF SOUTHERN CALIFORNiA Aug 2009 ‑ May 2011
+## UNIVERSITY OF SOUTHERN CALIFORNIA
+#### Los Angeles, CA, USA
+_Aug 2009 ‑ May 2011_
+Masters of Science in Computer Science, Game Development  
 
-## Bachelor of Engineering, Computer Science Bengaluru, Karnataka, India
-BMS COLLEGE OF ENGiNEERING Aug 2002 ‑ June 2006
-
-
+## BMS COLLEGE OF ENGINEERING 
+#### Bengaluru, Karnataka, India
+_Aug 2002 ‑ June 2006_
+Bachelor of Engineering, Computer Science 
