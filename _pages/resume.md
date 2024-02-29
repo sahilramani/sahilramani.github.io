@@ -30,7 +30,7 @@ An avid graphics programmer and machine learning practitioner, I bring more than
 
 ## Zoox Inc
 **SENIOR SOFTWARE ENGINEER**
-#### Foster City, CA, USA
+##### Foster City, CA, USA
 July 2023 - Present
 - Developed 3D Simulation and Synthetic Data generation tools, boosting Zoox model performance by over 20%.
 - Engineered frameworks for dataset quality evaluation using ML and statistical approaches, enhancing data integrity.
@@ -38,7 +38,7 @@ July 2023 - Present
 
 ## Unity Technologies 
 **SENIOR SOFTWARE ENGINEER / SOFTWARE ENGINEERING MANAGER** 
-#### Seattle, WA, USA
+##### Seattle, WA, USA
 Aug. 2019 ‑ July 2023
 
 - Developed a Unity extension using Neural Rendering to dynamically transform game visuals, featured in the Beta teaser for the future of Unity AI.
@@ -50,7 +50,7 @@ processes, reducing overhead and accelerating performance.
 
 ## Crystal Dynamics 
 **ENGINE LEAD, FUTURE PROJECTS / SENIOR SOFTWARE ENGINEER** 
-#### Redwood City, CA, USA
+##### Redwood City, CA, USA
 Nov 2014 ‑ Aug 2019
 
 - Directed R&D efforts at Crystal Dynamics, leading engine and tool technology advancements for next‑gen games.
@@ -59,7 +59,7 @@ Nov 2014 ‑ Aug 2019
 
 ## Dreamworks Dedicated Unit 
 **SOFTWARE APPLICATIONS ENGINEER, ANIMATION & RIGGING TOOLS** 
-#### Bengaluru, Karnataka, India
+##### Bengaluru, Karnataka, India
 Mar 2013 ‑ Oct 2014
 
 - With the R&D team, developed the award‑winning animation and rigging tools for DreamWorks Animation.
@@ -68,37 +68,37 @@ Mar 2013 ‑ Oct 2014
 
 ## Microsoft Corporation 
 SOFTWARE DEVELOPMENT ENGINEER IN TEST, XBOX GRAPHICS 
-#### Redmond, WA, USA
+##### Redmond, WA, USA
 July 2011 ‑ Oct 2012
 
 ## Nokia Research Center 
 RESEARCH INTERN, MOBILE EXPERIENCES 
-#### Santa Monica, CA, USA
+##### Santa Monica, CA, USA
 May 2012 ‑ July 2012
 
 ## Yahoo! Software Development India 
 SENIOR SYSTEMS ENGINEER / SYSTEMS ENGINEER 
-#### Bengaluru, Karnataka, India
+##### Bengaluru, Karnataka, India
 July 2006 ‑ July 2009
 
 ## Education
 
-## UDACITY 
-#### Jun 2021 ‑ May 2022
+### Udacity 
+##### Jun 2021 ‑ May 2022
 _Online_
 Nanodegree, AI For Trading 
 
-## UDACITY 
+### UDACITY 
 ##### Jun 2020 ‑ Oct 2020
 _Online_
 Nanodegree, Deep Learning 
 
-## UNIVERSITY OF SOUTHERN CALIFORNIA
-#### Los Angeles, CA, USA
+### UNIVERSITY OF SOUTHERN CALIFORNIA
+##### Los Angeles, CA, USA
 _Aug 2009 ‑ May 2011_
 Masters of Science in Computer Science, Game Development  
 
-## BMS COLLEGE OF ENGINEERING 
-#### Bengaluru, Karnataka, India
+### BMS COLLEGE OF ENGINEERING 
+##### Bengaluru, Karnataka, India
 _Aug 2002 ‑ June 2006_
 Bachelor of Engineering, Computer Science 
