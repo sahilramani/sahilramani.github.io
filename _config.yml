@@ -37,6 +37,7 @@ timezone: America/Los_Angeles # https://en.wikipedia.org/wiki/List_of_tz_databas
 
 include:
   - _pages
+  - .well-known
 
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
