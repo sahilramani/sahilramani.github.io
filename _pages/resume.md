@@ -11,20 +11,19 @@ classes: wide
 # Sahil Ramani
 
 ```
-Senior Software Engineer · 3D Simulation
-650-799-3654 | sahilramani@gmail.com | www.sahilramani.com 
+Senior Software Engineer · 3D Reconstruction, Neural Rendering & 3D Simulation
+sahilramani@gmail.com
 ```
 ## Summary
 
-An avid graphics programmer and machine learning practitioner, I bring more than 12 years of comprehensive experience, with a significant focus of 9 years in the video game industry and over 4 years in leadership roles driving research and development initiatives. My expertise lies at the intersection of machine learning and real‐time graphics, and I excel at building user‐friendly software that delivers high‐quality results. I am passionate about developing innovative solutions that push the boundaries of what’s possible with technology, and I’m always eager to take on new challenges.
+I'm a graphics programer and machine learning specialist with over 15 years of experience, including 12 years shipping AAA games and game engines, including 4 years leading R&D teams. I've pioneered several workflows combining ML & real time graphics, including a 3D Reconstruction pipeline for autonomous vehicle simulation, an ML enhanced terrain generator for Unity Muse and neural rendering augmentation technologies at Unity Technologies. I've also led research teams of up to 5 engineers, building experimental technology used on a number of games. I specialize in bridging the gap between cutting-edge research and practical, user-friendly implementations, with a particular focus on real time performance and visual quality.
 
 ## Skills
 
-- **Machine Learning**: PyTorch, TensorFlow, NumPy, NeRF, Gaussian Splatting, CNNs, Neural Rendering
-- **Programming Languages & Frameworks**: C#, C, C++, Python, XAML, C++/Cli, Bash Scripting
-- **Graphics**: HLSL, GLSL, DirectX, OpenGL, Ray Tracing
-- **Game Engines**: Unity3D, Unreal Engine, Godot, several proprietary engines
-- **Version Control**: Perforce, Git, SVN, Mercurial, Unity Version Control (Plastic SCM)
+- **Neural Rendering & ML**: PyTorch, CUDA, computer vision, differentiable rendering, NeRF, Gaussian Splatting, 3D Reconstruction
+- **Graphics Programming**: DirectX 12, Vulkan, compute shaders, ray tracing, shader optimization
+- **Game Engine Development**: Unity (engine/editor dev, custom render pipelines), Unreal Engine, Godot
+- **Languages & Development Tools**: Python, C++, C#, Git, Perforce
 
 ## Work Experience
 

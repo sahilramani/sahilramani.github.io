@@ -17,9 +17,9 @@ title: Random Access Memories
 email: sahil.ramani-contact@yahoo.com
 description: >- # this means to ignore newlines until "baseurl:"
   Welcome to my digital home. I'm a game developer and software engineer by day and 
-  an avid gamer, amateur photographer by night. I've recently adopted the cutest 
-  Swiss Shepherd and if I'm not writing code, I'm probably training her or hiking 
-  in the park with her and my beautiful wife.
+  an avid gamer, amateur photographer by night. I've recently adopted two of the cutest 
+  pups and if I'm not writing code, I'm probably training them or out hiking in the wild
+  with my beautiful wife & them.
 twitter_username: sahilramani
 github_username: sahilramani
 minimal_mistakes_skin: dirt
@@ -77,7 +77,7 @@ comments:
 author:
   name   : "Sahil Ramani"
   avatar : "/assets/images/bio-photo.jpg"
-  bio    : "Software Engineer by day. Married Software Engineer by night. Welcome to my wild side, programmatically speaking."
+  bio    : "Software Engineer by day, avid gamer by night. Welcome to my wild side, programmatically speaking."
   links:
     - label: "Email"
       icon: "fas fa-fw fa-envelope-square"
