@@ -12,7 +12,7 @@ classes: wide
 
 ```
 Senior Software Engineer
-3D Reconstruction, Neural Rendering & 3D Simulation
+Neural Rendering, 3D Reconstruction & Simulation
 sahilramani@gmail.com
 ```
 ## Summary
@@ -28,21 +28,22 @@ I'm a graphics programer and machine learning specialist with over 15 years of e
 
 ## Work Experience
 
-### Zoox Inc **SENIOR SOFTWARE ENGINEER**{: .text-right}
-#### Foster City, CA, USA <span>July 2023 - Present</span>{: .text-right}
-- Developed 3D Simulation and Synthetic Data generation tools, boosting Zoox model performance by over 20%.
-- Engineered frameworks for dataset quality evaluation using ML and statistical approaches, enhancing data integrity.
-- Led projects to create realistic simulated worlds, employing state‑of‑the‑art technologies like NeRF, Gaussian Splatting, and related techniques.
+## Zoox Inc
+**SENIOR SOFTWARE ENGINEER**
+##### Foster City, CA, USA
+July 2023 - Present
+- Led pioneering technical team implementing NeRF and Gaussian Splatting, significantly advancing training environment fidelity & diversity.
+- Optimized 3D Simulation & Synthetic Data pipelines delivering 20% improvement in autonomous vehicle ML model performance.
+- Developed comprehensive simulation quality metrics using FID, KL Divergence and SSIM to quantify and reduce sim-to-real gap.
 
 ## Unity Technologies 
 **SENIOR SOFTWARE ENGINEER / SOFTWARE ENGINEERING MANAGER** 
 ##### Seattle, WA, USA
 Aug. 2019 ‑ July 2023
 
-- Developed a Unity extension using Neural Rendering to dynamically transform game visuals, featured in the Beta teaser for the future of Unity AI.
-- Significantly enhanced machine learning efficiency by designing custom GPU kernels & operations, which streamlined both training and inference
-processes, reducing overhead and accelerating performance.
-- Led a team of engineers in pioneering research to leverage machine learning for superior game lighting and rendering.
+- Led R&D efforts in Neural Rendering at Unity Technologies, developing AI-powered visual transformation technology featured in Unity Muse & Unity Sentis showcase.
+- Engineered custom GPU kernels and ML operations that significantly improved training and inference performance through optimized memory management for Unity Sentis.
+- Led a research team exploring ML applications for augmenting game lighting and rendering systems.
 - Implemented high‑performance, GPU‑accelerated tile‑stitching for Unity’s terrain system with zero latent allocations.
 - **Patent 18/144,734** : System and Method for Interactive Asynchronous Tile‑Based Terrain Generation
 
@@ -51,8 +52,8 @@ processes, reducing overhead and accelerating performance.
 ##### Redwood City, CA, USA
 Nov 2014 ‑ Aug 2019
 
-- Directed R&D efforts at Crystal Dynamics, leading engine and tool technology advancements for next‑gen games.
-- Engineered a groundbreaking graph‑based blendshape control system from Maya to game, pivotal for Hulk’s transformation in Marvel’s Avengers.
+- Led next-generation engine and tooling R&D initiatives at Crystal Dynamics, advancing core technology for AAA game development. 
+- Architected and implemented an innovative graph-based facial animation system for Marvel's Avengers, enabling seamless character transformations from Maya to runtime. 
 - **Patent #11189068** : Macro‑based electronic map editing
 
 ## Dreamworks Dedicated Unit 
@@ -60,9 +61,9 @@ Nov 2014 ‑ Aug 2019
 ##### Bengaluru, Karnataka, India
 Mar 2013 ‑ Oct 2014
 
-- With the R&D team, developed the award‑winning animation and rigging tools for DreamWorks Animation.
-- Improved design of cache handling and paging to improve editor performance.
-- Prototyped high‑performance hierarchical memory models for the next generation rigging tools.
+- Led development of award-winning animation and rigging toolset at DreamWorks Animation, enhancing artist workflows and production efficiency.
+- Redesigned cache management system to significantly improve editor performance and resource utilization.
+- Architected next-generation rigging framework utilizing hierarchical memory models for advanced performance optimization.
 
 ## Microsoft Corporation 
 SOFTWARE DEVELOPMENT ENGINEER IN TEST, XBOX GRAPHICS 
