@@ -14,7 +14,7 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 title: Random Access Memories
-email: sahil.ramani-contact@yahoo.com
+email: sahilramani@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
   Welcome to my digital home. I'm a game developer and software engineer by day and 
   an avid gamer, amateur photographer by night. I've recently adopted two of the cutest 
@@ -81,7 +81,7 @@ author:
   links:
     - label: "Email"
       icon: "fas fa-fw fa-envelope-square"
-      url: "mailto:sahil.ramani-contact@yahoo.com"
+      url: "mailto:sahilramani@gmail.com"
     - label: "Twitter"
       icon: "fab fa-fw fa-twitter-square"
       url: "https://www.twitter.com/sahilramani"
@@ -96,7 +96,7 @@ footer:
   links:
     - label: "Email"
       icon: "fas fa-fw fa-envelope-square"
-      url: "mailto:sahil.ramani-contact@yahoo.com"
+      url: "mailto:sahilramani@gmail.com"
     - label: "Twitter"
       icon: "fab fa-fw fa-twitter-square"
       url: "https://www.twitter.com/sahilramani"
