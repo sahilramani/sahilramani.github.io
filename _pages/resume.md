@@ -17,7 +17,7 @@ sahilramani@gmail.com
 ```
 ## Summary
 
-I'm a graphics programer and machine learning specialist with over 15 years of experience, including 12 years shipping AAA games and game engines, including 4 years leading R&D teams. I've pioneered several workflows combining ML & real time graphics, including a 3D Reconstruction pipeline for autonomous vehicle simulation, an ML enhanced terrain generator for Unity Muse and neural rendering augmentation technologies at Unity Technologies. I've also led research teams of up to 5 engineers, building experimental technology used on a number of games. I specialize in bridging the gap between cutting-edge research and practical, user-friendly implementations, with a particular focus on real time performance and visual quality.
+Machine learning engineer and computer vision specialist with 15+ years of experience deploying production ML systems. Led development of neural rendering and terrain generation models at Unity Technologies, and architected 3D Reconstruction workflows for autonomous vehicles at Zoox. Proven track record leading targeted R&D teams of up to 5 engineers, with expertise in optimizing ML systems for real‑time applications. Extensive background in graphics programming enables unique insights into developing high‑performance ML solutions that maintain visual quality at scale.
 
 ## Skills
 
@@ -33,7 +33,7 @@ I'm a graphics programer and machine learning specialist with over 15 years of e
 ##### Foster City, CA, USA
 July 2023 - Present
 - Led pioneering technical team implementing NeRF and Gaussian Splatting, significantly advancing training environment fidelity & diversity.
-- Optimized 3D Simulation & Synthetic Data pipelines delivering 20% improvement in autonomous vehicle ML model performance.
+- Optimized 3D Simulation & Synthetic Data pipelines delivering 20% improvement in Zoox ML model performance.
 - Developed comprehensive simulation quality metrics using FID, KL Divergence and SSIM to quantify and reduce sim-to-real gap.
 
 ## Unity Technologies 
@@ -53,7 +53,7 @@ Aug. 2019 ‑ July 2023
 Nov 2014 ‑ Aug 2019
 
 - Led next-generation engine and tooling R&D initiatives at Crystal Dynamics, advancing core technology for AAA game development. 
-- Architected and implemented an innovative graph-based facial animation system for Marvel's Avengers, enabling seamless character transformations from Maya to runtime. 
+- Architected and implemented an innovative graph-based body animation morphing system for Marvel's Avengers, enabling seamless character transformations from Maya to runtime. 
 - **Patent #11189068** : Macro‑based electronic map editing
 
 ## Dreamworks Dedicated Unit 
