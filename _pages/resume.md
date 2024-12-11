@@ -11,7 +11,8 @@ classes: wide
 # Sahil Ramani
 
 ```
-Senior Software Engineer · 3D Reconstruction, Neural Rendering & 3D Simulation
+Senior Software Engineer
+3D Reconstruction, Neural Rendering & 3D Simulation
 sahilramani@gmail.com
 ```
 ## Summary
@@ -20,17 +21,15 @@ I'm a graphics programer and machine learning specialist with over 15 years of e
 
 ## Skills
 
-- **Neural Rendering & ML**: PyTorch, CUDA, computer vision, differentiable rendering, NeRF, Gaussian Splatting, 3D Reconstruction
+- **Neural Rendering & Machine Learning**: PyTorch, CUDA, computer vision, differentiable rendering, NeRF, Gaussian Splatting, 3D Reconstruction
 - **Graphics Programming**: DirectX 12, Vulkan, compute shaders, ray tracing, shader optimization
 - **Game Engine Development**: Unity (engine/editor dev, custom render pipelines), Unreal Engine, Godot
 - **Languages & Development Tools**: Python, C++, C#, Git, Perforce
 
 ## Work Experience
 
-## Zoox Inc
-**SENIOR SOFTWARE ENGINEER**
-##### Foster City, CA, USA
-July 2023 - Present
+### Zoox Inc **SENIOR SOFTWARE ENGINEER**{: .text-right}
+#### Foster City, CA, USA <span>July 2023 - Present</span>{: .text-right}
 - Developed 3D Simulation and Synthetic Data generation tools, boosting Zoox model performance by over 20%.
 - Engineered frameworks for dataset quality evaluation using ML and statistical approaches, enhancing data integrity.
 - Led projects to create realistic simulated worlds, employing state‑of‑the‑art technologies like NeRF, Gaussian Splatting, and related techniques.
