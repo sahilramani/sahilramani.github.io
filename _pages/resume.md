@@ -10,11 +10,12 @@ classes: wide
 
 # Sahil Ramani
 
-```
-Senior Software Engineer
-Neural Rendering, 3D Reconstruction & Simulation
+<div style="margin-bottom: 20px;">
+Senior Software Engineer<br>
+Neural Rendering, 3D Reconstruction & Simulation<br>
 sahilramani@gmail.com
-```
+</div>
+
 ## Summary
 
 Machine learning engineer and computer vision specialist with 15+ years of experience deploying production ML systems. Led development of neural rendering and terrain generation models at Unity Technologies, and architected 3D Reconstruction workflows for autonomous vehicles at Zoox. Proven track record leading targeted R&D teams of up to 5 engineers, with expertise in optimizing ML systems for real‑time applications. Extensive background in graphics programming enables unique insights into developing high‑performance ML solutions that maintain visual quality at scale.
@@ -28,76 +29,55 @@ Machine learning engineer and computer vision specialist with 15+ years of exper
 
 ## Work Experience
 
-## Zoox Inc
-**SENIOR SOFTWARE ENGINEER**
-##### Foster City, CA, USA
-July 2023 - Present
+### Zoox Inc
+**SENIOR SOFTWARE ENGINEER** | *Foster City, CA, USA* | *July 2023 - Present*
+
 - Led pioneering technical team implementing NeRF and Gaussian Splatting, significantly advancing training environment fidelity & diversity.
 - Optimized 3D Simulation & Synthetic Data pipelines delivering 20% improvement in Zoox ML model performance.
 - Developed comprehensive simulation quality metrics using FID, KL Divergence and SSIM to quantify and reduce sim-to-real gap.
 
-## Unity Technologies 
-**SENIOR SOFTWARE ENGINEER / SOFTWARE ENGINEERING MANAGER** 
-##### Seattle, WA, USA
-Aug. 2019 ‑ July 2023
+### Unity Technologies 
+**SENIOR SOFTWARE ENGINEER / SOFTWARE ENGINEERING MANAGER** | *Seattle, WA, USA* | *Aug. 2019 ‑ July 2023*
 
 - Led R&D efforts in Neural Rendering at Unity Technologies, developing AI-powered visual transformation technology featured in Unity Muse & Unity Sentis showcase.
 - Engineered custom GPU kernels and ML operations that significantly improved training and inference performance through optimized memory management for Unity Sentis.
 - Led a research team exploring ML applications for augmenting game lighting and rendering systems.
-- Implemented high‑performance, GPU‑accelerated tile‑stitching for Unity’s terrain system with zero latent allocations.
-- **Patent 18/144,734** : System and Method for Interactive Asynchronous Tile‑Based Terrain Generation
+- Implemented high‑performance, GPU‑accelerated tile‑stitching for Unity's terrain system with zero latent allocations.
+- **Patent 18/144,734**: System and Method for Interactive Asynchronous Tile‑Based Terrain Generation
 
-## Crystal Dynamics 
-**ENGINE LEAD, FUTURE PROJECTS / SENIOR SOFTWARE ENGINEER** 
-##### Redwood City, CA, USA
-Nov 2014 ‑ Aug 2019
+### Crystal Dynamics 
+**ENGINE LEAD, FUTURE PROJECTS / SENIOR SOFTWARE ENGINEER** | *Redwood City, CA, USA* | *Nov 2014 ‑ Aug 2019*
 
 - Led next-generation engine and tooling R&D initiatives at Crystal Dynamics, advancing core technology for AAA game development. 
 - Architected and implemented an innovative graph-based body animation morphing system for Marvel's Avengers, enabling seamless character transformations from Maya to runtime. 
-- **Patent #11189068** : Macro‑based electronic map editing
+- **Patent #11189068**: Macro‑based electronic map editing
 
-## Dreamworks Dedicated Unit 
-**SOFTWARE APPLICATIONS ENGINEER, ANIMATION & RIGGING TOOLS** 
-##### Bengaluru, Karnataka, India
-Mar 2013 ‑ Oct 2014
+### Dreamworks Dedicated Unit 
+**SOFTWARE APPLICATIONS ENGINEER, ANIMATION & RIGGING TOOLS** | *Bengaluru, Karnataka, India* | *Mar 2013 ‑ Oct 2014*
 
 - Led development of award-winning animation and rigging toolset at DreamWorks Animation, enhancing artist workflows and production efficiency.
 - Redesigned cache management system to significantly improve editor performance and resource utilization.
 - Architected next-generation rigging framework utilizing hierarchical memory models for advanced performance optimization.
 
-## Microsoft Corporation 
-SOFTWARE DEVELOPMENT ENGINEER IN TEST, XBOX GRAPHICS 
-##### Redmond, WA, USA
-July 2011 ‑ Oct 2012
+### Microsoft Corporation 
+**SOFTWARE DEVELOPMENT ENGINEER IN TEST, XBOX GRAPHICS** | *Redmond, WA, USA* | *July 2011 ‑ Oct 2012*
 
-## Nokia Research Center 
-RESEARCH INTERN, MOBILE EXPERIENCES 
-##### Santa Monica, CA, USA
-May 2012 ‑ July 2012
+### Nokia Research Center 
+**RESEARCH INTERN, MOBILE EXPERIENCES** | *Santa Monica, CA, USA* | *May 2012 ‑ July 2012*
 
-## Yahoo! Software Development India 
-SENIOR SYSTEMS ENGINEER / SYSTEMS ENGINEER 
-##### Bengaluru, Karnataka, India
-July 2006 ‑ July 2009
+### Yahoo! Software Development India 
+**SENIOR SYSTEMS ENGINEER / SYSTEMS ENGINEER** | *Bengaluru, Karnataka, India* | *July 2006 ‑ July 2009*
 
 ## Education
 
 ### Udacity 
-##### Jun 2021 ‑ May 2022
-_Online_
-Nanodegree, AI For Trading 
+**Nanodegree, AI For Trading** | *Online* | *Jun 2021 ‑ May 2022*
 
 ### UDACITY 
-##### Jun 2020 ‑ Oct 2020
-_Online_
-Nanodegree, Deep Learning 
+**Nanodegree, Deep Learning** | *Online* | *Jun 2020 ‑ Oct 2020*
 
 ### UNIVERSITY OF SOUTHERN CALIFORNIA
-##### Los Angeles, CA, USA
-_Aug 2009 ‑ May 2011_
-Masters of Science in Computer Science, Game Development  
+**Masters of Science in Computer Science, Game Development** | *Los Angeles, CA, USA* | *Aug 2009 ‑ May 2011*
 
 ### BMS COLLEGE OF ENGINEERING 
-##### Bengaluru, Karnataka, India
-_Aug 2002 ‑ June 2006_
-Bachelor of Engineering, Computer Science 
+**Bachelor of Engineering, Computer Science** | *Bengaluru, Karnataka, India* | *Aug 2002 ‑ June 2006*
