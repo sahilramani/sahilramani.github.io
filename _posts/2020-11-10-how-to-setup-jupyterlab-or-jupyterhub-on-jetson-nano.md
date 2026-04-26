@@ -28,7 +28,7 @@ tags:
 
 **JupyterHub** provides a multi-user, multi-session Jupyter setup. If you have multiple users interacting with your server, this is the setup you want to use. Additionally, it allows integration of numerous OAuth based authentication platforms which make it easier to add new users that can interact with your server.
 
-<img src="https://jupyterhub.readthedocs.io/en/stable/_images/jhub-fluxogram.jpeg" alt="JupyterHub — JupyterHub 1.2.1 documentation"/>
+<img src="https://jupyterhub.readthedocs.io/en/stable/_images/jhub-fluxogram.jpeg" alt="JupyterHub - JupyterHub 1.2.1 documentation"/>
 
 # Cloning a current Conda Environment
 If you already followed the steps to set up Python 3 and Jupyter Notebook, odds are that you have a working conda environment that you like. If you wish to retain that environment, and set up a new conda environment for JupyterLab / JupyterHub, here's what you can do:

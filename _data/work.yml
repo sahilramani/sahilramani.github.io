@@ -26,7 +26,7 @@
     - Engineered custom GPU kernels and ML operations, significantly improving training and inference performance.
     - Led research team exploring ML applications for augmenting game lighting and rendering systems.
     - Implemented GPU-accelerated tile-stitching for Unity's terrain system with zero latent allocations.
-  patent: Patent 18/144,734 — Interactive Asynchronous Tile-Based Terrain Generation
+  patent: Patent 18/144,734 - Interactive Asynchronous Tile-Based Terrain Generation
 
 - company: Crystal Dynamics
   period: Nov 2014 - Aug 2019
@@ -36,7 +36,7 @@
   bullets:
     - Led next-generation engine and tooling R&D initiatives for AAA game development.
     - Architected an innovative graph-based body animation morphing system for Marvel's Avengers.
-  patent: Patent #11189068 — Macro-based Electronic Map Editing
+  patent: Patent #11189068 - Macro-based Electronic Map Editing
 
 - company: DreamWorks Animation
   period: Mar 2013 - Oct 2014
