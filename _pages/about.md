@@ -23,13 +23,16 @@ nav_id: about
 
       <div class="about-body">
         <p>
-          Welcome to my digital home. By day, I'm a software engineer working on neural rendering and 3D reconstruction for autonomous vehicles at Zoox. By night, an avid gamer, amateur photographer, and proud dog dad.
+          Hi, I'm Sahil. I'm a software engineer at NVIDIA working on AI for game development &mdash; the slice of the field where neural networks meet real-time graphics, and where the tools that ship with games become as interesting as the games themselves.
         </p>
         <p>
-          I recently adopted a Swiss Shepherd and an adorable Samoyed mix puppy. When I'm not writing code, you'll find me training them or out hiking in the park with them and my wonderful wife.
+          I've spent the last fifteen-or-so years moving between graphics, game engines, and machine learning. Shipped engine tech at Crystal Dynamics and DreamWorks, led neural-rendering R&amp;D at Unity, and built 3D reconstruction pipelines for self-driving at Zoox before landing at NVIDIA. Two patents along the way, and a deep conviction that the most interesting problems live at the seam between disciplines.
         </p>
         <p>
-          This site is my creative space to jot down ideas, experiment, and see what unfolds. The learning happens in public.
+          Outside of work I'm a gamer, an amateur photographer, and a proud dog dad &mdash; we live with a Swiss Shepherd and a Samoyed mix who keep me honest about going outside. Most weekends involve a hike with them and my wife. The rest is reading, tinkering, and the occasional long walk to think a problem through.
+        </p>
+        <p>
+          This site is where I write the things I want to remember &mdash; engineering notes, half-formed ideas, and the occasional essay on something more personal. Random access, no particular order.
         </p>
       </div>
 

@@ -16,10 +16,9 @@
 title: Random Access Memories
 email: sahilramani@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
-  Welcome to my digital home. I'm a game developer and software engineer by day and 
-  an avid gamer, amateur photographer by night. I've recently adopted two of the cutest 
-  pups and if I'm not writing code, I'm probably training them or out hiking in the wild
-  with my beautiful wife & them.
+  Software engineer at NVIDIA working on AI for game development. Notes on graphics,
+  machine learning, and the seam where they meet — plus the occasional detour into
+  gaming, photography, and life with two dogs.
 twitter_username: sahilramani
 github_username: sahilramani
 minimal_mistakes_skin: dirt
