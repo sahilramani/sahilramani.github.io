@@ -1,5 +1,13 @@
+- company: NVIDIA
+  period: July 2025 - Present
+  location: Santa Clara, CA
+  title: Senior Software Engineer
+  sub: AI for Games
+  bullets:
+    - Working on AI systems to improve game development workflows.
+
 - company: Zoox Inc.
-  period: July 2023 – Present
+  period: July 2023 - July 2025
   location: Foster City, CA
   title: Senior Software Engineer
   sub: Neural Rendering & 3D Reconstruction
@@ -9,7 +17,7 @@
     - Developed comprehensive simulation quality metrics using FID, KL Divergence and SSIM to quantify and reduce sim-to-real gap.
 
 - company: Unity Technologies
-  period: Aug 2019 – July 2023
+  period: Aug 2019 - July 2023
   location: Seattle, WA
   title: Senior SWE / Engineering Manager
   sub: Neural Rendering & Game Engine
@@ -21,7 +29,7 @@
   patent: Patent 18/144,734 — Interactive Asynchronous Tile-Based Terrain Generation
 
 - company: Crystal Dynamics
-  period: Nov 2014 – Aug 2019
+  period: Nov 2014 - Aug 2019
   location: Redwood City, CA
   title: Engine Lead, Future Projects
   sub: Next-Gen Engine & Tooling
@@ -31,7 +39,7 @@
   patent: Patent #11189068 — Macro-based Electronic Map Editing
 
 - company: DreamWorks Animation
-  period: Mar 2013 – Oct 2014
+  period: Mar 2013 - Oct 2014
   location: Bengaluru, India
   title: Software Applications Engineer
   sub: Animation & Rigging Tools
@@ -40,21 +48,21 @@
     - Redesigned cache management system to significantly improve editor performance.
 
 - company: Microsoft
-  period: Jul 2011 – Oct 2012
+  period: Jul 2011 - Oct 2012
   location: Redmond, WA
   title: SDET, Xbox Graphics
   sub: ""
   bullets: []
 
 - company: Nokia Research Center
-  period: May 2012 – Jul 2012
+  period: May 2012 - Jul 2012
   location: Santa Monica, CA
   title: Research Intern, Mobile Experiences
   sub: ""
   bullets: []
 
 - company: Yahoo!
-  period: Jul 2006 – Jul 2009
+  period: Jul 2006 - Jul 2009
   location: Bengaluru, India
   title: Senior Systems Engineer
   sub: ""
