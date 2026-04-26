@@ -62,7 +62,7 @@ nav_id: resume
       <div class="resume-section">
         <div class="resume-section-title">Summary</div>
         <p class="resume-summary">
-          Machine learning engineer and computer vision specialist with 15+ years of experience deploying production ML systems. Led neural rendering and terrain generation at Unity Technologies, and architected 3D Reconstruction workflows for autonomous vehicles at Zoox. Proven track record leading R&amp;D teams with expertise in optimizing ML systems for real‑time applications.
+          Machine learning engineer and computer vision specialist with 15+ years of experience deploying production ML systems. Working on AI for Game Development intiatives at NVIDIA. Previously led neural rendering and terrain generation at Unity Technologies, and architected 3D Reconstruction workflows for autonomous vehicles at Zoox. Proven track record leading R&amp;D teams with expertise in optimizing ML systems for real‑time applications.
         </p>
       </div>
 

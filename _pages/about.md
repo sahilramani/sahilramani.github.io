@@ -36,11 +36,11 @@ nav_id: about
       <div class="about-facts">
         <div class="about-fact">
           <div class="about-fact-label">Currently</div>
-          <div class="about-fact-value">Zoox — Neural Rendering &amp; 3D Reconstruction</div>
+          <div class="about-fact-value">NVIDIA — AI for Games</div>
         </div>
         <div class="about-fact">
           <div class="about-fact-label">Previously</div>
-          <div class="about-fact-value">Unity · Crystal Dynamics · DreamWorks · Microsoft</div>
+          <div class="about-fact-value">Zoox · Unity · Crystal Dynamics · DreamWorks · Microsoft</div>
         </div>
         <div class="about-fact">
           <div class="about-fact-label">Education</div>
