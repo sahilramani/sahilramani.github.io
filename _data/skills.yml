@@ -1,0 +1,32 @@
+- label: Neural Rendering & ML
+  pills:
+    - PyTorch
+    - CUDA
+    - NeRF
+    - Gaussian Splatting
+    - Computer Vision
+    - Differentiable Rendering
+
+- label: Graphics
+  pills:
+    - DirectX 12
+    - Vulkan
+    - Ray Tracing
+    - Compute Shaders
+    - Shader Optimization
+
+- label: Game Engines
+  pills:
+    - Unity
+    - Unreal Engine
+    - Godot
+    - Custom Pipelines
+
+- label: Languages
+  pills:
+    - Python
+    - C++
+    - C#
+    - HLSL
+    - Git
+    - Perforce

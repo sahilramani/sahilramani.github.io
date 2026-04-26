@@ -1,83 +1,95 @@
 ---
-title: "Resume"
+title: Resume
 permalink: /resume/
-layout: single
-author_profile: true
-classes: wide
+layout: redesign
+nav_id: resume
 ---
+<div class="resume-page">
 
-[Download Resume PDF](/assets/files/ramani_ml.pdf){: .btn .btn--primary .btn--large}
+  <div class="resume-hero">
+    <div>
+      <div class="resume-hero-name">Sahil Ramani</div>
+      <div class="resume-hero-title">
+        <strong>Senior Software Engineer</strong> · Neural Rendering, 3D Reconstruction &amp; Simulation
+      </div>
+      <div class="resume-hero-actions">
+        <a class="btn" href="{{ '/assets/files/ramani_ml.pdf' | relative_url }}">Download PDF</a>
+      </div>
+    </div>
+    <div class="resume-hero-meta">
+      <div class="resume-hero-email">{{ site.author.name | default: 'sahilramani' }} · sahilramani@gmail.com</div>
+      <div class="resume-hero-chips">
+        <span class="resume-hero-chip">15+ yrs exp</span>
+        <span class="resume-hero-chip">2 Patents</span>
+        <span class="resume-hero-chip">Zoox · Unity · Crystal Dynamics</span>
+      </div>
+    </div>
+  </div>
 
-# Sahil Ramani
+  <div class="resume-body">
 
-<div style="margin-bottom: 20px;">
-Senior Software Engineer<br>
-Neural Rendering, 3D Reconstruction & Simulation<br>
-sahilramani@gmail.com
+    <div class="resume-sidebar">
+
+      <div class="resume-section">
+        <div class="resume-section-title">Skills</div>
+        {% for group in site.data.skills %}
+        <div class="skill-group">
+          <div class="skill-group-label">{{ group.label }}</div>
+          <div class="skill-pills">
+            {% for pill in group.pills %}<span class="skill-pill">{{ pill }}</span>{% endfor %}
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+
+      <div class="resume-section">
+        <div class="resume-section-title">Education</div>
+        <div class="timeline">
+          {% for e in site.data.education %}
+          <div class="edu-item">
+            <div class="edu-degree">{{ e.degree }}</div>
+            <div class="edu-school">{{ e.school }}</div>
+            <div class="edu-meta">{{ e.period }} · {{ e.location }}</div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+
+    </div>
+
+    <div class="resume-main">
+
+      <div class="resume-section">
+        <div class="resume-section-title">Summary</div>
+        <p class="resume-summary">
+          Machine learning engineer and computer vision specialist with 15+ years of experience deploying production ML systems. Led neural rendering and terrain generation at Unity Technologies, and architected 3D Reconstruction workflows for autonomous vehicles at Zoox. Proven track record leading R&amp;D teams with expertise in optimizing ML systems for real‑time applications.
+        </p>
+      </div>
+
+      <div class="resume-section">
+        <div class="resume-section-title">Experience</div>
+        <div class="timeline">
+          {% for job in site.data.work %}
+          <div class="job">
+            <div class="job-header">
+              <div class="job-company">{{ job.company }}</div>
+              <div class="job-period">{{ job.period }}</div>
+            </div>
+            <div class="job-title">{{ job.title }}</div>
+            <div class="job-location">{% if job.sub != "" %}{{ job.sub }} · {% endif %}{{ job.location }}</div>
+            {% if job.bullets.size > 0 %}
+            <ul class="job-bullets">
+              {% for b in job.bullets %}<li>{{ b }}</li>{% endfor %}
+            </ul>
+            {% endif %}
+            {% if job.patent %}
+            <div class="patent-badge">⬡ {{ job.patent }}</div>
+            {% endif %}
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+
+    </div>
+  </div>
 </div>
-
-## Summary
-
-Machine learning engineer and computer vision specialist with 15+ years of experience deploying production ML systems. Led development of neural rendering and terrain generation models at Unity Technologies, and architected 3D Reconstruction workflows for autonomous vehicles at Zoox. Proven track record leading targeted R&D teams of up to 5 engineers, with expertise in optimizing ML systems for real‑time applications. Extensive background in graphics programming enables unique insights into developing high‑performance ML solutions that maintain visual quality at scale.
-
-## Skills
-
-- **Neural Rendering & Machine Learning**: PyTorch, CUDA, computer vision, differentiable rendering, NeRF, Gaussian Splatting, 3D Reconstruction
-- **Graphics Programming**: DirectX 12, Vulkan, compute shaders, ray tracing, shader optimization
-- **Game Engine Development**: Unity (engine/editor dev, custom render pipelines), Unreal Engine, Godot
-- **Languages & Development Tools**: Python, C++, C#, Git, Perforce
-
-## Work Experience
-
-### Zoox Inc
-**SENIOR SOFTWARE ENGINEER** | *Foster City, CA, USA* | *July 2023 - Present*
-
-- Led pioneering technical team implementing NeRF and Gaussian Splatting, significantly advancing training environment fidelity & diversity.
-- Optimized 3D Simulation & Synthetic Data pipelines delivering 20% improvement in Zoox ML model performance.
-- Developed comprehensive simulation quality metrics using FID, KL Divergence and SSIM to quantify and reduce sim-to-real gap.
-
-### Unity Technologies 
-**SENIOR SOFTWARE ENGINEER / SOFTWARE ENGINEERING MANAGER** | *Seattle, WA, USA* | *Aug. 2019 ‑ July 2023*
-
-- Led R&D efforts in Neural Rendering at Unity Technologies, developing AI-powered visual transformation technology featured in Unity Muse & Unity Sentis showcase.
-- Engineered custom GPU kernels and ML operations that significantly improved training and inference performance through optimized memory management for Unity Sentis.
-- Led a research team exploring ML applications for augmenting game lighting and rendering systems.
-- Implemented high‑performance, GPU‑accelerated tile‑stitching for Unity's terrain system with zero latent allocations.
-- **Patent 18/144,734**: System and Method for Interactive Asynchronous Tile‑Based Terrain Generation
-
-### Crystal Dynamics 
-**ENGINE LEAD, FUTURE PROJECTS / SENIOR SOFTWARE ENGINEER** | *Redwood City, CA, USA* | *Nov 2014 ‑ Aug 2019*
-
-- Led next-generation engine and tooling R&D initiatives at Crystal Dynamics, advancing core technology for AAA game development. 
-- Architected and implemented an innovative graph-based body animation morphing system for Marvel's Avengers, enabling seamless character transformations from Maya to runtime. 
-- **Patent #11189068**: Macro‑based electronic map editing
-
-### Dreamworks Dedicated Unit 
-**SOFTWARE APPLICATIONS ENGINEER, ANIMATION & RIGGING TOOLS** | *Bengaluru, Karnataka, India* | *Mar 2013 ‑ Oct 2014*
-
-- Led development of award-winning animation and rigging toolset at DreamWorks Animation, enhancing artist workflows and production efficiency.
-- Redesigned cache management system to significantly improve editor performance and resource utilization.
-- Architected next-generation rigging framework utilizing hierarchical memory models for advanced performance optimization.
-
-### Microsoft Corporation 
-**SOFTWARE DEVELOPMENT ENGINEER IN TEST, XBOX GRAPHICS** | *Redmond, WA, USA* | *July 2011 ‑ Oct 2012*
-
-### Nokia Research Center 
-**RESEARCH INTERN, MOBILE EXPERIENCES** | *Santa Monica, CA, USA* | *May 2012 ‑ July 2012*
-
-### Yahoo! Software Development India 
-**SENIOR SYSTEMS ENGINEER / SYSTEMS ENGINEER** | *Bengaluru, Karnataka, India* | *July 2006 ‑ July 2009*
-
-## Education
-
-### Udacity 
-**Nanodegree, AI For Trading** | *Online* | *Jun 2021 ‑ May 2022*
-
-### UDACITY 
-**Nanodegree, Deep Learning** | *Online* | *Jun 2020 ‑ Oct 2020*
-
-### UNIVERSITY OF SOUTHERN CALIFORNIA
-**Masters of Science in Computer Science, Game Development** | *Los Angeles, CA, USA* | *Aug 2009 ‑ May 2011*
-
-### BMS COLLEGE OF ENGINEERING 
-**Bachelor of Engineering, Computer Science** | *Bengaluru, Karnataka, India* | *Aug 2002 ‑ June 2006*

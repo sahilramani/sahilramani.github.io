@@ -1,0 +1,27 @@
+---
+layout: redesign
+nav_id: post
+---
+<div class="post-page">
+  <a class="post-back" href="{{ '/posts/' | relative_url }}">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+    Back to Writing
+  </a>
+  {%- if page.categories.first -%}
+  <div class="post-page-cat">{{ page.categories.first }}</div>
+  {%- endif -%}
+  <h1 class="post-page-title">{{ page.title }}</h1>
+  <div class="post-page-meta">
+    <span>{{ page.date | date: "%b %-d, %Y" }}</span>
+    {%- assign words = content | strip_html | number_of_words -%}
+    {%- assign minutes = words | divided_by: 200 | at_least: 1 -%}
+    <span>·</span>
+    <span>{{ minutes }} min read</span>
+    {%- for tag in page.tags -%}
+    <span>#{{ tag | replace: ' ', '' }}</span>
+    {%- endfor -%}
+  </div>
+  <div class="post-body">
+    {{ content }}
+  </div>
+</div>

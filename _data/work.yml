@@ -1,0 +1,61 @@
+- company: Zoox Inc.
+  period: July 2023 – Present
+  location: Foster City, CA
+  title: Senior Software Engineer
+  sub: Neural Rendering & 3D Reconstruction
+  bullets:
+    - Led pioneering technical team implementing NeRF and Gaussian Splatting, significantly advancing training environment fidelity & diversity.
+    - Optimized 3D Simulation & Synthetic Data pipelines delivering 20% improvement in Zoox ML model performance.
+    - Developed comprehensive simulation quality metrics using FID, KL Divergence and SSIM to quantify and reduce sim-to-real gap.
+
+- company: Unity Technologies
+  period: Aug 2019 – July 2023
+  location: Seattle, WA
+  title: Senior SWE / Engineering Manager
+  sub: Neural Rendering & Game Engine
+  bullets:
+    - Led R&D in Neural Rendering at Unity, developing AI-powered visual transformation technology featured in Unity Muse & Sentis.
+    - Engineered custom GPU kernels and ML operations, significantly improving training and inference performance.
+    - Led research team exploring ML applications for augmenting game lighting and rendering systems.
+    - Implemented GPU-accelerated tile-stitching for Unity's terrain system with zero latent allocations.
+  patent: Patent 18/144,734 — Interactive Asynchronous Tile-Based Terrain Generation
+
+- company: Crystal Dynamics
+  period: Nov 2014 – Aug 2019
+  location: Redwood City, CA
+  title: Engine Lead, Future Projects
+  sub: Next-Gen Engine & Tooling
+  bullets:
+    - Led next-generation engine and tooling R&D initiatives for AAA game development.
+    - Architected an innovative graph-based body animation morphing system for Marvel's Avengers.
+  patent: Patent #11189068 — Macro-based Electronic Map Editing
+
+- company: DreamWorks Animation
+  period: Mar 2013 – Oct 2014
+  location: Bengaluru, India
+  title: Software Applications Engineer
+  sub: Animation & Rigging Tools
+  bullets:
+    - Led development of award-winning animation and rigging toolset, enhancing artist workflows.
+    - Redesigned cache management system to significantly improve editor performance.
+
+- company: Microsoft
+  period: Jul 2011 – Oct 2012
+  location: Redmond, WA
+  title: SDET, Xbox Graphics
+  sub: ""
+  bullets: []
+
+- company: Nokia Research Center
+  period: May 2012 – Jul 2012
+  location: Santa Monica, CA
+  title: Research Intern, Mobile Experiences
+  sub: ""
+  bullets: []
+
+- company: Yahoo!
+  period: Jul 2006 – Jul 2009
+  location: Bengaluru, India
+  title: Senior Systems Engineer
+  sub: ""
+  bullets: []
