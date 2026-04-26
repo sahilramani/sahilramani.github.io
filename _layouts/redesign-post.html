@@ -18,10 +18,31 @@ nav_id: post
     <span>·</span>
     <span>{{ minutes }} min read</span>
     {%- for tag in page.tags -%}
-    <span>#{{ tag | replace: ' ', '' }}</span>
+    <a href="{{ '/tags/' | relative_url }}#{{ tag | slugify }}" style="color: var(--accent); text-decoration: none;">#{{ tag | replace: ' ', '' }}</a>
     {%- endfor -%}
   </div>
   <div class="post-body">
     {{ content }}
   </div>
+
+  {%- if page.comments and site.comments.provider == "disqus" and site.comments.disqus.shortname -%}
+  <section class="post-comments">
+    <h2 class="comments-title">Comments</h2>
+    <div id="disqus_thread"></div>
+    <script>
+      (function () {
+        var d = document, s = d.createElement('script');
+        s.src = 'https://{{ site.comments.disqus.shortname }}.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        s.async = true;
+        (d.head || d.body).appendChild(s);
+        window.disqus_config = function () {
+          this.page.url = {{ page.url | absolute_url | jsonify }};
+          this.page.identifier = {{ page.id | jsonify }};
+        };
+      })();
+    </script>
+    <noscript>Please enable JavaScript to view the comments.</noscript>
+  </section>
+  {%- endif -%}
 </div>

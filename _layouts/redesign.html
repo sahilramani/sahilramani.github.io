@@ -346,6 +346,53 @@
     .post-body img { max-width: 100%; height: auto; border-radius: 6px; margin: 24px 0; }
     .post-body hr { border: 0; border-top: 1px solid var(--rule); margin: 40px 0; }
 
+    .post-comments {
+      margin-top: 64px;
+      padding-top: 32px;
+      border-top: 1px solid var(--rule);
+    }
+    .comments-title {
+      font-family: var(--serif);
+      font-size: 22px; font-weight: 400;
+      letter-spacing: -0.01em;
+      margin-bottom: 24px;
+    }
+
+    /* ARCHIVE (categories + tags) */
+    .archive-page { max-width: 960px; margin: 0 auto; padding: 64px 40px 96px; }
+    .archive-group { margin-bottom: 56px; }
+    .archive-group-title {
+      font-family: var(--serif);
+      font-size: 28px; font-weight: 400;
+      letter-spacing: -0.01em;
+      margin-bottom: 6px;
+      display: flex; align-items: baseline; gap: 12px;
+    }
+    .archive-group-title .archive-group-count {
+      font-family: var(--sans);
+      font-size: 12px; font-weight: 500;
+      color: var(--ink-light);
+      letter-spacing: 0.06em;
+    }
+    .archive-group-anchor {
+      display: block; height: 0;
+      transform: translateY(-72px);
+    }
+    .archive-jump {
+      display: flex; gap: 8px; flex-wrap: wrap;
+      margin-bottom: 48px;
+    }
+    .archive-jump a {
+      font-size: 12px; font-weight: 500;
+      padding: 6px 14px;
+      border-radius: 100px;
+      border: 1.5px solid var(--rule);
+      color: var(--ink-mid);
+      text-decoration: none;
+      transition: border-color 0.12s, color 0.12s;
+    }
+    .archive-jump a:hover { border-color: var(--ink-mid); color: var(--ink); }
+
     /* RESUME */
     .resume-page { max-width: 960px; margin: 0 auto; padding: 64px 40px 96px; }
     .resume-hero {
