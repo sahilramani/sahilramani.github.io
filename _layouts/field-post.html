@@ -1,0 +1,315 @@
+---
+layout: field
+nav_id: post
+---
+<style>
+/* POST HERO BAND */
+.post-hero{position:relative;border-bottom:1px solid var(--line);overflow:hidden;height:280px;background:linear-gradient(180deg,#0a0a0d 0%,#08080a 100%)}
+.post-hero canvas{position:absolute;inset:0;width:100%;height:100%;display:block;opacity:0.42}
+.post-hero-scan{position:absolute;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--g),transparent);opacity:0.35;animation:scan-post 8s linear infinite;z-index:2;pointer-events:none}
+@keyframes scan-post{0%{top:0;opacity:0}10%{opacity:0.35}90%{opacity:0.35}100%{top:100%;opacity:0}}
+.post-hero-inner{position:relative;z-index:3;max-width:880px;margin:0 auto;padding:48px 60px 32px;height:100%;display:flex;flex-direction:column;justify-content:flex-end}
+.post-back{font-family:var(--mono);font-size:11px;color:var(--g);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:auto;display:inline-flex;align-items:center;gap:6px;width:fit-content;transition:opacity .12s}
+.post-back:hover{opacity:0.75}
+.post-cat{font-family:var(--mono);font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--g);margin-bottom:14px;display:flex;align-items:center;gap:10px}
+.post-cat::before{content:'';width:32px;height:1px;background:var(--g)}
+.post-title{font-family:var(--sans);font-size:clamp(40px,5.5vw,72px);font-weight:300;line-height:0.98;letter-spacing:-0.035em;color:var(--ink);margin-bottom:18px}
+.post-title em{font-family:var(--serif);font-style:italic;color:var(--g);font-weight:400}
+.post-meta{font-family:var(--mono);font-size:11px;color:var(--ink2);letter-spacing:0.06em;text-transform:uppercase;display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+.post-meta .sep{color:var(--line2)}
+.post-meta a{color:var(--g)}
+
+/* RULE */
+.post-rule{max-width:1100px;margin:0 auto;border-top:1px solid var(--line)}
+
+/* BODY */
+.post-wrap{max-width:720px;margin:0 auto;padding:64px 24px 96px;font-size:17px;line-height:1.75;color:var(--ink)}
+.post-wrap p{margin-bottom:22px;color:var(--ink)}
+.post-wrap p:last-child{margin-bottom:0}
+.post-wrap strong{color:var(--ink);font-weight:600}
+.post-wrap em{font-style:italic}
+.post-wrap a{color:var(--g);border-bottom:1px solid rgba(0,255,136,0.25);transition:border-color .12s,color .12s}
+.post-wrap a:hover{border-bottom-color:var(--g);color:var(--ink)}
+
+.post-wrap h2{font-family:var(--sans);font-size:28px;font-weight:500;letter-spacing:-0.02em;color:var(--ink);line-height:1.2;margin:48px 0 18px;position:relative;padding-top:20px}
+.post-wrap h2::before{content:'// section';display:block;font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:var(--g);margin-bottom:8px}
+.post-wrap h3{font-family:var(--sans);font-size:21px;font-weight:600;letter-spacing:-0.01em;color:var(--ink);margin:36px 0 12px}
+.post-wrap h4{font-family:var(--sans);font-size:17px;font-weight:600;color:var(--ink);margin:28px 0 10px;text-transform:uppercase;letter-spacing:0.04em}
+
+.post-wrap ul,.post-wrap ol{margin:0 0 22px 22px;color:var(--ink)}
+.post-wrap ol{padding-left:2px}
+.post-wrap li{margin-bottom:8px;line-height:1.7}
+.post-wrap li::marker{color:var(--g)}
+
+.post-wrap blockquote{border-left:3px solid var(--g);padding:6px 0 6px 24px;margin:28px 0;font-family:var(--serif);font-style:italic;font-size:22px;line-height:1.45;color:var(--ink)}
+.post-wrap blockquote p{margin-bottom:10px;font-size:inherit;color:inherit}
+.post-wrap blockquote p:last-child{margin-bottom:0}
+
+.post-wrap code{font-family:var(--mono);font-size:0.9em;background:var(--bg2);border:1px solid var(--line2);padding:1px 6px;color:var(--ink);border-radius:2px}
+.post-wrap pre{background:var(--bg2);border:1px solid var(--line2);padding:20px 24px;margin:24px 0;overflow-x:auto;font-family:var(--mono);font-size:13.5px;line-height:1.65;color:var(--ink)}
+.post-wrap pre code{background:none;border:0;padding:0;font-size:inherit;border-radius:0}
+
+.post-wrap img{max-width:100%;height:auto;display:block;margin:28px auto;border:1px solid var(--line2)}
+.post-wrap figure{margin:28px 0}
+.post-wrap figcaption{font-family:var(--mono);font-size:11px;color:var(--ink2);text-align:center;margin-top:8px;letter-spacing:0.06em;text-transform:uppercase}
+.post-wrap hr{border:0;border-top:1px solid var(--line);margin:40px 0}
+
+.post-wrap table{width:100%;border-collapse:collapse;margin:24px 0;font-size:14px}
+.post-wrap th,.post-wrap td{padding:10px 14px;border-bottom:1px solid var(--line);text-align:left}
+.post-wrap th{font-family:var(--mono);font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--g);font-weight:600}
+
+/* FOOTNOTES (kramdown renders these as div.footnotes) */
+.post-wrap .footnotes{margin-top:48px;padding-top:20px;border-top:1px solid var(--line);font-family:var(--mono);font-size:12px;color:var(--ink2);line-height:1.6}
+.post-wrap .footnotes ol{margin-left:18px}
+.post-wrap .footnotes a{color:var(--g)}
+.post-wrap sup{font-size:0.75em;vertical-align:super}
+.post-wrap sup a{color:var(--g);border:0}
+
+/* RELATED */
+.related{max-width:1100px;margin:0 auto;padding:32px 24px 96px;border-top:1px solid var(--line)}
+.related-head{font-family:var(--mono);font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:var(--g);margin:48px 0 24px;display:flex;align-items:center;gap:10px}
+.related-head::before{content:'';width:32px;height:1px;background:var(--g)}
+.related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.related-card{background:var(--bg2);border:1px solid var(--line2);padding:0;overflow:hidden;cursor:pointer;transition:border-color .15s,transform .15s;color:inherit;display:flex;flex-direction:column}
+.related-card:hover{border-color:var(--g);transform:translateY(-3px)}
+.related-vis{height:120px;background:#0a0a0c;position:relative;overflow:hidden;border-bottom:1px solid var(--line2)}
+.related-vis canvas{width:100%;height:100%;display:block}
+.related-body{padding:20px}
+.related-cat{font-family:var(--mono);font-size:10px;letter-spacing:0.12em;color:var(--g);text-transform:uppercase;margin-bottom:8px}
+.related-title{font-size:17px;font-weight:400;letter-spacing:-0.01em;line-height:1.3;color:var(--ink);margin-bottom:12px}
+.related-meta{font-family:var(--mono);font-size:10px;color:var(--ink2);letter-spacing:0.04em;margin-top:auto}
+
+@media (max-width: 1100px){
+  .post-hero-inner{padding:40px 32px 28px}
+  .related{padding:32px 32px 72px}
+}
+@media (max-width: 768px){
+  .post-hero{height:auto;min-height:240px;padding-top:24px}
+  .post-hero-inner{padding:32px 20px 24px;justify-content:flex-end}
+  .post-back{margin-bottom:20px}
+  .post-title{font-size:clamp(34px,8vw,52px)}
+  .post-wrap{padding:48px 20px 64px;font-size:16px}
+  .post-wrap h2{font-size:23px}
+  .post-wrap h3{font-size:18px}
+  .post-wrap pre{font-size:12.5px;padding:16px 18px}
+  .post-wrap blockquote{font-size:19px;padding-left:18px}
+  .related{padding:24px 20px 64px}
+  .related-grid{grid-template-columns:1fr;gap:16px}
+}
+</style>
+
+<div class="post-hero">
+  <canvas data-field-canvas data-points="600" data-cx="0.78" data-cy="0.55" data-scale="0.22" data-rot-speed="0.0024" aria-hidden="true"></canvas>
+  <div class="post-hero-scan" aria-hidden="true"></div>
+  <div class="post-hero-inner">
+    <a class="post-back" href="{{ '/posts/' | relative_url }}">&larr; /writing</a>
+    {%- assign cat = page.categories | first | default: 'essay' -%}
+    {%- assign words = content | strip_html | number_of_words -%}
+    {%- assign minutes = words | divided_by: 200 | at_least: 1 -%}
+    <div class="post-cat">{{ cat | upcase }}</div>
+    <h1 class="post-title">{{ page.title }}</h1>
+    <div class="post-meta">
+      <span>{{ page.date | date: "%Y.%m.%d" }}</span>
+      <span class="sep">/</span>
+      <span>{{ minutes }} min read</span>
+      {%- if page.tags.size > 0 -%}
+      <span class="sep">/</span>
+      {%- for tag in page.tags limit: 4 -%}
+      <a href="{{ '/tags/' | relative_url }}#{{ tag | slugify }}">#{{ tag | replace: ' ', '' | downcase }}</a>
+      {%- endfor -%}
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+
+<div class="post-rule"></div>
+
+<article class="post-wrap">
+  {{ content }}
+</article>
+
+{%- assign current_cat = page.categories | first -%}
+{%- assign current_id = page.id -%}
+{%- assign all_related = "" | split: "" -%}
+{%- if current_cat -%}
+  {%- for post in site.posts -%}
+    {%- if post.id != current_id -%}
+      {%- if post.categories contains current_cat -%}
+        {%- assign all_related = all_related | push: post -%}
+      {%- endif -%}
+    {%- endif -%}
+  {%- endfor -%}
+{%- endif -%}
+{%- comment -%}fallback: most recent posts if not enough same-category{%- endcomment -%}
+{%- if all_related.size < 3 -%}
+  {%- for post in site.posts -%}
+    {%- if post.id != current_id -%}
+      {%- unless all_related contains post -%}
+        {%- assign all_related = all_related | push: post -%}
+      {%- endunless -%}
+    {%- endif -%}
+    {%- if all_related.size >= 3 -%}{%- break -%}{%- endif -%}
+  {%- endfor -%}
+{%- endif -%}
+{%- assign related_posts = all_related | slice: 0, 3 -%}
+
+{%- if related_posts.size > 0 -%}
+<div class="related">
+  <div class="related-head">// related field notes</div>
+  <div class="related-grid">
+    {%- for r in related_posts -%}
+      {%- assign rwords = r.content | strip_html | number_of_words -%}
+      {%- assign rmin = rwords | divided_by: 200 | at_least: 1 -%}
+      {%- assign rcat = r.categories | first | default: 'essay' -%}
+      {%- assign vis_kinds = "terrain,splat,grid,waves,topo,nano" | split: "," -%}
+      {%- assign vk = forloop.index0 | modulo: 6 -%}
+    <a class="related-card" href="{{ r.url | relative_url }}">
+      <div class="related-vis"><canvas data-vis="{{ vis_kinds[vk] }}"></canvas></div>
+      <div class="related-body">
+        <div class="related-cat">{{ rcat | upcase }}</div>
+        <div class="related-title">{{ r.title }}</div>
+        <div class="related-meta">{{ r.date | date: "%Y.%m.%d" }} &middot; {{ rmin }} min</div>
+      </div>
+    </a>
+    {%- endfor -%}
+  </div>
+</div>
+{%- endif -%}
+
+<script>
+// Related-card mini visualizations (small subset of the home page set)
+document.querySelectorAll('.related-vis canvas[data-vis]').forEach(function(c){
+  var kind = c.dataset.vis;
+  var ctx = c.getContext('2d');
+  var dpr = Math.min(window.devicePixelRatio || 1, 2);
+  function size(){
+    var r = c.getBoundingClientRect();
+    c.width = r.width * dpr; c.height = r.height * dpr;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    return [r.width, r.height];
+  }
+  var sz = size();
+  var w = sz[0], h = sz[1];
+  window.addEventListener('resize', function(){ var s = size(); w = s[0]; h = s[1]; });
+  var t = Math.random() * 100;
+  function draw(){
+    t += 0.01;
+    ctx.fillStyle = '#0a0a0c';
+    ctx.fillRect(0, 0, w, h);
+    if(kind === 'terrain'){
+      ctx.strokeStyle = 'rgba(0,255,136,0.5)'; ctx.lineWidth = 0.7;
+      var rows = 12, cols = 22;
+      for(var r = 0; r < rows; r++){
+        ctx.beginPath();
+        for(var i = 0; i < cols; i++){
+          var x = (i / (cols - 1)) * w;
+          var baseY = h * 0.55 + (r - rows / 2) * 6;
+          var wave = Math.sin(i * 0.5 + t + r * 0.3) * (6 + r * 0.5);
+          var y = baseY + wave - r * 1.5;
+          if(i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+        }
+        ctx.globalAlpha = 0.25 + (r / rows) * 0.75;
+        ctx.stroke();
+      }
+      ctx.globalAlpha = 1;
+    }
+    else if(kind === 'splat'){
+      for(var i = 0; i < 40; i++){
+        var a = i * 0.314 + t * 0.5;
+        var rr = 22 + (i % 5) * 10;
+        var x = w / 2 + Math.cos(a) * rr;
+        var y = h / 2 + Math.sin(a * 1.3) * rr * 0.7;
+        var ssz = 12 + Math.sin(t + i) * 5;
+        var grad = ctx.createRadialGradient(x, y, 0, x, y, ssz);
+        var col = i % 7 === 0 ? '255,0,102' : '0,255,136';
+        grad.addColorStop(0, 'rgba(' + col + ',0.7)');
+        grad.addColorStop(1, 'rgba(' + col + ',0)');
+        ctx.fillStyle = grad;
+        ctx.fillRect(x - ssz, y - ssz, ssz * 2, ssz * 2);
+      }
+    }
+    else if(kind === 'grid'){
+      ctx.strokeStyle = 'rgba(0,255,136,0.35)'; ctx.lineWidth = 0.7;
+      var step = 18;
+      for(var x = 0; x < w; x += step){ ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, h); ctx.stroke(); }
+      for(var y = 0; y < h; y += step){ ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(w, y); ctx.stroke(); }
+      var px = ((Math.sin(t) * 0.5 + 0.5) * w);
+      var py = ((Math.cos(t * 0.7) * 0.5 + 0.5) * h);
+      var grad2 = ctx.createRadialGradient(px, py, 0, px, py, 55);
+      grad2.addColorStop(0, 'rgba(255,0,102,0.8)');
+      grad2.addColorStop(1, 'rgba(255,0,102,0)');
+      ctx.fillStyle = grad2;
+      ctx.fillRect(px - 55, py - 55, 110, 110);
+    }
+    else if(kind === 'waves'){
+      ctx.strokeStyle = 'rgba(0,255,136,0.5)'; ctx.lineWidth = 1;
+      for(var j = 0; j < 6; j++){
+        ctx.beginPath();
+        for(var i = 0; i <= 50; i++){
+          var x = (i / 50) * w;
+          var y = h / 2 + Math.sin(i * 0.2 + t * 1.2 + j * 0.4) * (5 + j * 2) + (j - 3) * 5;
+          if(i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+        }
+        ctx.globalAlpha = 0.4 + j * 0.08;
+        ctx.stroke();
+      }
+      ctx.globalAlpha = 1;
+    }
+    else if(kind === 'topo'){
+      ctx.strokeStyle = 'rgba(0,255,136,0.4)'; ctx.lineWidth = 0.8;
+      var cx = w / 2, cy = h / 2;
+      for(var r = 1; r < 8; r++){
+        ctx.beginPath();
+        for(var a = 0; a <= Math.PI * 2; a += 0.05){
+          var wob = Math.sin(a * 4 + t + r) * 3;
+          var rr = r * 12 + wob;
+          var x = cx + Math.cos(a) * rr;
+          var y = cy + Math.sin(a) * rr * 0.7;
+          if(a === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+        }
+        ctx.closePath();
+        ctx.globalAlpha = 0.22 + r * 0.06;
+        ctx.stroke();
+      }
+      ctx.globalAlpha = 1;
+    }
+    else if(kind === 'nano'){
+      var cell = 10;
+      for(var y = 0; y < h; y += cell){
+        for(var x = 0; x < w; x += cell){
+          var n = Math.sin(x * 0.04 + y * 0.05 + t * 1.2);
+          if(n > 0.5){
+            ctx.fillStyle = n > 0.8 ? 'rgba(255,0,102,0.7)' : 'rgba(0,255,136,0.6)';
+            ctx.fillRect(x + 1, y + 1, cell - 2, cell - 2);
+          } else if(n > 0){
+            ctx.fillStyle = 'rgba(0,255,136,0.15)';
+            ctx.fillRect(x + 1, y + 1, cell - 2, cell - 2);
+          }
+        }
+      }
+    }
+    requestAnimationFrame(draw);
+  }
+  draw();
+});
+</script>
+
+{%- if page.comments and site.comments.provider == "disqus" and site.comments.disqus.shortname -%}
+<div class="related">
+  <div class="related-head">// comments</div>
+  <div id="disqus_thread"></div>
+  <script>
+    (function () {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://{{ site.comments.disqus.shortname }}.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      s.async = true;
+      (d.head || d.body).appendChild(s);
+      window.disqus_config = function () {
+        this.page.url = {{ page.url | absolute_url | jsonify }};
+        this.page.identifier = {{ page.id | jsonify }};
+      };
+    })();
+  </script>
+</div>
+{%- endif -%}

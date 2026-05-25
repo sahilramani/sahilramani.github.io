@@ -1,53 +1,95 @@
 ---
 title: Posts by Category
 permalink: /categories/
-layout: redesign
+layout: field
 nav_id: blog
 ---
-<div class="archive-page">
-  <div class="blog-header">
-    <h1>Posts by Category</h1>
+<style>
+.archive-hero{padding:96px 60px 56px;border-bottom:1px solid var(--line);max-width:1400px;margin:0 auto;width:100%}
+.archive-hero-inner{max-width:1100px;margin:0 auto}
+.archive-hero .eyebrow{font-family:var(--mono);font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--g);margin-bottom:22px;display:flex;align-items:center;gap:10px}
+.archive-hero .eyebrow::before{content:'';width:32px;height:1px;background:var(--g)}
+.archive-hero h1{font-family:var(--sans);font-size:clamp(56px,8vw,88px);line-height:0.95;letter-spacing:-0.04em;font-weight:300;color:var(--ink);margin-bottom:18px}
+.archive-hero h1 em{font-family:var(--serif);font-style:italic;color:var(--g);font-weight:400}
+.archive-hero p{font-family:var(--mono);font-size:13px;color:var(--ink2);letter-spacing:0.04em;max-width:680px}
+
+.tax-jump{display:flex;flex-wrap:wrap;gap:8px;padding:32px 60px;border-bottom:1px solid var(--line);max-width:1400px;margin:0 auto;width:100%;position:sticky;top:50px;background:rgba(8,8,10,0.92);backdrop-filter:blur(8px);z-index:5}
+.tax-jump-inner{max-width:1100px;margin:0 auto;display:flex;flex-wrap:wrap;gap:8px;width:100%}
+.tax-jump a{font-family:var(--mono);font-size:10px;letter-spacing:0.06em;color:var(--ink2);padding:5px 10px;border:1px solid var(--line2);border-radius:100px;text-transform:uppercase;transition:color .12s,border-color .12s}
+.tax-jump a:hover{color:var(--ink);border-color:var(--g)}
+
+.tax-body{padding:64px 60px 96px;max-width:1400px;margin:0 auto;width:100%;border-bottom:1px solid var(--line)}
+.tax-body-inner{max-width:1100px;margin:0 auto}
+.tax-group{margin-bottom:64px;scroll-margin-top:120px}
+.tax-group:last-child{margin-bottom:0}
+.tax-group-head{display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:24px;padding-bottom:14px;border-bottom:1px solid var(--g)}
+.tax-group-title{font-family:var(--sans);font-size:30px;font-weight:400;letter-spacing:-0.02em;color:var(--ink)}
+.tax-group-title em{font-family:var(--serif);font-style:italic;color:var(--g)}
+.tax-group-count{font-family:var(--mono);font-size:11px;color:var(--g);letter-spacing:0.08em;text-transform:uppercase}
+
+@media (max-width: 1100px){
+  .archive-hero{padding:72px 32px 48px}
+  .tax-jump{padding:24px 32px;top:50px}
+  .tax-body{padding:48px 32px 80px}
+}
+@media (max-width: 768px){
+  .archive-hero{padding:56px 20px 36px}
+  .tax-jump{padding:18px 20px;top:50px}
+  .tax-body{padding:36px 20px 64px}
+  .tax-group{margin-bottom:48px}
+  .tax-group-title{font-size:24px}
+}
+</style>
+
+<section class="archive-hero">
+  <div class="archive-hero-inner">
+    <div class="eyebrow">// INDEX &middot; BY CATEGORY</div>
+    <h1>Posts by <em>category</em></h1>
     <p>Browse {{ site.posts | size }} posts grouped by topic.</p>
   </div>
+</section>
 
-  {%- assign all_cats = "" | split: "" -%}
-  {%- for post in site.posts -%}
-    {%- for cat in post.categories -%}
-      {%- unless all_cats contains cat -%}
-        {%- assign all_cats = all_cats | push: cat -%}
-      {%- endunless -%}
-    {%- endfor -%}
+{%- assign all_cats = "" | split: "" -%}
+{%- for post in site.posts -%}
+  {%- for cat in post.categories -%}
+    {%- unless all_cats contains cat -%}
+      {%- assign all_cats = all_cats | push: cat -%}
+    {%- endunless -%}
   {%- endfor -%}
-  {%- assign all_cats = all_cats | sort -%}
+{%- endfor -%}
+{%- assign all_cats = all_cats | sort -%}
 
-  <div class="archive-jump">
+<nav class="tax-jump" aria-label="Jump to category">
+  <div class="tax-jump-inner">
     {%- for cat in all_cats -%}
-    <a href="#{{ cat | slugify }}">{{ cat }}</a>
+    <a href="#{{ cat | slugify }}">{{ cat | upcase }}</a>
     {%- endfor -%}
   </div>
+</nav>
 
-  {%- for cat in all_cats -%}
-  {%- assign cat_posts = site.posts | where_exp: "p", "p.categories contains cat" -%}
-  <div class="archive-group">
-    <span class="archive-group-anchor" id="{{ cat | slugify }}"></span>
-    <h2 class="archive-group-title">
-      {{ cat }}
-      <span class="archive-group-count">{{ cat_posts | size }} {% if cat_posts.size == 1 %}post{% else %}posts{% endif %}</span>
-    </h2>
-    <div class="blog-list">
-      {%- for post in cat_posts -%}
-      <a class="blog-list-item" href="{{ post.url | relative_url }}">
-        <div class="blog-list-date">{{ post.date | date: "%b %-d, %Y" }}</div>
-        <div>
-          {%- if post.categories.first -%}
-          <div class="blog-list-cat">{{ post.categories.first }}</div>
-          {%- endif -%}
-          <div class="blog-list-title">{{ post.title }}</div>
-          <div class="blog-list-excerpt">{{ post.excerpt | strip_html | strip_newlines | truncate: 220 }}</div>
-        </div>
-      </a>
-      {%- endfor -%}
+<section class="tax-body">
+  <div class="tax-body-inner">
+    {%- for cat in all_cats -%}
+      {%- assign cat_posts = site.posts | where_exp: "p", "p.categories contains cat" -%}
+    <div class="tax-group" id="{{ cat | slugify }}">
+      <div class="tax-group-head">
+        <div class="tax-group-title">{{ cat }}</div>
+        <div class="tax-group-count">{{ cat_posts | size }} {% if cat_posts.size == 1 %}POST{% else %}POSTS{% endif %}</div>
+      </div>
+      <div class="writing">
+        {%- for post in cat_posts -%}
+          {%- assign words = post.content | strip_html | number_of_words -%}
+          {%- assign minutes = words | divided_by: 200 | at_least: 1 -%}
+          {%- assign category = post.categories | first | default: 'essay' -%}
+        <a class="wrow" href="{{ post.url | relative_url }}">
+          <span class="wdate">{{ post.date | date: "%Y.%m.%d" }}</span>
+          <span class="wcat">{{ category | upcase }}</span>
+          <span class="wtitle">{{ post.title }}</span>
+          <span class="wmeta">{{ minutes }} min &nearr;</span>
+        </a>
+        {%- endfor -%}
+      </div>
     </div>
+    {%- endfor -%}
   </div>
-  {%- endfor -%}
-</div>
+</section>
