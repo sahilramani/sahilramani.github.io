@@ -112,7 +112,7 @@ defaults:
       path: ""
       type: posts
     values:
-      layout: redesign-post
+      layout: field-post
       comments: true
 
 category_archive:
