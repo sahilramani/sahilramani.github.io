@@ -1,27 +1,80 @@
-# Minimal Mistakes remote theme starter
+# sahilramani.github.io
 
-Click [**Use this template**](https://github.com/mmistakes/mm-github-pages-starter/generate) button above for the quickest method of getting started with the [Minimal Mistakes Jekyll theme](https://github.com/mmistakes/minimal-mistakes).
+Personal site and blog for Sahil Ramani -- live at [sahilramani.com](https://sahilramani.com) (CNAME points GitHub Pages at the custom domain). Built with Jekyll on GitHub Pages, with a custom dark "neural rendering / field instrument" aesthetic ("Field") instead of a stock theme.
 
-Contains basic configuration to get you a site with:
+## What's here
 
-- Sample posts.
-- Sample top navigation.
-- Sample author sidebar with social links.
-- Sample footer links.
-- Paginated home page.
-- Archive pages for posts grouped by year, category, and tag.
-- Sample about page.
-- Sample 404 page.
-- Site wide search.
+- A single-page hero/landing at `/` -- animated NeRF-style point cloud, a Gaussian-splat training animation generated live from `assets/images/bio-photo.jpg`, condensed sections for telemetry / writing / projects / resume / about / contact.
+- Full standalone pages in the same aesthetic at `/about/`, `/resume/`, `/posts/`, `/categories/`, `/tags/`, plus per-post pages and a 404.
+- Blog posts authored in Markdown under `_posts/`.
 
-Replace sample content with your own and [configure as necessary](https://mmistakes.github.io/minimal-mistakes/docs/configuration/).
+## Local development
 
----
+```bash
+bundle install                       # first time, or after Gemfile changes
+bundle exec jekyll serve             # dev server with live reload at http://localhost:4000
+bundle exec jekyll serve --drafts    # include posts in _drafts/
+bundle exec jekyll build             # one-off build into _site/
+```
 
-## Troubleshooting
+`_config.yml` is **not** picked up by `jekyll serve` on save -- restart the server after editing it.
 
-If you have a question about using Jekyll, start a discussion on the [Jekyll Forum](https://talk.jekyllrb.com/) or [StackOverflow](https://stackoverflow.com/questions/tagged/jekyll). Other resources:
+The site uses the [Minimal Mistakes](https://github.com/mmistakes/minimal-mistakes) remote theme as a fallback for plumbing (feed, sitemap, etc.), but all rendering is driven by custom layouts in `_layouts/`. You don't need to learn Minimal Mistakes to work on the site.
 
-- [Ruby 101](https://jekyllrb.com/docs/ruby-101/)
-- [Setting up a Jekyll site with GitHub Pages](https://jekyllrb.com/docs/github-pages/)
-- [Configuring GitHub Metadata](https://github.com/jekyll/github-metadata/blob/master/docs/configuration.md#configuration) to work properly when developing locally and avoid `No GitHub API authentication could be found. Some fields may be missing or have incorrect data.` warnings.
+## Structure
+
+```
+index.html                       Home page (layout: null -- owns its own chrome)
+_layouts/
+  field.html                     Shared layout: nav, hamburger, footer, scanline, helpers
+  field-post.html                Post reader (sparse cloud hero + 720px body + related)
+_pages/
+  about.md     /about/           layout: field
+  resume.md    /resume/          layout: field
+  year-archive.md     /posts/    layout: field   (writing list with filter pills)
+  category-archive.md /categories/
+  tag-archive.md      /tags/
+  404.md              /404.html
+_posts/YYYY-MM-DD-slug.md        Blog posts. Permalink: /:year/:month/:title/
+_data/
+  navigation.yml                 Top nav entries (Posts / Resume / About)
+  work.yml                       Resume experience timeline (consumed by /resume/)
+  skills.yml                     Resume skill groups (consumed by /resume/)
+  education.yml                  Resume education list (consumed by /resume/)
+assets/
+  images/                        bio-photo.jpg, post images, favicon
+  files/                         Resume PDFs
+  css/                           (Minimal Mistakes overrides, mostly unused now)
+.well-known/                     Published verbatim
+```
+
+### Adding a post
+
+1. Create `_posts/YYYY-MM-DD-slug.md` -- the date in the filename sets the publish date.
+2. Front matter:
+   ```yaml
+   ---
+   title: "Post title"
+   categories:
+     - Programming
+   tags:
+     - performance
+   excerpt: "One-line summary used in cards and meta tags."
+   ---
+   ```
+   Layout defaults to `field-post` automatically (set in `_config.yml`).
+3. Write Markdown. The post reader styles h2 with `// section` mono eyebrows, h3 plain, code blocks against `--bg2`, blockquotes with a green left bar, and inline `code` with a hairline border.
+
+### Updating the resume
+
+Most fields are data-driven -- edit `_data/work.yml`, `_data/skills.yml`, or `_data/education.yml`. The page layout itself rarely needs changes.
+
+### The Field design
+
+Tokens, typography, and motion language are documented inline in `_layouts/field.html`. The home page's hero canvas (`#field`), portrait splat (`#splat-overlay`), and per-project card visualizations (`canvas[data-vis]`) live in `index.html`. The shared `[data-field-canvas]` helper in `_layouts/field.html` powers the sparser clouds on `/about/`, individual post heros, and `/404.html` -- configure via `data-points`, `data-cx`, `data-cy`, `data-scale`, `data-rot-speed` attributes.
+
+## Deploy
+
+GitHub Pages builds from `master` -- `git push origin master` is the deploy. The plugins enabled in `_config.yml` (`jekyll-paginate`, `jekyll-sitemap`, `jekyll-gist`, `jekyll-feed`, `jemoji`, `jekyll-include-cache`, `jekyll-archives`) are all on the GitHub Pages allow-list. Adding a non-whitelisted plugin will work locally but break the published build.
+
+The CNAME file at the repo root points the Pages site at the custom domain.
