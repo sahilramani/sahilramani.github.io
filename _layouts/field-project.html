@@ -1,0 +1,295 @@
+---
+layout: field
+nav_id: project
+---
+<style>
+/* PROJECT HERO BAND */
+.pj-hero{position:relative;border-bottom:1px solid var(--line);overflow:hidden;min-height:380px;background:#0a0a0c}
+.pj-hero canvas{position:absolute;inset:0;width:100%;height:100%;display:block;opacity:0.38}
+.pj-hero::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,8,10,0.35) 0%,rgba(8,8,10,0.85) 100%);z-index:1;pointer-events:none}
+.pj-hero-scan{position:absolute;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--g),transparent);opacity:0.35;animation:scan-pj 9s linear infinite;z-index:2;pointer-events:none}
+@keyframes scan-pj{0%{top:0;opacity:0}10%{opacity:0.35}90%{opacity:0.35}100%{top:100%;opacity:0}}
+.pj-hero-inner{position:relative;z-index:3;max-width:1100px;margin:0 auto;padding:64px 60px 48px;min-height:380px;display:flex;flex-direction:column;justify-content:flex-end}
+.pj-back{font-family:var(--mono);font-size:11px;color:var(--g);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:auto;display:inline-flex;align-items:center;gap:6px;width:fit-content;transition:opacity .12s}
+.pj-back:hover{opacity:0.75}
+.pj-tag{font-family:var(--mono);font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--g);margin-bottom:14px;display:flex;align-items:center;gap:10px;padding:4px 10px;border:1px solid var(--g);width:fit-content;background:rgba(0,0,0,0.4)}
+.pj-title{font-family:var(--sans);font-size:clamp(40px,5.5vw,72px);font-weight:300;line-height:0.98;letter-spacing:-0.035em;color:var(--ink);margin-bottom:14px;max-width:920px}
+.pj-title em{font-family:var(--serif);font-style:italic;color:var(--g);font-weight:400}
+.pj-meta-row{font-family:var(--mono);font-size:11px;color:var(--ink2);letter-spacing:0.06em;text-transform:uppercase;display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin-bottom:16px}
+.pj-meta-row .sep{color:var(--line2)}
+.pj-meta-row b{color:var(--ink);font-weight:500}
+.pj-stack{display:flex;flex-wrap:wrap;gap:6px}
+.pj-stack span{font-family:var(--mono);font-size:10px;letter-spacing:0.06em;color:var(--ink2);padding:3px 10px;border:1px solid var(--line2);background:rgba(0,0,0,0.4)}
+
+/* RULE */
+.pj-rule{max-width:1100px;margin:0 auto;border-top:1px solid var(--line)}
+
+/* INFO STRIP */
+.pj-info{max-width:880px;margin:0 auto;padding:32px 24px 0;display:flex;flex-wrap:wrap;gap:24px}
+.pj-info-item{flex:1 1 200px;border:1px solid var(--line2);padding:14px 18px;background:var(--bg2)}
+.pj-info-label{font-family:var(--mono);font-size:10px;color:var(--g);letter-spacing:0.1em;text-transform:uppercase;font-weight:600;margin-bottom:6px}
+.pj-info-val{font-size:14px;color:var(--ink);line-height:1.4}
+.pj-info-val a{color:var(--g);border-bottom:1px solid rgba(0,255,136,0.25);transition:border-color .12s}
+.pj-info-val a:hover{border-bottom-color:var(--g)}
+
+/* SUMMARY + BODY */
+.pj-wrap{max-width:720px;margin:0 auto;padding:48px 24px 96px;color:var(--ink)}
+.pj-summary{font-family:var(--serif);font-style:italic;font-size:24px;line-height:1.45;color:var(--ink);margin-bottom:36px;padding-bottom:32px;border-bottom:1px solid var(--line)}
+.pj-summary b{color:var(--g);font-style:normal;font-family:var(--sans);font-weight:500}
+
+.pj-body{font-size:17px;line-height:1.75;color:var(--ink)}
+.pj-body p{margin-bottom:22px;color:var(--ink)}
+.pj-body p:last-child{margin-bottom:0}
+.pj-body strong{color:var(--ink);font-weight:600}
+.pj-body em{font-style:italic}
+.pj-body a{color:var(--g);border-bottom:1px solid rgba(0,255,136,0.25);transition:border-color .12s,color .12s}
+.pj-body a:hover{border-bottom-color:var(--g);color:var(--ink)}
+.pj-body h2{font-family:var(--sans);font-size:26px;font-weight:500;letter-spacing:-0.02em;color:var(--ink);line-height:1.2;margin:44px 0 16px;position:relative;padding-top:18px}
+.pj-body h2::before{content:'// section';display:block;font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:var(--g);margin-bottom:8px}
+.pj-body h3{font-family:var(--sans);font-size:19px;font-weight:600;letter-spacing:-0.01em;color:var(--ink);margin:32px 0 12px}
+.pj-body ul,.pj-body ol{margin:0 0 22px 22px;color:var(--ink)}
+.pj-body li{margin-bottom:8px;line-height:1.7}
+.pj-body li::marker{color:var(--g)}
+.pj-body blockquote{border-left:3px solid var(--g);padding:6px 0 6px 22px;margin:26px 0;font-family:var(--serif);font-style:italic;font-size:21px;line-height:1.45;color:var(--ink)}
+.pj-body code{font-family:var(--mono);font-size:0.9em;background:var(--bg2);border:1px solid var(--line2);padding:1px 6px;color:var(--ink);border-radius:2px}
+.pj-body pre{background:var(--bg2);border:1px solid var(--line2);padding:20px 24px;margin:24px 0;overflow-x:auto;font-family:var(--mono);font-size:13.5px;line-height:1.65;color:var(--ink)}
+.pj-body pre code{background:none;border:0;padding:0;font-size:inherit;border-radius:0}
+.pj-body hr{border:0;border-top:1px solid var(--line);margin:36px 0}
+.pj-body img{max-width:100%;height:auto;display:block;margin:28px auto;border:1px solid var(--line2)}
+
+/* RELATED PROJECTS */
+.pj-related{max-width:1100px;margin:0 auto;padding:32px 24px 96px;border-top:1px solid var(--line)}
+.pj-related-head{font-family:var(--mono);font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:var(--g);margin:48px 0 24px;display:flex;align-items:center;gap:10px}
+.pj-related-head::before{content:'';width:32px;height:1px;background:var(--g)}
+.pj-related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.pj-related-card{background:var(--bg2);border:1px solid var(--line2);overflow:hidden;cursor:pointer;transition:border-color .15s,transform .15s;color:inherit;display:flex;flex-direction:column}
+.pj-related-card:hover{border-color:var(--g);transform:translateY(-3px)}
+.pj-related-vis{height:120px;background:#0a0a0c;position:relative;overflow:hidden;border-bottom:1px solid var(--line2)}
+.pj-related-vis canvas{width:100%;height:100%;display:block}
+.pj-related-body{padding:20px}
+.pj-related-tag{font-family:var(--mono);font-size:10px;letter-spacing:0.12em;color:var(--g);text-transform:uppercase;margin-bottom:8px}
+.pj-related-title{font-size:17px;font-weight:400;letter-spacing:-0.01em;line-height:1.3;color:var(--ink);margin-bottom:8px}
+.pj-related-title em{font-family:var(--serif);font-style:italic}
+.pj-related-meta{font-family:var(--mono);font-size:10px;color:var(--ink2);letter-spacing:0.04em;margin-top:auto}
+
+@media (max-width: 1100px){
+  .pj-hero-inner{padding:56px 32px 40px}
+  .pj-related{padding:32px 32px 80px}
+}
+@media (max-width: 768px){
+  .pj-hero{min-height:280px}
+  .pj-hero canvas{opacity:0.28}
+  .pj-hero-inner{padding:36px 20px 28px;min-height:280px}
+  .pj-hero-inner{position:relative}
+  .pj-hero-inner::before{content:'';position:absolute;inset:-12px -8px;background:radial-gradient(ellipse at 30% 70%,rgba(8,8,10,0.78) 0%,rgba(8,8,10,0.5) 60%,transparent 95%);z-index:-1;pointer-events:none}
+  .pj-back{margin-bottom:20px}
+  .pj-title{font-size:clamp(30px,7vw,46px);text-shadow:0 0 14px rgba(8,8,10,0.9)}
+  .pj-info{padding:24px 20px 0;gap:14px}
+  .pj-info-item{flex:1 1 100%}
+  .pj-wrap{padding:36px 20px 64px;font-size:16px}
+  .pj-summary{font-size:20px;padding-bottom:24px;margin-bottom:28px}
+  .pj-body h2{font-size:22px}
+  .pj-body h3{font-size:17px}
+  .pj-body blockquote{font-size:18px;padding-left:18px}
+  .pj-related{padding:24px 20px 64px}
+  .pj-related-grid{grid-template-columns:1fr;gap:14px}
+}
+</style>
+
+<section class="pj-hero">
+  <canvas data-vis="{{ page.vis | default: 'grid' }}" aria-hidden="true"></canvas>
+  <div class="pj-hero-scan" aria-hidden="true"></div>
+  <div class="pj-hero-inner">
+    <a class="pj-back" href="{{ '/#projects' | relative_url }}">&larr; /projects</a>
+    {%- if page.tag -%}
+    <div class="pj-tag">{{ page.tag }}</div>
+    {%- endif -%}
+    {%- capture title_em_wrapped -%}<em>{{ page.title_em }}</em>{%- endcapture -%}
+    <h1 class="pj-title">{{ page.title | replace: page.title_em, title_em_wrapped }}</h1>
+    <div class="pj-meta-row">
+      {%- if page.company -%}<span><b>{{ page.company }}</b></span>{%- endif -%}
+      {%- if page.period -%}<span class="sep">/</span><span>{{ page.period }}</span>{%- endif -%}
+      {%- if page.role -%}<span class="sep">/</span><span>{{ page.role }}</span>{%- endif -%}
+    </div>
+    {%- if page.stack -%}
+    <div class="pj-stack">
+      {%- for s in page.stack -%}<span>{{ s }}</span>{%- endfor -%}
+    </div>
+    {%- endif -%}
+  </div>
+</section>
+
+<div class="pj-rule"></div>
+
+{%- if page.patent or page.external -%}
+<div class="pj-info">
+  {%- if page.patent -%}
+  <div class="pj-info-item">
+    <div class="pj-info-label">Patent</div>
+    <div class="pj-info-val">
+      {%- if page.patent_url -%}<a href="{{ page.patent_url }}" target="_blank" rel="noreferrer">{{ page.patent }} &nearr;</a>{%- else -%}{{ page.patent }}{%- endif -%}
+    </div>
+  </div>
+  {%- endif -%}
+  {%- if page.external -%}
+    {%- for ext in page.external -%}
+    <div class="pj-info-item">
+      <div class="pj-info-label">{{ ext.label }}</div>
+      <div class="pj-info-val"><a href="{{ ext.url }}" target="_blank" rel="noreferrer">{{ ext.url | replace: 'https://', '' | replace: 'http://', '' | truncate: 38 }} &nearr;</a></div>
+    </div>
+    {%- endfor -%}
+  {%- endif -%}
+</div>
+{%- endif -%}
+
+<article class="pj-wrap">
+  {%- if page.description -%}<p class="pj-summary">{{ page.description }}</p>{%- endif -%}
+  <div class="pj-body">
+    {{ content }}
+  </div>
+</article>
+
+{%- comment -%}Related = other projects, sorted by order, excluding current{%- endcomment -%}
+{%- assign other_projects = "" | split: "" -%}
+{%- assign sorted_projects = site.projects | sort: 'order' -%}
+{%- for p in sorted_projects -%}
+  {%- if p.url != page.url -%}{%- assign other_projects = other_projects | push: p -%}{%- endif -%}
+{%- endfor -%}
+{%- assign related = other_projects | slice: 0, 3 -%}
+
+{%- if related.size > 0 -%}
+<section class="pj-related">
+  <div class="pj-related-head">// other field notes</div>
+  <div class="pj-related-grid">
+    {%- for r in related -%}
+    <a class="pj-related-card" href="{{ r.url | relative_url }}">
+      <div class="pj-related-vis"><canvas data-vis="{{ r.vis | default: 'grid' }}"></canvas></div>
+      <div class="pj-related-body">
+        <div class="pj-related-tag">{{ r.tag }}</div>
+        {%- capture r_em_wrapped -%}<em>{{ r.title_em }}</em>{%- endcapture -%}
+        <div class="pj-related-title">{{ r.title | replace: r.title_em, r_em_wrapped }}</div>
+        <div class="pj-related-meta">{{ r.period }}</div>
+      </div>
+    </a>
+    {%- endfor -%}
+  </div>
+</section>
+{%- endif -%}
+
+<script>
+// PROJECT VISUALIZATIONS — same draw functions as the home page
+document.querySelectorAll('canvas[data-vis]').forEach(function(c){
+  var kind = c.dataset.vis;
+  var ctx = c.getContext('2d');
+  var dpr = Math.min(window.devicePixelRatio || 1, 2);
+  function size(){
+    var r = c.getBoundingClientRect();
+    c.width = r.width * dpr; c.height = r.height * dpr;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    return [r.width, r.height];
+  }
+  var sz = size();
+  var w = sz[0], h = sz[1];
+  window.addEventListener('resize', function(){ var s = size(); w = s[0]; h = s[1]; });
+  var t = Math.random() * 100;
+  function draw(){
+    t += 0.01;
+    ctx.fillStyle = '#0a0a0c';
+    ctx.fillRect(0, 0, w, h);
+    if(kind === 'terrain'){
+      ctx.strokeStyle = 'rgba(0,255,136,0.5)'; ctx.lineWidth = 0.7;
+      var rows = 18, cols = 28;
+      for(var r = 0; r < rows; r++){
+        ctx.beginPath();
+        for(var i = 0; i < cols; i++){
+          var x = (i / (cols - 1)) * w;
+          var baseY = h * 0.55 + (r - rows / 2) * 8;
+          var wave = Math.sin(i * 0.5 + t + r * 0.3) * (10 + r * 0.6);
+          var y = baseY + wave - r * 2;
+          if(i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+        }
+        ctx.globalAlpha = 0.3 + (r / rows) * 0.7;
+        ctx.stroke();
+      }
+      ctx.globalAlpha = 1;
+    }
+    else if(kind === 'splat'){
+      for(var i = 0; i < 60; i++){
+        var a = i * 0.314 + t * 0.5;
+        var rr = 30 + (i % 5) * 15;
+        var x = w / 2 + Math.cos(a) * rr;
+        var y = h / 2 + Math.sin(a * 1.3) * rr * 0.7;
+        var ssz = 18 + Math.sin(t + i) * 8;
+        var grad = ctx.createRadialGradient(x, y, 0, x, y, ssz);
+        var col = i % 7 === 0 ? '255,0,102' : '0,255,136';
+        grad.addColorStop(0, 'rgba(' + col + ',0.7)');
+        grad.addColorStop(1, 'rgba(' + col + ',0)');
+        ctx.fillStyle = grad;
+        ctx.fillRect(x - ssz, y - ssz, ssz * 2, ssz * 2);
+      }
+    }
+    else if(kind === 'grid'){
+      ctx.strokeStyle = 'rgba(0,255,136,0.4)'; ctx.lineWidth = 0.7;
+      var step = 24;
+      for(var x = 0; x < w; x += step){ ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, h); ctx.stroke(); }
+      for(var y = 0; y < h; y += step){ ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(w, y); ctx.stroke(); }
+      var px = ((Math.sin(t) * 0.5 + 0.5) * w);
+      var py = ((Math.cos(t * 0.7) * 0.5 + 0.5) * h);
+      var grad2 = ctx.createRadialGradient(px, py, 0, px, py, 80);
+      grad2.addColorStop(0, 'rgba(255,0,102,0.8)');
+      grad2.addColorStop(1, 'rgba(255,0,102,0)');
+      ctx.fillStyle = grad2;
+      ctx.fillRect(px - 80, py - 80, 160, 160);
+    }
+    else if(kind === 'waves'){
+      ctx.strokeStyle = 'rgba(0,255,136,0.5)'; ctx.lineWidth = 1;
+      for(var j = 0; j < 8; j++){
+        ctx.beginPath();
+        for(var i = 0; i <= 60; i++){
+          var x = (i / 60) * w;
+          var y = h / 2 + Math.sin(i * 0.2 + t * 1.2 + j * 0.4) * (8 + j * 3) + (j - 4) * 6;
+          if(i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+        }
+        ctx.globalAlpha = 0.4 + j * 0.07;
+        ctx.stroke();
+      }
+      ctx.globalAlpha = 1;
+    }
+    else if(kind === 'topo'){
+      ctx.strokeStyle = 'rgba(0,255,136,0.4)'; ctx.lineWidth = 0.8;
+      var cx = w / 2, cy = h / 2;
+      for(var r = 1; r < 12; r++){
+        ctx.beginPath();
+        for(var a = 0; a <= Math.PI * 2; a += 0.05){
+          var wob = Math.sin(a * 4 + t + r) * 4;
+          var rr = r * 18 + wob;
+          var x = cx + Math.cos(a) * rr;
+          var y = cy + Math.sin(a) * rr * 0.7;
+          if(a === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+        }
+        ctx.closePath();
+        ctx.globalAlpha = 0.2 + r * 0.05;
+        ctx.stroke();
+      }
+      ctx.globalAlpha = 1;
+    }
+    else if(kind === 'nano'){
+      var cell = 14;
+      for(var y = 0; y < h; y += cell){
+        for(var x = 0; x < w; x += cell){
+          var n = Math.sin(x * 0.04 + y * 0.05 + t * 1.2);
+          if(n > 0.5){
+            ctx.fillStyle = n > 0.8 ? 'rgba(255,0,102,0.7)' : 'rgba(0,255,136,0.6)';
+            ctx.fillRect(x + 2, y + 2, cell - 4, cell - 4);
+          } else if(n > 0){
+            ctx.fillStyle = 'rgba(0,255,136,0.15)';
+            ctx.fillRect(x + 2, y + 2, cell - 4, cell - 4);
+          }
+        }
+      }
+    }
+    requestAnimationFrame(draw);
+  }
+  draw();
+});
+</script>

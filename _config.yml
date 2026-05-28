@@ -106,6 +106,11 @@ footer:
       icon: "fab fa-fw fa-instagram"
       url: "https://www.instagram.com/sahilramani"
 
+collections:
+  projects:
+    output: true
+    permalink: /projects/:name/
+
 defaults:
   # _posts
   - scope:
@@ -114,6 +119,12 @@ defaults:
     values:
       layout: field-post
       comments: true
+  # _projects
+  - scope:
+      path: ""
+      type: projects
+    values:
+      layout: field-project
 
 category_archive:
   type: liquid
