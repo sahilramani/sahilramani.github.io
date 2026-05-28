@@ -284,12 +284,18 @@ footer .v{color:var(--g)}
   .status{display:none}
   .hamburger{display:block}
 
-  /* HERO — slim, single column */
+  /* HERO — slim, single column. Dim the cloud + add a dark well behind the
+     text so the rotating point cloud doesn't compete with copy at mobile
+     widths where the portrait area is gone. */
   .hero{min-height:520px;padding:48px 20px 64px;display:flex;flex-direction:column;justify-content:center}
+  #field{opacity:0.6}
+  .hero-text{position:relative}
+  .hero-text::before{content:'';position:absolute;inset:-24px -16px;background:radial-gradient(ellipse at 30% 50%,rgba(8,8,10,0.82) 0%,rgba(8,8,10,0.55) 55%,transparent 90%);z-index:-1;pointer-events:none}
   .eyebrow{font-size:9px;letter-spacing:0.12em;margin-bottom:18px}
   .eyebrow::before{width:18px}
-  .hero-h1{font-size:clamp(56px,16vw,84px);line-height:0.9;margin-bottom:18px}
-  .hero-sub{font-size:15px;line-height:1.6;margin-bottom:24px}
+  .hero-h1{font-size:clamp(56px,16vw,84px);line-height:0.9;margin-bottom:18px;text-shadow:0 0 14px rgba(8,8,10,0.9),0 0 4px rgba(8,8,10,0.7)}
+  .hero-sub{font-size:15px;line-height:1.6;margin-bottom:24px;text-shadow:0 0 10px rgba(8,8,10,0.85)}
+  .hero-text .eyebrow{text-shadow:0 0 8px rgba(8,8,10,0.85)}
   .cta-row{flex-direction:column;gap:8px;align-items:stretch}
   .cta{justify-content:center;padding:14px 20px;font-size:11px;width:100%}
 
@@ -366,6 +372,8 @@ footer .v{color:var(--g)}
 @media (max-width: 480px){
   .top{padding:10px 14px}
   .hero{min-height:480px;padding:36px 16px 56px}
+  #field{opacity:0.5}
+  .hero-text::before{inset:-20px -12px;background:radial-gradient(ellipse at 50% 50%,rgba(8,8,10,0.88) 0%,rgba(8,8,10,0.6) 60%,transparent 95%)}
   .hud{display:none}
   .section{padding:48px 16px}
   .stitle{font-size:30px}
