@@ -73,7 +73,7 @@ nav_id: resume
 }
 
 @media print{
-  .top,.menu-overlay,.hamburger,.scanline-global,footer{display:none !important}
+  .top,.mnav,.hamburger,.scanline-global,footer{display:none !important}
   html,body{background:#fff !important;color:#000 !important}
   .resume-page-hero{background:#fff !important;padding:16pt 0 12pt;border-bottom:1pt solid #444}
   .resume-page-hero::after{display:none}
