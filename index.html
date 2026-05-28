@@ -152,7 +152,7 @@ body.mnav-open{overflow:hidden}
 
 /* PROJECTS */
 .proj-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:20px}
-.proj{background:var(--bg2);border:1px solid var(--line2);padding:0;position:relative;overflow:hidden;cursor:pointer;transition:border-color .15s,transform .15s}
+.proj{display:block;color:inherit;text-decoration:none;background:var(--bg2);border:1px solid var(--line2);padding:0;position:relative;overflow:hidden;cursor:pointer;transition:border-color .15s,transform .15s}
 .proj:hover{border-color:var(--g);transform:translateY(-4px)}
 .proj.big{grid-column:span 4;grid-row:span 2}
 .proj.tall{grid-column:span 2;grid-row:span 2}
@@ -553,60 +553,22 @@ footer .v{color:var(--g)}
     </div>
   </div>
   <div class="proj-grid">
-    <div class="proj big">
-      <div class="proj-vis"><canvas data-vis="terrain"></canvas></div>
-      <div class="proj-tag">PATENT &middot; UNITY</div>
+    {%- assign sorted_projects = site.projects | sort: 'order' -%}
+    {%- for project in sorted_projects -%}
+      {%- capture em_wrapped -%}<em style="font-family:var(--serif);font-style:italic">{{ project.title_em }}</em>{%- endcapture -%}
+      {%- assign rendered_title = project.title | replace: project.title_em, em_wrapped -%}
+    <a class="proj {{ project.span | default: 'sm' }}" href="{{ project.url | relative_url }}">
+      <div class="proj-vis"><canvas data-vis="{{ project.vis | default: 'grid' }}"></canvas></div>
+      <div class="proj-tag">{{ project.tag }}</div>
       <div class="proj-body">
-        <div class="proj-title">Async Tile-Based <em style="font-family:var(--serif);font-style:italic">Terrain Generation</em></div>
-        <div class="proj-desc">GPU-accelerated tile stitching with zero latent allocations. Granted as US patent 18/144,734. Shipped in Unity's terrain system.</div>
-        <div class="proj-stack"><span>C++</span><span>HLSL</span><span>Compute</span><span>Unity</span></div>
+        <div class="proj-title">{{ rendered_title }}</div>
+        <div class="proj-desc">{{ project.description }}</div>
+        {%- if project.stack -%}
+        <div class="proj-stack">{%- for s in project.stack limit: 4 -%}<span>{{ s }}</span>{%- endfor -%}</div>
+        {%- endif -%}
       </div>
-    </div>
-    <div class="proj tall">
-      <div class="proj-vis"><canvas data-vis="splat"></canvas></div>
-      <div class="proj-tag">ZOOX &middot; R&amp;D</div>
-      <div class="proj-body">
-        <div class="proj-title">NeRF &amp; <em style="font-family:var(--serif);font-style:italic">Gaussian Splatting</em> pipelines</div>
-        <div class="proj-desc">Pioneered ML-driven training environment fidelity for AV simulation. 20% improvement in downstream model performance.</div>
-        <div class="proj-stack"><span>PyTorch</span><span>CUDA</span><span>NeRF</span></div>
-      </div>
-    </div>
-    <div class="proj sm">
-      <div class="proj-vis"><canvas data-vis="grid"></canvas></div>
-      <div class="proj-tag">UNITY &middot; MUSE</div>
-      <div class="proj-body">
-        <div class="proj-title">Neural Rendering for <em style="font-family:var(--serif);font-style:italic">Unity Muse</em></div>
-        <div class="proj-desc">AI-powered visual transformation tech featured in Unity Muse &amp; Sentis showcases.</div>
-        <div class="proj-stack"><span>Python</span><span>C#</span><span>Sentis</span></div>
-      </div>
-    </div>
-    <div class="proj sm">
-      <div class="proj-vis"><canvas data-vis="waves"></canvas></div>
-      <div class="proj-tag">CRYSTAL DYNAMICS</div>
-      <div class="proj-body">
-        <div class="proj-title">Animation morphing &mdash; <em style="font-family:var(--serif);font-style:italic">Marvel's Avengers</em></div>
-        <div class="proj-desc">Graph-based body animation morphing system, Maya &rarr; runtime. Seamless character transformations.</div>
-        <div class="proj-stack"><span>C++</span><span>Maya</span><span>Custom Engine</span></div>
-      </div>
-    </div>
-    <div class="proj wide">
-      <div class="proj-vis"><canvas data-vis="topo"></canvas></div>
-      <div class="proj-tag">PATENT &middot; CRYSTAL DYNAMICS</div>
-      <div class="proj-body">
-        <div class="proj-title">Macro-based <em style="font-family:var(--serif);font-style:italic">Electronic Map Editing</em></div>
-        <div class="proj-desc">US Patent #11,189,068 &mdash; workflow innovations for AAA game map editors.</div>
-        <div class="proj-stack"><span>Patent #11189068</span></div>
-      </div>
-    </div>
-    <div class="proj wide">
-      <div class="proj-vis"><canvas data-vis="nano"></canvas></div>
-      <div class="proj-tag">SIDE PROJECT</div>
-      <div class="proj-body">
-        <div class="proj-title"><em style="font-family:var(--serif);font-style:italic">Jetson Nano</em> ML pipeline</div>
-        <div class="proj-desc">Personal exploration &mdash; blog series on setting up Python, Jupyter, PyTorch on edge hardware.</div>
-        <div class="proj-stack"><span>Python</span><span>JetPack</span><span>Jupyter</span></div>
-      </div>
-    </div>
+    </a>
+    {%- endfor -%}
   </div>
 </div>
 
