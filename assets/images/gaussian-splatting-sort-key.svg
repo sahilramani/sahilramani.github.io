@@ -1,0 +1,28 @@
+<svg viewBox="0 0 760 250" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, system-ui, -apple-system, sans-serif">
+  <defs>
+    <marker id="a2" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#94a3b8"/>
+    </marker>
+  </defs>
+
+  <text x="60" y="40" font-size="15" font-weight="600" fill="#1e293b">One 64-bit sort key per splat</text>
+
+  <!-- the key bar -->
+  <rect x="60" y="60" width="384" height="64" rx="6" fill="#e0f2fe" stroke="#38bdf8"/>
+  <rect x="444" y="60" width="256" height="64" rx="6" fill="#f1f5f9" stroke="#cbd5e1"/>
+
+  <text x="252" y="90" font-size="15" font-weight="600" fill="#0c4a6e" text-anchor="middle">TILE ID</text>
+  <text x="252" y="110" font-size="12" fill="#075985" text-anchor="middle">high bits</text>
+
+  <text x="572" y="90" font-size="15" font-weight="600" fill="#334155" text-anchor="middle">DEPTH</text>
+  <text x="572" y="110" font-size="12" fill="#475569" text-anchor="middle">low bits</text>
+
+  <!-- annotations -->
+  <line x1="252" y1="135" x2="252" y2="160" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#a2)"/>
+  <text x="252" y="182" font-size="12.5" fill="#475569" text-anchor="middle">groups splats by tile</text>
+
+  <line x1="572" y1="135" x2="572" y2="160" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#a2)"/>
+  <text x="572" y="182" font-size="12.5" fill="#475569" text-anchor="middle">orders them front-to-back</text>
+
+  <text x="60" y="225" font-size="13" fill="#64748b">Sort the array once &#8594; every tile comes out grouped and depth-ordered, in a single pass.</text>
+</svg>
