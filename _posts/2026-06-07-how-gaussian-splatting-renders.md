@@ -37,9 +37,16 @@ The survivors get projected from 3D onto the 2D image plane. The center maps to 
 
 Split the screen into 16×16 pixel tiles. This one decision is most of why the whole thing is fast.
 
-For each splat, find every tile its footprint overlaps, and drop a copy into each. A small splat produces one copy; a big one produces several.
+For each splat, find every tile its footprint overlaps, and drop a copy into each. A small splat produces one copy; a big one produces several. In practice "overlaps" is the splat's screen-space bounding box, so the tiles fall out as a simple rectangular range:
 
-![A splat overlapping several tiles is duplicated into each tile's list](/assets/images/gaussian-splatting-tiles.svg)
+```cpp
+// the splat's screen bounding box gives a rectangular range of tiles
+for (int ty = tile_min.y; ty <= tile_max.y; ++ty)
+  for (int tx = tile_min.x; tx <= tile_max.x; ++tx)
+    emit_entry(tile_id(tx, ty), splat_id);   // one (tile, splat) entry
+```
+
+![A splat's bounding box covers four tiles, so it is copied into each tile's list](/assets/images/gaussian-splatting-tiles.svg)
 
 That duplication sounds wasteful. It isn't. It buys independence: every tile ends up with a self-contained list of the splats that affect it. Tiles never talk to each other, which is exactly what a GPU wants — thousands of tiles, all processed in parallel with no coordination.
 
@@ -48,6 +55,13 @@ That duplication sounds wasteful. It isn't. It buys independence: every tile end
 This is the clever bit. For correct transparency, splats in each tile have to blend front to back. The naive fix is to sort per pixel, every frame. That's enormous.
 
 Gaussian Splatting sorts **once per frame** with a single GPU radix sort. The trick is the key. Each entry gets a 64-bit key: the tile ID in the high bits, depth in the low bits.
+
+```cpp
+// one 64-bit key per (tile, splat) entry
+//   high 32 bits = tile ID  -> groups entries by tile
+//   low  32 bits = depth    -> orders them front-to-back within a tile
+uint64_t key = (uint64_t(tile_id) << 32) | depth_bits;
+```
 
 ![A 64-bit key combining tile ID and depth lets one sort group and order every splat](/assets/images/gaussian-splatting-sort-key.svg)
 
@@ -68,7 +82,23 @@ T_i = Π (1 − α_j)   for j < i
 C   = Σ T_i · α_i · c_i
 ```
 
-Then one more optimization: stop early. Once a pixel is effectively opaque, nothing behind it shows through, so you quit. On a dense scene that saves a lot of work.
+![One pixel composites its tile's splats front to back, stopping once the pixel is opaque](/assets/images/gaussian-splatting-blend.svg)
+
+Then one more optimization: stop early. Once a pixel is effectively opaque, nothing behind it shows through, so you quit. On a dense scene that saves a lot of work. The whole per-pixel walk is short enough to read in one go:
+
+```cpp
+float3 C = make_float3(0.0f);
+float  T = 1.0f;                       // transmittance: light still getting through
+for (Splat s : tile_splats) {          // already sorted front-to-back
+    float2 d     = pixel - s.mean;
+    float  power = -0.5f * dot(d, s.conic * d);   // conic = inverse 2D covariance
+    float  alpha = min(0.99f, s.opacity * expf(power));
+    if (alpha < 1.0f / 255.0f) continue;          // negligible contribution, skip
+    C += T * alpha * s.color;
+    T *= (1.0f - alpha);
+    if (T < 1e-4f) break;                          // opaque enough — stop early
+}
+```
 
 That's the frame. Cull, project, tile, sort, blend.
 

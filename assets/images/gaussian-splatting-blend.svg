@@ -1,0 +1,50 @@
+<svg viewBox="0 0 760 250" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, system-ui, -apple-system, sans-serif">
+  <defs>
+    <marker id="fb" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#475569"/>
+    </marker>
+    <marker id="eq" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#94a3b8"/>
+    </marker>
+  </defs>
+
+  <text x="40" y="32" font-size="15" font-weight="600" fill="#1e293b">Blend the tile's splats front-to-back</text>
+  <text x="40" y="52" font-size="12.5" fill="#64748b">one pixel walks its sorted list; T = light still getting through</text>
+
+  <!-- front -> back direction -->
+  <text x="60" y="80" font-size="11.5" fill="#475569">front</text>
+  <line x1="96" y1="76" x2="452" y2="76" stroke="#475569" stroke-width="1.5" marker-end="url(#fb)"/>
+  <text x="470" y="80" font-size="11.5" fill="#475569">back</text>
+
+  <!-- splat discs, front (left) to back (right) -->
+  <g stroke-width="1.5">
+    <circle cx="100" cy="124" r="38" fill="#0284c7" fill-opacity="0.5" stroke="#0284c7"/>
+    <circle cx="178" cy="124" r="38" fill="#f59e0b" fill-opacity="0.5" stroke="#d97706"/>
+    <circle cx="256" cy="124" r="38" fill="#8b5cf6" fill-opacity="0.5" stroke="#7c3aed"/>
+    <circle cx="346" cy="124" r="34" fill="#e2e8f0" fill-opacity="0.7" stroke="#cbd5e1" stroke-dasharray="4 3"/>
+    <circle cx="424" cy="124" r="34" fill="#e2e8f0" fill-opacity="0.7" stroke="#cbd5e1" stroke-dasharray="4 3"/>
+  </g>
+
+  <!-- per-splat alpha + running transmittance -->
+  <g text-anchor="middle">
+    <text x="100" y="184" font-size="12" fill="#0c4a6e">&#945; = .7</text>
+    <text x="178" y="184" font-size="12" fill="#92400e">&#945; = .6</text>
+    <text x="256" y="184" font-size="12" fill="#5b21b6">&#945; = .7</text>
+
+    <text x="100" y="204" font-size="11.5" fill="#475569">T &#8594; .30</text>
+    <text x="178" y="204" font-size="11.5" fill="#475569">T &#8594; .12</text>
+    <text x="256" y="204" font-size="11.5" fill="#475569">T &#8594; .04</text>
+
+    <text x="346" y="184" font-size="11.5" fill="#94a3b8">skipped</text>
+    <text x="424" y="184" font-size="11.5" fill="#94a3b8">skipped</text>
+    <text x="385" y="204" font-size="11" fill="#94a3b8">T &#8776; 0, stop early</text>
+  </g>
+
+  <!-- equals -> accumulated pixel -->
+  <line x1="466" y1="124" x2="512" y2="124" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#eq)"/>
+  <text x="585" y="84" font-size="11.5" fill="#64748b" text-anchor="middle">accumulated pixel</text>
+  <rect x="527" y="96" width="116" height="56" rx="8" fill="#3f78ac" stroke="#2c5d8a"/>
+  <text x="585" y="129" font-size="12.5" fill="#fff" text-anchor="middle">C = &#931; T&#183;&#945;&#183;c</text>
+
+  <text x="40" y="236" font-size="12.5" fill="#475569">Front splats dominate; once T &#8776; 0 the rest can't show through, so the walk quits.</text>
+</svg>
