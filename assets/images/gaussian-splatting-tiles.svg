@@ -5,31 +5,30 @@
     </marker>
   </defs>
 
-  <text x="40" y="34" font-size="15" font-weight="600" fill="#1e293b">A splat is copied into every tile it touches</text>
+  <text x="40" y="34" font-size="15" font-weight="600" fill="#1e293b">A splat is copied into every tile its bounding box covers</text>
 
   <!-- tile grid 6x4, cell 48 -->
   <g stroke="#cbd5e1" fill="#f8fafc">
-    <!-- draw all cells -->
-    <!-- row 0 -->
     <rect x="40" y="56" width="48" height="48"/><rect x="88" y="56" width="48" height="48"/><rect x="136" y="56" width="48" height="48"/><rect x="184" y="56" width="48" height="48"/><rect x="232" y="56" width="48" height="48"/><rect x="280" y="56" width="48" height="48"/>
-    <!-- row 1 -->
     <rect x="40" y="104" width="48" height="48"/><rect x="88" y="104" width="48" height="48"/><rect x="136" y="104" width="48" height="48"/><rect x="184" y="104" width="48" height="48"/><rect x="232" y="104" width="48" height="48"/><rect x="280" y="104" width="48" height="48"/>
-    <!-- row 2 -->
     <rect x="40" y="152" width="48" height="48"/><rect x="88" y="152" width="48" height="48"/><rect x="136" y="152" width="48" height="48"/><rect x="184" y="152" width="48" height="48"/><rect x="232" y="152" width="48" height="48"/><rect x="280" y="152" width="48" height="48"/>
-    <!-- row 3 -->
     <rect x="40" y="200" width="48" height="48"/><rect x="88" y="200" width="48" height="48"/><rect x="136" y="200" width="48" height="48"/><rect x="184" y="200" width="48" height="48"/><rect x="232" y="200" width="48" height="48"/><rect x="280" y="200" width="48" height="48"/>
   </g>
 
-  <!-- highlighted 2x2 tiles the splat overlaps -->
+  <!-- highlighted tiles the bounding box covers (cols 2,3 x rows 1,2) -->
   <g fill="#e0f2fe" stroke="#38bdf8">
     <rect x="136" y="104" width="48" height="48"/><rect x="184" y="104" width="48" height="48"/>
     <rect x="136" y="152" width="48" height="48"/><rect x="184" y="152" width="48" height="48"/>
   </g>
 
-  <!-- the splat (ellipse) centered on the 2x2 intersection -->
-  <ellipse cx="184" cy="152" rx="52" ry="34" fill="#0284c7" fill-opacity="0.30" stroke="#0284c7" stroke-width="2" transform="rotate(-20 184 152)"/>
+  <!-- the splat, sized to sit inside the 2x2 footprint -->
+  <ellipse cx="184" cy="152" rx="44" ry="30" fill="#0284c7" fill-opacity="0.30" stroke="#0284c7" stroke-width="2" transform="rotate(-20 184 152)"/>
 
-  <text x="40" y="272" font-size="12.5" fill="#475569">one splat, overlapping 4 tiles</text>
+  <!-- the splat's axis-aligned screen bounding box -->
+  <rect x="141" y="120" width="86" height="64" fill="none" stroke="#0284c7" stroke-width="1.5" stroke-dasharray="5 4"/>
+
+  <text x="40" y="270" font-size="12.5" fill="#475569">Dashed box = the splat's screen bounding box.</text>
+  <text x="40" y="288" font-size="12.5" fill="#475569">It spans 4 tiles, so the splat is copied into all 4.</text>
 
   <!-- buckets on the right -->
   <text x="470" y="60" font-size="13" fill="#64748b">duplicated into 4 tile lists:</text>
@@ -45,7 +44,7 @@
   </g>
 
   <!-- connector -->
-  <line x1="240" y1="152" x2="462" y2="148" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#a3)"/>
+  <line x1="232" y1="152" x2="462" y2="148" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#a3)"/>
 
   <text x="470" y="248" font-size="12.5" fill="#475569">each tile ends up with a</text>
   <text x="470" y="266" font-size="12.5" fill="#475569">self-contained, independent list</text>
