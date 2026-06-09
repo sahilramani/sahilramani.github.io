@@ -32,7 +32,7 @@ Everything is explicit. That one property is what makes the rest possible.
 
 Each frame starts by throwing away what you can't see. Frustum culling drops every Gaussian outside the camera's view.
 
-The survivors get projected from 3D onto the 2D image plane. The center maps to a pixel the obvious way. The covariance is the subtle part: projecting a 3D ellipsoid is nonlinear, so it gets linearized through the projection's Jacobian, $$\Sigma' = J\,W\,\Sigma\,W^{\top} J^{\top}$$. This is EWA splatting, and it predates NeRF by years. The result: each ellipsoid is now a 2D ellipse on screen — a "splat."
+The survivors get projected from 3D onto the 2D image plane. The center is mapped to a pixel the usual way, but projecting the covariance—the shape and orientation of a 3D ellipsoid—is trickier. Because this projection is nonlinear, it's linearized using the projection's Jacobian: $$\Sigma' = J\,W\,\Sigma\,W^{\top} J^{\top}$$. This approach is called EWA splatting, where "EWA" stands for *elliptical weighted average*. EWA splatting is a classic technique from texture mapping, long before NeRF, and here it means that each projected ellipsoid becomes a 2D ellipse ("splat") on the screen, accounting for its orientation and spread.
 
 ## Step 2: Assign splats to tiles
 
