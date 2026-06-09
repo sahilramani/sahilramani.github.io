@@ -8,6 +8,7 @@ tags:
   - rendering
   - gpu
   - real-time
+mathjax: true
 ---
 
 Gaussian Splatting renders a 3D scene in real time without ever calling a neural network. The first time that clicks, it feels like a trick. NeRF asks a network "what's the color and density here?" millions of times per frame. Gaussian Splatting doesn't ask anything. It projects a pile of blobs onto the screen, sorts them, and blends them.
@@ -21,7 +22,7 @@ That's the whole idea. Render becomes sort-and-blend. The rest is detail, but th
 Before the pipeline, the data. A scene is a set of 3D Gaussians, often a few million of them. Each one stores four things:
 
 - **Position** — a 3D point, the center of the Gaussian.
-- **Covariance** — its shape and orientation. A Gaussian isn't a sphere; it's an ellipsoid, stretched and rotated to hug a surface. It's stored as a scale vector plus a rotation quaternion and rebuilt as `Σ = R S Sᵀ Rᵀ`, a form that stays valid no matter what the optimizer does to it.
+- **Covariance** — its shape and orientation. A Gaussian isn't a sphere; it's an ellipsoid, stretched and rotated to hug a surface. It's stored as a scale vector plus a rotation quaternion and rebuilt as $$\Sigma = R\,S\,S^{\top} R^{\top}$$, a form that stays valid no matter what the optimizer does to it.
 - **Opacity** — a single alpha value.
 - **Color** — usually spherical harmonics, not flat RGB, so color shifts with viewing angle. Evaluating it is a weighted sum of basis functions. Cheap, and not a neural network.
 
@@ -31,7 +32,7 @@ Everything is explicit. That one property is what makes the rest possible.
 
 Each frame starts by throwing away what you can't see. Frustum culling drops every Gaussian outside the camera's view.
 
-The survivors get projected from 3D onto the 2D image plane. The center maps to a pixel the obvious way. The covariance is the subtle part: projecting a 3D ellipsoid is nonlinear, so it gets linearized through the projection's Jacobian (`Σ' = J W Σ Wᵀ Jᵀ`). This is EWA splatting, and it predates NeRF by years. The result: each ellipsoid is now a 2D ellipse on screen — a "splat."
+The survivors get projected from 3D onto the 2D image plane. The center maps to a pixel the obvious way. The covariance is the subtle part: projecting a 3D ellipsoid is nonlinear, so it gets linearized through the projection's Jacobian, $$\Sigma' = J\,W\,\Sigma\,W^{\top} J^{\top}$$. This is EWA splatting, and it predates NeRF by years. The result: each ellipsoid is now a 2D ellipse on screen — a "splat."
 
 ## Step 2: Assign splats to tiles
 
@@ -71,16 +72,16 @@ Sort that flat array and two things fall out at once — entries group by tile, 
 
 The last step is alpha compositing — the same over-operator from decades of graphics. For each pixel, walk its tile's sorted splats front to back. Each splat's contribution is its 2D Gaussian falloff scaled by opacity:
 
-```
-α = opacity · exp(−½ · dᵀ Σ'⁻¹ d)
-```
+$$
+\alpha \;=\; o \cdot \exp\!\left(-\tfrac{1}{2}\, d^{\top} \Sigma'^{-1} d\right)
+$$
 
-where `d` is the offset from the splat's center to the pixel. Accumulate color weighted by alpha and by the light still getting through (the transmittance), which is the running product of `(1 − α)` from everything in front:
+where $$d$$ is the offset from the splat's center to the pixel. Accumulate color weighted by alpha and by the light still getting through (the transmittance), which is the running product of $$(1 - \alpha)$$ from everything in front:
 
-```
-T_i = Π (1 − α_j)   for j < i
-C   = Σ T_i · α_i · c_i
-```
+$$
+T_i \;=\; \prod_{j < i} (1 - \alpha_j), \qquad
+C   \;=\; \sum_i T_i \, \alpha_i \, c_i
+$$
 
 ![One pixel composites its tile's splats front to back, stopping once the pixel is opaque](/assets/images/gaussian-splatting-blend.svg)
 

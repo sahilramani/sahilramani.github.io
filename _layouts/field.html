@@ -224,6 +224,9 @@ footer .v{color:var(--g)}
 }
 </style>
 {% if page.head_extra %}{{ page.head_extra }}{% endif %}
+{% if page.mathjax %}
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+{% endif %}
 </head>
 <body>
 
