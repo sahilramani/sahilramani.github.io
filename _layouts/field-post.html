@@ -45,11 +45,40 @@ nav_id: post
 .post-wrap blockquote p{margin-bottom:10px;font-size:inherit;color:inherit}
 .post-wrap blockquote p:last-child{margin-bottom:0}
 
+/* inline code */
 .post-wrap code{font-family:var(--mono);font-size:0.9em;background:var(--bg2);border:1px solid var(--line2);padding:1px 6px;color:var(--ink);border-radius:2px}
-.post-wrap pre{background:var(--bg2);border:1px solid var(--line2);padding:20px 24px;margin:24px 0;overflow-x:auto;font-family:var(--mono);font-size:13.5px;line-height:1.65;color:var(--ink)}
+
+/* fenced code block: terminal-style panel with header bar + syntax palette */
+.post-wrap div.highlighter-rouge{position:relative;margin:28px 0;border:1px solid var(--line2);border-radius:6px;overflow:hidden;background:#0a0a0c}
+.post-wrap div.highlighter-rouge::before{content:'\25CF\2002\25CF\2002\25CF';display:block;height:36px;line-height:36px;padding:0 16px;background:var(--bg2);border-bottom:1px solid var(--line2);color:#3a3b44;font-size:9px;letter-spacing:0.25em}
+.post-wrap div.highlighter-rouge::after{content:'code';position:absolute;top:0;right:16px;height:36px;line-height:36px;font-family:var(--mono);font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--g)}
+.post-wrap div.language-cpp::after{content:'cpp'}
+.post-wrap div.language-c::after{content:'c'}
+.post-wrap div.language-glsl::after{content:'glsl'}
+.post-wrap div.language-cuda::after{content:'cuda'}
+.post-wrap div.language-python::after,.post-wrap div.language-py::after{content:'python'}
+.post-wrap div.language-bash::after,.post-wrap div.language-shell::after,.post-wrap div.language-sh::after{content:'shell'}
+.post-wrap div.language-js::after,.post-wrap div.language-javascript::after{content:'js'}
+.post-wrap div.language-yaml::after,.post-wrap div.language-yml::after{content:'yaml'}
+.post-wrap div.highlighter-rouge .highlight{background:none;margin:0}
+.post-wrap div.highlighter-rouge pre,.post-wrap div.highlighter-rouge pre.highlight{background:none;border:0;border-radius:0;margin:0;padding:18px 20px;overflow-x:auto;font-family:var(--mono);font-size:13.5px;line-height:1.7;color:var(--ink)}
 .post-wrap pre code{background:none;border:0;padding:0;font-size:inherit;border-radius:0}
 
+/* rouge token palette (dark) */
+.post-wrap .highlight .c,.post-wrap .highlight .c1,.post-wrap .highlight .cm,.post-wrap .highlight .cs,.post-wrap .highlight .cd{color:#6b7280;font-style:italic}
+.post-wrap .highlight .cp{color:#8b95a7}
+.post-wrap .highlight .k,.post-wrap .highlight .kd,.post-wrap .highlight .kr,.post-wrap .highlight .kc,.post-wrap .highlight .kn,.post-wrap .highlight .kp{color:var(--g);font-weight:500}
+.post-wrap .highlight .kt{color:#7fd6ff}
+.post-wrap .highlight .nf,.post-wrap .highlight .nd,.post-wrap .highlight .nc,.post-wrap .highlight .nn{color:#e6c07b}
+.post-wrap .highlight .nb,.post-wrap .highlight .bp{color:#7fd6ff}
+.post-wrap .highlight .s,.post-wrap .highlight .s1,.post-wrap .highlight .s2,.post-wrap .highlight .se,.post-wrap .highlight .sb,.post-wrap .highlight .sc,.post-wrap .highlight .sd{color:#b7e8a0}
+.post-wrap .highlight .mi,.post-wrap .highlight .mf,.post-wrap .highlight .mh,.post-wrap .highlight .mo,.post-wrap .highlight .il{color:var(--m)}
+.post-wrap .highlight .o,.post-wrap .highlight .ow{color:#c7c7bf}
+.post-wrap .highlight .p{color:#b8b8b0}
+.post-wrap .highlight .n,.post-wrap .highlight .na,.post-wrap .highlight .nv,.post-wrap .highlight .nx{color:var(--ink)}
+
 .post-wrap img{max-width:100%;height:auto;display:block;margin:28px auto;border:1px solid var(--line2)}
+.post-wrap img[src$=".svg"]{background:var(--bg2);border-radius:8px;padding:18px 20px}
 .post-wrap figure{margin:28px 0}
 .post-wrap figcaption{font-family:var(--mono);font-size:11px;color:var(--ink2);text-align:center;margin-top:8px;letter-spacing:0.06em;text-transform:uppercase}
 .post-wrap hr{border:0;border-top:1px solid var(--line);margin:40px 0}
@@ -91,7 +120,8 @@ nav_id: post
   .post-wrap{padding:48px 20px 64px;font-size:16px}
   .post-wrap h2{font-size:23px}
   .post-wrap h3{font-size:18px}
-  .post-wrap pre{font-size:12.5px;padding:16px 18px}
+  .post-wrap div.highlighter-rouge pre,.post-wrap div.highlighter-rouge pre.highlight{font-size:12.5px;padding:14px 16px}
+  .post-wrap img[src$=".svg"]{padding:12px}
   .post-wrap blockquote{font-size:19px;padding-left:18px}
   .related{padding:24px 20px 64px}
   .related-grid{grid-template-columns:1fr;gap:16px}
