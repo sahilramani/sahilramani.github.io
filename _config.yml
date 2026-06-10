@@ -19,10 +19,14 @@ description: >- # this means to ignore newlines until "baseurl:"
   Software engineer at NVIDIA working on AI for game development. Notes on graphics,
   machine learning, and the seam where they meet - plus the occasional detour into
   gaming, photography, and life with two dogs.
+url: "https://www.sahilramani.com"
 twitter_username: sahilramani
 github_username: sahilramani
+# used by jekyll-seo-tag for twitter:site / twitter:creator cards
+twitter:
+  username: sahilramani
 minimal_mistakes_skin: dirt
-logo: "/assets/images/cpu.png"
+logo: "/assets/images/apple-touch-icon.png"
 search: true
 
 # Build settings
@@ -59,6 +63,7 @@ plugins:
   - jemoji
   - jekyll-include-cache
   - jekyll-archives
+  - jekyll-seo-tag
 
 # Analytics
 analytics:
@@ -112,6 +117,12 @@ collections:
     permalink: /projects/:name/
 
 defaults:
+  # default social-share image for everything (jekyll-seo-tag og:image);
+  # individual pages/posts can override with their own `image:` front matter
+  - scope:
+      path: ""
+    values:
+      image: /assets/images/og-default.png
   # _posts
   - scope:
       path: ""
