@@ -51,9 +51,7 @@ nav_id: project
 .pj-body li{margin-bottom:8px;line-height:1.7}
 .pj-body li::marker{color:var(--g)}
 .pj-body blockquote{border-left:3px solid var(--g);padding:6px 0 6px 22px;margin:26px 0;font-family:var(--serif);font-style:italic;font-size:21px;line-height:1.45;color:var(--ink)}
-.pj-body code{font-family:var(--mono);font-size:0.9em;background:var(--bg2);border:1px solid var(--line2);padding:1px 6px;color:var(--ink);border-radius:2px}
-.pj-body pre{background:var(--bg2);border:1px solid var(--line2);padding:20px 24px;margin:24px 0;overflow-x:auto;font-family:var(--mono);font-size:13.5px;line-height:1.65;color:var(--ink)}
-.pj-body pre code{background:none;border:0;padding:0;font-size:inherit;border-radius:0}
+/* code styling (inline + fenced + diagrams) lives in _includes/code-style.html */
 .pj-body hr{border:0;border-top:1px solid var(--line);margin:36px 0}
 .pj-body img{max-width:100%;height:auto;display:block;margin:28px auto;border:1px solid var(--line2)}
 
@@ -95,6 +93,7 @@ nav_id: project
   .pj-related-grid{grid-template-columns:1fr;gap:14px}
 }
 </style>
+{% include code-style.html scope=".pj-body" %}
 
 <section class="pj-hero">
   <canvas data-vis="{{ page.vis | default: 'grid' }}" aria-hidden="true"></canvas>

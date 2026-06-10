@@ -45,9 +45,7 @@ nav_id: post
 .post-wrap blockquote p{margin-bottom:10px;font-size:inherit;color:inherit}
 .post-wrap blockquote p:last-child{margin-bottom:0}
 
-.post-wrap code{font-family:var(--mono);font-size:0.9em;background:var(--bg2);border:1px solid var(--line2);padding:1px 6px;color:var(--ink);border-radius:2px}
-.post-wrap pre{background:var(--bg2);border:1px solid var(--line2);padding:20px 24px;margin:24px 0;overflow-x:auto;font-family:var(--mono);font-size:13.5px;line-height:1.65;color:var(--ink)}
-.post-wrap pre code{background:none;border:0;padding:0;font-size:inherit;border-radius:0}
+/* code styling (inline + fenced + diagrams) lives in _includes/code-style.html */
 
 .post-wrap img{max-width:100%;height:auto;display:block;margin:28px auto;border:1px solid var(--line2)}
 .post-wrap figure{margin:28px 0}
@@ -91,12 +89,12 @@ nav_id: post
   .post-wrap{padding:48px 20px 64px;font-size:16px}
   .post-wrap h2{font-size:23px}
   .post-wrap h3{font-size:18px}
-  .post-wrap pre{font-size:12.5px;padding:16px 18px}
   .post-wrap blockquote{font-size:19px;padding-left:18px}
   .related{padding:24px 20px 64px}
   .related-grid{grid-template-columns:1fr;gap:16px}
 }
 </style>
+{% include code-style.html scope=".post-wrap" %}
 
 <div class="post-hero">
   <canvas data-field-canvas data-points="600" data-cx="0.78" data-cy="0.55" data-scale="0.22" data-rot-speed="0.0024" aria-hidden="true"></canvas>
