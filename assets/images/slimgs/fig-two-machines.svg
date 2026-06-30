@@ -47,7 +47,7 @@
 
   <!-- verification callout -->
   <rect x="40" y="222" width="600" height="42" rx="8" class="f-green s-green" stroke-width="1"/>
-  <text x="60" y="248" class="sm t-green">Every cross-machine number was graded on the Nano, the machine that ships — not the one that produced it.</text>
+  <text x="60" y="238" class="sm t-green">Every cross-machine number was graded on the Nano,<tspan x="60" dy="16">the machine that ships, not the one that produced it.</tspan></text>
 
   <defs>
     <marker id="al" viewBox="0 0 10 10" refX="2" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M8 1L2 5L8 9" fill="none" stroke="#94a3b8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker>
