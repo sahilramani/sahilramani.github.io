@@ -24,7 +24,7 @@ It is also the only way to build a better model. This post is about getting both
 
 ## The problem with throwing splats away
 
-Pruning is the lever for fitting a scene on the board: drop splats until the count is small enough to render fast. The importance prune from the last post keeps the largest, most opaque splats and discards the rest. At 50,000 splats it reproduces the full scene closely. At 30,000 it starts to fall apart. The locomotive becomes a green smear, and the error against the full render climbs to 43 levels out of 255.
+Pruning is the lever for fitting a scene on the board: drop splats until the count is small enough to render fast. The importance prune from the pruning post keeps the largest, most opaque splats and discards the rest. At 50,000 splats it reproduces the full scene closely. At 30,000 it starts to fall apart. The locomotive becomes a green smear, and the error against the full render climbs to 43 levels out of 255.
 
 A prune can only ever remove. It cannot move a splat, grow it, or recolor it to cover for the ones that left. Each survivor stays exactly where it was trained to sit inside a 742,000-splat crowd, now doing the work of twenty.
 
