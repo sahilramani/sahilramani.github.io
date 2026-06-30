@@ -9,9 +9,9 @@ tags:
   - jetson-nano
   - gpu
   - c++
-excerpt: "A 2023 CUDA renderer will not compile for a 2015 Maxwell chip without five specific patches. The gap between those two dates, told as compiler errors."
+excerpt: "A $99, 2019 Jetson Nano renders a real photogrammetry capture at about 17 FPS. The series starts at the compiler: a 2023 CUDA renderer that will not build for a 2015 chip without five specific patches."
 header:
-  teaser: /assets/images/slimgs/01-synthetic-grid-sm53.png
+  teaser: /assets/images/slimgs/08b-train-real-camera-50k.png
 series: slimgs
 series_order: 1
 series_title: "Real-time Gaussian Splatting on a $99 board"
@@ -20,9 +20,13 @@ series_title: "Real-time Gaussian Splatting on a $99 board"
 
 # Compiling a 2023 CUDA renderer for a 2015 GPU
 
-The renderer was the easy part. Compiling it was the fight.
+A $99 board from 2019 renders a real photogrammetry capture at about 17 frames a second. The board is a Jetson Nano: a Maxwell GPU that taped out in 2015, 128 CUDA cores, no Tensor cores, 25.6 GB/s of memory bandwidth, and the last CUDA that speaks to it frozen at 10.2. The capture is a Western Pacific 713 locomotive, rendered from the angle it was photographed.
 
-The target is a Jetson Nano, a $99 board from 2019 with a Maxwell GPU that taped out in 2015. The reference Gaussian Splatting code is from 2023 and assumes a modern CUDA toolkit. Most of this post is the gap between those two dates, expressed as compiler errors.
+![the locomotive rendered on the Nano](/assets/images/slimgs/08b-train-real-camera-50k.png)
+
+Gaussian Splatting makes that possible because it renders without a neural network in the loop, which is what makes it worth chasing on hardware this weak. The [previous post](https://sahilramani.com/2026/06/how-gaussian-splatting-renders/) covered how the rendering works. This series is the chase to get it real-time on the Nano, against a bar of 15 to 30 frames a second at 480p, and the result sits inside that band. It starts at the compiler.
+
+The renderer was the easy part. Compiling it was the fight. The reference Gaussian Splatting code is from 2023 and assumes a modern CUDA toolkit, and the Nano's stack is frozen years behind it. Most of this post is the gap between those two dates, expressed as compiler errors.
 
 ## What the board gives, and what it withholds
 
