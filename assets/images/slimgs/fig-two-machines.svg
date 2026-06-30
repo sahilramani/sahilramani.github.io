@@ -39,15 +39,15 @@
   <text x="530" y="186" class="sm t-mut" text-anchor="middle">the engine room</text>
 
   <!-- the bus -->
-  <text x="340" y="104" class="sm t-mut" text-anchor="middle">instructions &amp; artifacts cross as commits</text>
+  <text x="340" y="94" class="sm t-mut" text-anchor="middle">instructions &amp; artifacts<tspan x="340" dy="15">cross as commits</tspan></text>
   <line x1="260" y1="131" x2="420" y2="131" class="s-hair" stroke-width="1.5" fill="none" marker-start="url(#al)" marker-end="url(#ar)"/>
   <rect x="290" y="116" width="100" height="30" rx="15" class="f-panel s-hair" stroke-width="1"/>
   <text x="340" y="135" class="sm b t-ink" text-anchor="middle">git main</text>
-  <text x="340" y="166" class="xs t-mut" text-anchor="middle">.ply · camera · frame · diff — no SSH, no shared disk</text>
+  <text x="340" y="162" class="xs t-mut" text-anchor="middle">.ply · camera · frame · diff<tspan x="340" dy="14">no SSH, no shared disk</tspan></text>
 
   <!-- verification callout -->
   <rect x="40" y="222" width="600" height="42" rx="8" class="f-green s-green" stroke-width="1"/>
-  <text x="60" y="248" class="sm t-green">Every cross-machine number was graded on the Nano, the machine that ships — not the one that produced it.</text>
+  <text x="340" y="238" class="sm t-green" text-anchor="middle">Every cross-machine number was graded on the Nano,<tspan x="340" dy="16">the machine that ships, not the one that produced it.</tspan></text>
 
   <defs>
     <marker id="al" viewBox="0 0 10 10" refX="2" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M8 1L2 5L8 9" fill="none" stroke="#94a3b8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker>
