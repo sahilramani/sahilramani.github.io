@@ -1,0 +1,56 @@
+<svg width="100%" viewBox="0 0 680 322" xmlns="http://www.w3.org/2000/svg" role="img">
+  <title>Profiling the Nano: where the frame goes and why it is not the memory bus</title>
+  <desc>At 50,000 splats the render/compositing step is 75% of the frame and the sort is 19%. The render kernel's stalls are dominated by execution dependency and the sync barrier; memory-throttle (bandwidth saturation) is 0.02%, so the kernel is compute and sync bound, not bandwidth bound.</desc>
+  <style>
+    text{font-family:system-ui,-apple-system,'Segoe UI',Roboto,sans-serif}
+    .t-ink{fill:#1f2937}.t-mut{fill:#64748b}
+    .f-panel{fill:#eef2f6}.s-hair{stroke:#cbd5e1}
+    .f-blue{fill:#bcd8f0}.t-blue{fill:#1d4e80}
+    .f-amber{fill:#f3cfa6}.t-amber{fill:#9a5a1c}
+    .f-green{fill:#3f9d57}.t-green{fill:#2c7a40}
+    .lbl{font-size:14px}.sm{font-size:12px}.b{font-weight:500}
+    @media (prefers-color-scheme:dark){
+      .t-ink{fill:#e6edf3}.t-mut{fill:#9aa7b4}
+      .f-panel{fill:#222b36}.s-hair{stroke:#3a4654}
+      .f-blue{fill:#2b5275}.t-blue{fill:#bcd8f0}
+      .f-amber{fill:#7a5326}.t-amber{fill:#e0a05c}
+      .f-green{fill:#5cbf75}.t-green{fill:#5cbf75}
+    }
+  </style>
+
+  <text x="40" y="28" class="lbl b t-ink">Where the frame goes — and why it isn't the memory bus</text>
+
+  <!-- Section A: frame composition -->
+  <text x="40" y="58" class="sm b t-mut">Frame time at 50,000 splats, 480p</text>
+  <rect x="40"  y="68" width="450" height="34" rx="3" class="f-blue"/>
+  <rect x="490" y="68" width="114" height="34" rx="3" class="f-amber"/>
+  <rect x="604" y="68" width="36"  height="34" rx="3" class="f-panel s-hair" stroke-width="1"/>
+  <text x="56"  y="90" class="sm b t-blue">render — per-tile compositing</text>
+  <text x="474" y="90" class="sm b t-blue" text-anchor="end">75%</text>
+  <text x="547" y="90" class="sm b t-amber" text-anchor="middle">sort 19%</text>
+  <text x="622" y="118" class="sm t-mut" text-anchor="middle">6%</text>
+
+  <!-- Section B: stall reasons -->
+  <text x="40" y="150" class="sm b t-mut">Why the render kernel stalls (hardware counters)</text>
+
+  <!-- exec dependency 19.6 -->
+  <text x="40" y="178" class="sm t-ink">execution dependency</text>
+  <rect x="250" y="166" width="294" height="16" rx="3" class="f-blue"/>
+  <text x="552" y="179" class="sm b t-blue">19.6%</text>
+  <!-- sync 18.9 -->
+  <text x="40" y="206" class="sm t-ink">sync — per-batch barrier</text>
+  <rect x="250" y="194" width="283" height="16" rx="3" class="f-blue"/>
+  <text x="541" y="207" class="sm b t-blue">18.9%</text>
+  <!-- mem dependency 8.7 -->
+  <text x="40" y="234" class="sm t-ink">memory dependency</text>
+  <rect x="250" y="222" width="130" height="16" rx="3" class="f-blue"/>
+  <text x="388" y="235" class="sm b t-blue">8.7%</text>
+  <!-- mem throttle 0.02 -->
+  <text x="40" y="262" class="sm b t-green">memory throttle</text>
+  <rect x="250" y="250" width="3" height="16" rx="1.5" class="f-green"/>
+  <text x="261" y="263" class="sm b t-green">0.02%</text>
+  <text x="312" y="263" class="sm t-mut">— bandwidth saturation, basically zero</text>
+
+  <line x1="40" y1="284" x2="640" y2="284" class="s-hair" stroke-width="1"/>
+  <text x="40" y="306" class="sm t-mut">The kernel waits on its own arithmetic and a barrier, not on the 25.6 GB/s bus.</text>
+</svg>

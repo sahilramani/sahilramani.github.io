@@ -1,0 +1,58 @@
+<svg width="100%" viewBox="0 0 680 244" xmlns="http://www.w3.org/2000/svg" role="img">
+  <title>The same one-line CUDA arch-flag fix, a decade apart</title>
+  <desc>The reference build's CUDA architecture list covers 70, 75, 86. Maxwell sm_53 (2015) sits below it and Blackwell sm_120 (2025) sits above it, so building for either means adding one number to the same list — 53 on the low end in the porting post, 120 on the high end in the validation post.</desc>
+  <style>
+    text{font-family:system-ui,-apple-system,'Segoe UI',Roboto,sans-serif}
+    .t-ink{fill:#1f2937}.t-mut{fill:#64748b}
+    .f-panel{fill:#eef2f6}.s-hair{stroke:#cbd5e1}
+    .t-orange{fill:#9a5a1c}.d-orange{fill:#d98a3d}.k-orange{stroke:#d98a3d}
+    .t-blue{fill:#1d4e80}.d-blue{fill:#2f6fb0}.k-blue{stroke:#2f6fb0}
+    .lbl{font-size:14px}.sm{font-size:12px}.xs{font-size:11px}.b{font-weight:500}
+    @media (prefers-color-scheme:dark){
+      .t-ink{fill:#e6edf3}.t-mut{fill:#9aa7b4}
+      .f-panel{fill:#222b36}.s-hair{stroke:#3a4654}
+      .t-orange{fill:#e0a05c}.d-orange{fill:#e0a05c}.k-orange{stroke:#e0a05c}
+      .t-blue{fill:#7db4e6}.d-blue{fill:#7db4e6}.k-blue{stroke:#7db4e6}
+    }
+  </style>
+
+  <text x="40" y="28" class="lbl b t-ink">One line, the same line, a decade apart</text>
+  <text x="40" y="50" class="sm t-mut">The reference build's CUDA arch list stops short of the hardware at both ends.</text>
+
+  <!-- baseline -->
+  <line x1="70" y1="150" x2="610" y2="150" class="s-hair" stroke-width="1"/>
+
+  <!-- extension reaches -->
+  <line x1="240" y1="150" x2="100" y2="150" class="k-orange" stroke-width="2" stroke-dasharray="5 4" fill="none" marker-end="url(#ao)"/>
+  <line x1="410" y1="150" x2="580" y2="150" class="k-blue"  stroke-width="2" stroke-dasharray="5 4" fill="none" marker-end="url(#ab)"/>
+
+  <!-- the default arch-list band -->
+  <rect x="240" y="132" width="170" height="36" rx="6" class="f-panel s-hair" stroke-width="1"/>
+  <text x="325" y="123" class="xs t-mut" text-anchor="middle">reference default arch list</text>
+  <text x="325" y="155" class="sm b t-ink" text-anchor="middle">70 ; 75 ; 86</text>
+
+  <!-- Maxwell node -->
+  <circle cx="90" cy="150" r="7" class="d-orange"/>
+  <text x="90" y="106" class="sm b t-orange" text-anchor="middle">Maxwell</text>
+  <text x="90" y="122" class="xs t-mut" text-anchor="middle">sm_53 · 2015</text>
+  <text x="90" y="184" class="sm b t-orange" text-anchor="middle">add 53</text>
+
+  <!-- Blackwell node -->
+  <circle cx="590" cy="150" r="7" class="d-blue"/>
+  <text x="590" y="106" class="sm b t-blue" text-anchor="middle">Blackwell</text>
+  <text x="590" y="122" class="xs t-mut" text-anchor="middle">sm_120 · 2025</text>
+  <text x="590" y="184" class="sm b t-blue" text-anchor="middle">add 120</text>
+
+  <!-- year ticks -->
+  <text x="90"  y="204" class="xs t-mut" text-anchor="middle">2015</text>
+  <text x="325" y="204" class="xs t-mut" text-anchor="middle">2020</text>
+  <text x="590" y="204" class="xs t-mut" text-anchor="middle">2025</text>
+
+  <line x1="40" y1="220" x2="640" y2="220" class="s-hair" stroke-width="1"/>
+  <text x="40" y="240" class="sm t-mut">A build's arch list is a window onto the hardware its authors had in front of them.</text>
+
+  <defs>
+    <marker id="ao" viewBox="0 0 10 10" refX="2" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M8 1L2 5L8 9" fill="none" stroke="#d98a3d" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker>
+    <marker id="ab" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M2 1L8 5L2 9" fill="none" stroke="#2f6fb0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker>
+  </defs>
+</svg>

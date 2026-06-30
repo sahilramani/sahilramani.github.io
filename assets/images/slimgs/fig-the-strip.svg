@@ -1,0 +1,66 @@
+<svg width="100%" viewBox="0 0 680 300" xmlns="http://www.w3.org/2000/svg" role="img">
+  <title>Carving the reference rasterizer down to inference</title>
+  <desc>The forward pass is kept and recompiled for sm_53; the backward pass is deleted; spherical harmonics drop from degree 3 to 0; the CUDA 11 / C++17 / CMake build is patched down to CUDA 10.2 / C++14 / a 15-line Makefile.</desc>
+  <style>
+    text{font-family:system-ui,-apple-system,'Segoe UI',Roboto,sans-serif}
+    .t-ink{fill:#1f2937}.t-mut{fill:#64748b}
+    .f-panel{fill:#f1f5f9}.s-hair{stroke:#cbd5e1}
+    .f-green{fill:#dcefe1}.s-green{stroke:#3f9d57}.t-green{fill:#2c7a40}.k-green{stroke:#3f9d57}
+    .f-red{fill:#f8dcda}.s-red{stroke:#d24b43}.t-red{fill:#a5322b}.k-red{stroke:#d24b43}
+    .f-amber{fill:#fbe7d4}.s-amber{stroke:#d98a3d}.t-amber{fill:#9a5a1c}.k-amber{stroke:#d98a3d}
+    .lbl{font-size:14px}.sm{font-size:12px}.b{font-weight:500}
+    .gone{opacity:.55}
+    @media (prefers-color-scheme:dark){
+      .t-ink{fill:#e6edf3}.t-mut{fill:#9aa7b4}
+      .f-panel{fill:#1c242e}.s-hair{stroke:#3a4654}
+      .f-green{fill:#14301d}.s-green{stroke:#5cbf75}.t-green{fill:#5cbf75}.k-green{stroke:#5cbf75}
+      .f-red{fill:#3a1c1a}.s-red{stroke:#e76b63}.t-red{fill:#e76b63}.k-red{stroke:#e76b63}
+      .f-amber{fill:#3a2614}.s-amber{stroke:#e0a05c}.t-amber{fill:#e0a05c}.k-amber{stroke:#e0a05c}
+    }
+  </style>
+
+  <text x="40" y="30" class="lbl b t-ink">Carving the reference rasterizer down to inference</text>
+  <text x="40"  y="62" class="sm b t-mut">Reference · training-capable · 2023</text>
+  <text x="640" y="62" class="sm b t-mut" text-anchor="end">slimgs · inference-only · sm_53</text>
+
+  <!-- Row 1: forward pass kept -->
+  <rect x="40" y="78" width="252" height="38" rx="8" class="f-panel s-hair" stroke-width="1"/>
+  <text x="54" y="102" class="sm t-ink">Forward pass — project · sort · blend</text>
+  <path d="M300 97 L380 97" class="k-green" stroke-width="2" fill="none" marker-end="url(#ag)"/>
+  <text x="340" y="89" class="sm b t-green" text-anchor="middle">kept</text>
+  <rect x="388" y="78" width="252" height="38" rx="8" class="f-green s-green" stroke-width="1"/>
+  <text x="402" y="102" class="sm t-green">Forward pass, recompiled for sm_53</text>
+
+  <!-- Row 2: backward deleted -->
+  <rect x="40" y="128" width="252" height="38" rx="8" class="f-panel s-hair" stroke-width="1"/>
+  <text x="54" y="152" class="sm t-ink">Backward pass — gradient machinery</text>
+  <path d="M300 147 L380 147" class="k-red" stroke-width="2" fill="none"/>
+  <path d="M334 141 L346 153 M346 141 L334 153" class="k-red" stroke-width="2" fill="none" stroke-linecap="round"/>
+  <text x="340" y="139" class="sm b t-red" text-anchor="middle">deleted</text>
+  <rect x="388" y="128" width="252" height="38" rx="8" class="f-panel s-hair gone" stroke-width="1" stroke-dasharray="4 3"/>
+  <text x="402" y="152" class="sm t-mut gone">removed whole — drops it at link time</text>
+
+  <!-- Row 3: SH reduced -->
+  <rect x="40" y="178" width="252" height="38" rx="8" class="f-panel s-hair" stroke-width="1"/>
+  <text x="54" y="202" class="sm t-ink">SH degree 3 — view-dependent color</text>
+  <path d="M300 197 L380 197" class="k-amber" stroke-width="2" fill="none" marker-end="url(#aa)"/>
+  <text x="340" y="189" class="sm b t-amber" text-anchor="middle">reduced</text>
+  <rect x="388" y="178" width="252" height="38" rx="8" class="f-amber s-amber" stroke-width="1"/>
+  <text x="402" y="202" class="sm t-amber">SH degree 0 — one flat color per splat</text>
+
+  <!-- Row 4: build patched -->
+  <rect x="40" y="228" width="252" height="38" rx="8" class="f-panel s-hair" stroke-width="1"/>
+  <text x="54" y="252" class="sm t-ink">CUDA 11 · C++17 · cub · CMake 3.20</text>
+  <path d="M300 247 L380 247" class="k-amber" stroke-width="2" fill="none" marker-end="url(#aa)"/>
+  <text x="340" y="239" class="sm b t-amber" text-anchor="middle">patched</text>
+  <rect x="388" y="228" width="252" height="38" rx="8" class="f-amber s-amber" stroke-width="1"/>
+  <text x="402" y="252" class="sm t-amber">CUDA 10.2 · C++14 · 15-line Makefile</text>
+
+  <text x="40" y="290" class="sm t-mut">What remains is one entry point:</text>
+  <text x="263" y="290" class="sm b t-ink">(Gaussians, camera) &#8594; image.</text>
+
+  <defs>
+    <marker id="ag" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M2 1L8 5L2 9" fill="none" stroke="#3f9d57" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker>
+    <marker id="aa" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M2 1L8 5L2 9" fill="none" stroke="#d98a3d" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker>
+  </defs>
+</svg>

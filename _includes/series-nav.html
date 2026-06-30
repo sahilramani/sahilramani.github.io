@@ -1,0 +1,21 @@
+{%- comment -%}
+Series navigation box. Lists every published part of page.series, in series_order.
+site.posts excludes future-dated posts, so on GitHub Pages the list only ever shows
+parts that are already live — future installments appear automatically on their date.
+{%- endcomment -%}
+{%- assign parts = site.posts | where: "series", page.series | sort: "series_order" -%}
+{%- if parts.size > 0 -%}
+<div class="notice--info" markdown="0">
+  <p><strong>{{ page.series_title | default: "In this series" }}</strong></p>
+  <ol>
+  {%- for p in parts -%}
+    {%- if p.url == page.url -%}
+    <li>{{ p.title }} <em>(this post)</em></li>
+    {%- else -%}
+    <li><a href="{{ p.url | relative_url }}">{{ p.title }}</a></li>
+    {%- endif -%}
+  {%- endfor -%}
+  </ol>
+  <p><em>New parts publish weekly; this list grows as each one goes live.</em></p>
+</div>
+{%- endif -%}

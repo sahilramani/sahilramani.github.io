@@ -1,0 +1,58 @@
+<svg width="100%" viewBox="0 0 680 256" xmlns="http://www.w3.org/2000/svg" role="img">
+  <title>Range-extracting one file from a 14.66 GB zip</title>
+  <desc>A zip stores its index (central directory) at the end. Three HTTP range requests fetch the tail, the index, then the single target file — 120 KB pulled from a 14.66 GB archive.</desc>
+  <style>
+    text{font-family:system-ui,-apple-system,'Segoe UI',Roboto,sans-serif}
+    .t-ink{fill:#1f2937}.t-mut{fill:#64748b}
+    .f-panel{fill:#f1f5f9}.s-hair{stroke:#cbd5e1}
+    .f-blue{fill:#dcebf8}.s-blue{stroke:#2f6fb0}.t-blue{fill:#1d4e80}
+    .f-green{fill:#dcefe1}.s-green{stroke:#3f9d57}.t-green{fill:#2c7a40}
+    .lbl{font-size:14px}.sm{font-size:12px}.b{font-weight:500}
+    @media (prefers-color-scheme:dark){
+      .t-ink{fill:#e6edf3}.t-mut{fill:#9aa7b4}
+      .f-panel{fill:#1c242e}.s-hair{stroke:#3a4654}
+      .f-blue{fill:#16293a}.s-blue{stroke:#5b9bd8}.t-blue{fill:#7db4e6}
+      .f-green{fill:#14301d}.s-green{stroke:#5cbf75}.t-green{fill:#5cbf75}
+    }
+  </style>
+
+  <text x="40" y="30" class="lbl b t-ink">A zip is a filesystem with its index at the back</text>
+
+  <!-- the archive bar -->
+  <rect x="40" y="66" width="600" height="44" rx="4" class="f-panel s-hair" stroke-width="1"/>
+  <!-- cameras.json slice -->
+  <rect x="300" y="66" width="6" height="44" class="f-green s-green" stroke-width="1"/>
+  <!-- central directory at the end -->
+  <rect x="556" y="66" width="84" height="44" rx="0" class="f-blue s-blue" stroke-width="1"/>
+
+  <!-- bar callout labels -->
+  <text x="303" y="58" class="sm b t-green" text-anchor="middle">train/cameras.json</text>
+  <text x="598" y="58" class="sm b t-blue" text-anchor="middle">central directory</text>
+  <text x="40" y="128" class="sm t-mut">offset 0</text>
+  <text x="640" y="128" class="sm t-mut" text-anchor="end">14.66 GB</text>
+  <text x="180" y="93" class="sm t-mut" text-anchor="middle">file data — 13 scenes</text>
+
+  <!-- the three range requests -->
+  <rect x="40"  y="162" width="180" height="46" rx="8" class="f-panel s-hair" stroke-width="1"/>
+  <rect x="250" y="162" width="180" height="46" rx="8" class="f-panel s-hair" stroke-width="1"/>
+  <rect x="460" y="162" width="180" height="46" rx="8" class="f-blue s-blue" stroke-width="1"/>
+
+  <text x="56"  y="184" class="lbl b t-ink">① last 2 KB</text>
+  <text x="56"  y="201" class="sm t-mut">find the index</text>
+  <text x="266" y="184" class="lbl b t-ink">② the index</text>
+  <text x="266" y="201" class="sm t-mut">~80 KB · ZIP64 offsets</text>
+  <text x="476" y="184" class="lbl b t-blue">③ cameras.json</text>
+  <text x="476" y="201" class="sm t-blue">~40 KB · inflate</text>
+
+  <!-- arrows between requests -->
+  <path d="M224 185 L246 185" class="s-hair" stroke-width="1.5" fill="none" marker-end="url(#a)"/>
+  <path d="M434 185 L456 185" class="s-hair" stroke-width="1.5" fill="none" marker-end="url(#a)"/>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M2 1L8 5L2 9" fill="none" stroke="#94a3b8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+
+  <text x="40" y="242" class="lbl b t-green">120 KB pulled.</text>
+  <text x="158" y="242" class="lbl t-mut">The other 14.66 GB stayed on the server.</text>
+</svg>
