@@ -24,7 +24,9 @@ A $99 board from 2019 renders a real photogrammetry capture at about 17 frames a
 
 ![the locomotive rendered on the Nano](/assets/images/slimgs/08b-train-real-camera-50k.png)
 
-Gaussian Splatting makes that possible because it renders without a neural network in the loop, which is what makes it worth chasing on hardware this weak. The [previous post](https://sahilramani.com/2026/06/how-gaussian-splatting-renders/) covered how the rendering works. This series is the chase to get it real-time on the Nano, against a bar of 15 to 30 frames a second at 480p, and the result sits inside that band. It starts at the compiler.
+The render is soft, and that is the honest state of play. The full scene is 742,000 Gaussians; the frame above keeps 50,000 of them, because that is the cut that holds the board inside its frame-rate target. [The same view from the full, un-pruned scene](/assets/images/slimgs/09-train-cam0-full-reference.png) shows what the discarded splats buy, and the board draws that version at 2.7 frames a second. Closing the distance between those two images without giving up the frame rate is most of what this series is about. The capture is the Tanks & Temples "train" scene from the official [3D Gaussian Splatting release](https://repo-sam.inria.fr/fungraph/3d-gaussian-splatting/); the original `.ply` ships in the [pretrained models bundle](https://repo-sam.inria.fr/fungraph/3d-gaussian-splatting/datasets/pretrained/models.zip), a 14 GB download that becomes its own story in part four.
+
+Gaussian Splatting makes any of this possible because it renders without a neural network in the loop, which is what makes it worth chasing on hardware this weak. The [previous post](https://sahilramani.com/2026/06/how-gaussian-splatting-renders/) covered how the rendering works. This series is the chase to get it real-time on the Nano, against a bar of 15 to 30 frames a second at 480p, and the result sits inside that band. It runs seven parts, one landing each Wednesday, and it starts at the compiler.
 
 The renderer was the easy part. Compiling it was the fight. The reference Gaussian Splatting code is from 2023 and assumes a modern CUDA toolkit, and the Nano's stack is frozen years behind it. Most of this post is the gap between those two dates, expressed as compiler errors.
 
@@ -86,6 +88,6 @@ The interesting work starts once it runs, when the question turns to how fast it
 
 
 *Source, the exact patches, and the on-device toolchain notes are in the slimgs
-repo. Next: profiling on the Nano, where every guess about the bottleneck was wrong.*
+repo. Next: [profiling on the Nano](https://sahilramani.com/2026/07/the-bottleneck-wasnt-the-sort/), where every guess about the bottleneck was wrong.*
 
 {% include series-nav.html %}

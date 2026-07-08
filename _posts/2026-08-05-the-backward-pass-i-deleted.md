@@ -18,13 +18,13 @@ series_title: "Real-time Gaussian Splatting on a $99 board"
 
 # The backward pass I deleted trained the model the Nano runs
 
-The first thing that came out of the reference renderer, back in the porting post, was the backward pass. Inference does not need gradients, and deleting them bought a smaller, faster kernel that fit the board. On a Nano, the backward pass was dead weight.
+The first thing that came out of the reference renderer, back in [the porting post](https://sahilramani.com/2026/07/compiling-a-2023-cuda-renderer-for-a-2015-gpu/), was the backward pass. Inference does not need gradients, and deleting them bought a smaller, faster kernel that fit the board. On a Nano, the backward pass was dead weight.
 
 It is also the only way to build a better model. This post is about getting both, by splitting the rasterizer across two machines.
 
 ## The problem with throwing splats away
 
-Pruning is the lever for fitting a scene on the board: drop splats until the count is small enough to render fast. The importance prune from the pruning post keeps the largest, most opaque splats and discards the rest. At 50,000 splats it reproduces the full scene closely. At 30,000 it starts to fall apart. The locomotive becomes a green smear, and the error against the full render climbs to 43 levels out of 255.
+Pruning is the lever for fitting a scene on the board: drop splats until the count is small enough to render fast. The importance prune from [the pruning post](https://sahilramani.com/2026/07/most-of-a-gaussian-scene-is-haze/) keeps the largest, most opaque splats and discards the rest. At 50,000 splats it reproduces the full scene closely. At 30,000 it starts to fall apart. The locomotive becomes a green smear, and the error against the full render climbs to 43 levels out of 255.
 
 A prune can only ever remove. It cannot move a splat, grow it, or recolor it to cover for the ones that left. Each survivor stays exactly where it was trained to sit inside a 742,000-splat crowd, now doing the work of twenty.
 
@@ -32,7 +32,7 @@ A prune can only ever remove. It cannot move a splat, grow it, or recolor it to 
 
 Distillation lifts that limit. Instead of selecting 30,000 splats from the original, optimize 30,000 splats to reproduce the original. Start from the importance prune, then run gradient descent: render the 30,000 from a camera, compare to the full scene from the same camera, and push every splat's position, size, orientation, color, and opacity to close the gap. Do it across sixty cameras so the result is a 3D model, not one memorized view.
 
-That needs gradients through the rasterizer, which needs the backward pass, which the Nano's renderer does not have and its GPU could not train through in any sensible time. So it ran on the other machine, an RTX 5080, the same one that checked the port in the last post. The reference rasterizer there still has its backward pass. The half I deleted to fit the board is the half that builds the model the board renders.
+That needs gradients through the rasterizer, which needs the backward pass, which the Nano's renderer does not have and its GPU could not train through in any sensible time. So it ran on the other machine, an RTX 5080, the same one that checked the port in [the last post](https://sahilramani.com/2026/07/the-same-image-on-two-gpus/). The reference rasterizer there still has its backward pass. The half I deleted to fit the board is the half that builds the model the board renders.
 
 ## What 30,000 splats can be
 
@@ -67,6 +67,7 @@ The shape is worth keeping. One rasterizer, split down the middle. The forward h
 
 *The distillation recipe (`reference/distill.py`), the model, and the on-device
 diffs are in the repo. The two machines coordinated through dated handoff docs on
-`main`; jetson rendered and graded the model the 5080 trained.*
+`main`; jetson rendered and graded the model the 5080 trained.
+Next: [how two machines with no link between them built one renderer](https://sahilramani.com/2026/08/two-machines-one-git-history/).*
 
 {% include series-nav.html %}

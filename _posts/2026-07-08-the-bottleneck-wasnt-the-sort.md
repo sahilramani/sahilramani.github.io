@@ -27,7 +27,7 @@ It was neither. The profiler said so twice, then a third time about the fix.
 
 ![Render compositing is 75% of the frame and the sort 19%; the render kernel stalls on execution dependency and the sync barrier, while memory-throttle is 0.02%, so it is compute and sync bound, not bandwidth bound](/assets/images/slimgs/fig-profile.svg)
 
-This follows [How Gaussian Splatting Renders](https://sahilramani.com/2026/06/how-gaussian-splatting-renders/). That post covered how splatting turns 3D Gaussians into pixels without ever calling a network. This one takes the same forward pass, strips it to inference, and times it on a board that costs less than a game. Rendering was the easy half. Finding what made it slow was the work.
+This follows [How Gaussian Splatting Renders](https://sahilramani.com/2026/06/how-gaussian-splatting-renders/). That post covered how splatting turns 3D Gaussians into pixels without ever calling a network. This one takes the same forward pass, [stripped to inference and ported in part one](https://sahilramani.com/2026/07/compiling-a-2023-cuda-renderer-for-a-2015-gpu/), and times it on a board that costs less than a game. Rendering was the easy half. Finding what made it slow was the work.
 
 ## The board sets the rules
 
@@ -96,7 +96,7 @@ The profiler after the change is honest. The kernel is still dependency-bound an
 
 Three corrections in, the render kernel sits near its floor for the algorithm it runs. Front-to-back compositing is serial, each blend waiting on the last. The per-tile barrier makes the fast pixels wait on the slow ones. Half precision does nothing here. A faster exp helped because it was cheap and shortened a serial chain, and there is no second `__expf` to find.
 
-The lever that remains points upstream. Render is bound by overlap, by how many splats crowd each tile, so the way to speed it up is to carry fewer of them. That is pruning, and the next post.
+The lever that remains points upstream. Render is bound by overlap, by how many splats crowd each tile, so the way to speed it up is to carry fewer of them. That is pruning.
 
 ## Measure before you reach for the obvious fix
 
@@ -106,7 +106,7 @@ The 14% was worth having. The habit that found it was worth more.
 
 
 *Code, raw numbers, and a running ledger of what's verified versus still flagged
-are in the slimgs repo. Next: pruning a room-scale scene down to something a 4GB
-board can hold, and what that does to the frame.*
+are in the slimgs repo. Next: [pruning a room-scale scene down to something a 4GB
+board can hold](https://sahilramani.com/2026/07/most-of-a-gaussian-scene-is-haze/), and what that does to the frame.*
 
 {% include series-nav.html %}
