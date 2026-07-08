@@ -106,7 +106,6 @@ The 14% was worth having. The habit that found it was worth more.
 
 
 *Code, raw numbers, and a running ledger of what's verified versus still flagged
-are in the slimgs repo. Next: [pruning a room-scale scene down to something a 4GB
-board can hold](https://sahilramani.com/2026/07/most-of-a-gaussian-scene-is-haze/), and what that does to the frame.*
+are in the slimgs repo. Next: {% include series-next.html text="pruning a room-scale scene down to something a 4GB board can hold" %}, and what that does to the frame.*
 
 {% include series-nav.html %}

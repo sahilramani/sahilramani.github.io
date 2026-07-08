@@ -77,7 +77,7 @@ The importance-pruned 50,000 fills the frame, so the timer finally runs on a vie
 
 So the real answer, framed the way it was captured: a little under 20 FPS at 480p, in the target band, from a model that is a fraction of the original. The kernel work from [the last post](https://sahilramani.com/2026/07/the-bottleneck-wasnt-the-sort/) helped. The lever here was upstream. It was noticing that most of the data was haze and keeping the part that was not.
 
-Framing the scene the way it was shot needs the original cameras. Those ship inside a 14 GB archive nobody wants to download whole. Pulling one small file out of a remote zip, and the portrait of the 713 it unlocks, is [the next post](https://sahilramani.com/2026/07/120-kb-of-a-14-gb-file/).
+Framing the scene the way it was shot needs the original cameras. Those ship inside a 14 GB archive nobody wants to download whole. Pulling one small file out of a remote zip, and the portrait of the 713 it unlocks, is {% include series-next.html text="the next post" %}.
 
 
 *Loader, the `--prune importance` path, the per-pixel comparison harness, and the

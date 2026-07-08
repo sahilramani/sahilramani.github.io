@@ -68,6 +68,6 @@ The shape is worth keeping. One rasterizer, split down the middle. The forward h
 *The distillation recipe (`reference/distill.py`), the model, and the on-device
 diffs are in the repo. The two machines coordinated through dated handoff docs on
 `main`; jetson rendered and graded the model the 5080 trained.
-Next: [how two machines with no link between them built one renderer](https://sahilramani.com/2026/08/two-machines-one-git-history/).*
+Next: {% include series-next.html text="how two machines with no link between them built one renderer" %}.*
 
 {% include series-nav.html %}

@@ -57,6 +57,6 @@ That closes the last open item in the ledger. A forward-only Gaussian Splatting 
 *The reference frame, the difference image, and the diff numbers are under
 `reference/` in the repo; the protocol is `docs/u3-validation.md`. The two
 machines coordinated through dated handoff docs on `main`.
-Next: [the backward pass the Nano deleted trains a better model than any prune](https://sahilramani.com/2026/08/the-backward-pass-i-deleted/).*
+Next: {% include series-next.html text="the backward pass the Nano deleted trains a better model than any prune" %}.*
 
 {% include series-nav.html %}
