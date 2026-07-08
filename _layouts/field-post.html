@@ -14,6 +14,7 @@ nav_id: post
 .post-cat{font-family:var(--mono);font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--g);margin-bottom:14px;display:flex;align-items:center;gap:10px}
 .post-cat::before{content:'';width:32px;height:1px;background:var(--g)}
 .post-title{font-family:var(--sans);font-size:clamp(40px,5.5vw,72px);font-weight:300;line-height:0.98;letter-spacing:-0.035em;color:var(--ink);margin-bottom:18px}
+.post-title.is-long{font-size:clamp(32px,4vw,52px);line-height:1.05}
 .post-title em{font-family:var(--serif);font-style:italic;color:var(--g);font-weight:400}
 .post-meta{font-family:var(--mono);font-size:11px;color:var(--ink2);letter-spacing:0.06em;text-transform:uppercase;display:flex;flex-wrap:wrap;gap:14px;align-items:center}
 .post-meta .sep{color:var(--line2)}
@@ -86,6 +87,7 @@ nav_id: post
   .post-hero-inner{padding:32px 20px 24px;justify-content:flex-end}
   .post-back{margin-bottom:20px}
   .post-title{font-size:clamp(34px,8vw,52px)}
+  .post-title.is-long{font-size:clamp(27px,6.5vw,40px)}
   .post-wrap{padding:48px 20px 64px;font-size:16px}
   .post-wrap h2{font-size:23px}
   .post-wrap h3{font-size:18px}
@@ -105,7 +107,7 @@ nav_id: post
     {%- assign words = content | strip_html | number_of_words -%}
     {%- assign minutes = words | divided_by: 200 | at_least: 1 -%}
     <div class="post-cat">{{ cat | upcase }}</div>
-    <h1 class="post-title">{{ page.title }}</h1>
+    <h1 class="post-title{% if page.title.size > 45 %} is-long{% endif %}">{{ page.title }}</h1>
     <div class="post-meta">
       <span>{{ page.date | date: "%Y.%m.%d" }}</span>
       <span class="sep">/</span>
