@@ -19,7 +19,7 @@ series_title: "Real-time Gaussian Splatting on a $99 board"
 
 # The same image on two GPUs a decade apart
 
-A doubt sat under this whole series. The renderer on the Nano is a carved-down fork of the reference: backward pass deleted, spherical harmonics dropped to degree 0, five patches to make 2023 code compile for a 2015 chip, and one intrinsic swapped for speed. It draws a locomotive that looks right. Looking right is not being right. The open question, since the first post, was whether it draws what the reference rasterizer would draw, or just something close.
+A doubt sat under this whole series. The renderer on the Nano is a carved-down fork of the reference: backward pass deleted, spherical harmonics dropped to degree 0, five patches to make 2023 code compile for a 2015 chip, and one intrinsic swapped for speed. It draws a locomotive that looks right. Looking right is not being right. The open question, since [the first post](https://sahilramani.com/2026/07/compiling-a-2023-cuda-renderer-for-a-2015-gpu/), was whether it draws what the reference rasterizer would draw, or just something close.
 
 Answering it needs the reference rasterizer, which needs a modern GPU and PyTorch, neither of which the Nano has. So the check ran on a second machine with an RTX 5080, the two renderers coordinating through the same git repository.
 
@@ -29,7 +29,7 @@ The comparison is built to isolate the rasterizer. Both machines render the same
 
 ## The same gotcha, a decade apart
 
-The reference rasterizer would not build for the 5080 either. Its CUDA architecture list stops at `86`, and the 5080 is Blackwell, `sm_120`, so the build produces nothing that runs until you add `120` to the list. Three posts ago, getting onto Maxwell meant adding `53` to that same list, which stops at `86` from the low side. One line, the same line, at both ends of a ten-year span. A renderer's build assumptions are a window onto exactly the hardware its authors had in front of them.
+The reference rasterizer would not build for the 5080 either. Its CUDA architecture list stops at `86`, and the 5080 is Blackwell, `sm_120`, so the build produces nothing that runs until you add `120` to the list. Back in [the porting post](https://sahilramani.com/2026/07/compiling-a-2023-cuda-renderer-for-a-2015-gpu/), getting onto Maxwell meant adding `53` to that same list, which stops at `86` from the low side. One line, the same line, at both ends of a ten-year span. A renderer's build assumptions are a window onto exactly the hardware its authors had in front of them.
 
 ![The reference build's CUDA arch list covers 70/75/86; Maxwell sm_53 sits below it and Blackwell sm_120 above it, so each end needs one number added to the same list](/assets/images/slimgs/fig-arch-symmetry.svg)
 
@@ -45,7 +45,7 @@ MAE 0.00001 / 255   max 1   differing 8 / 1,242,720   (0.0006%)
 
 Every one of the eight is off by a single level out of 255. The amplified difference image is uniformly black: no regions, no edges, no structure, just eight isolated pixels one step apart. A port bug shows up as a shape, a wrong edge or a tinted patch. This is rounding.
 
-The rounding has a known source. The one deliberate change to the math was swapping `expf` for the faster `__expf` in the falloff, the optimization from the profiling post. That intrinsic is good to a couple of units in the last place, and the rest is floating-point arithmetic landing in a different order on two unrelated GPUs. The single change made to the renderer is also the only measurable difference it produces, and it comes to one level on eight pixels out of 1.24 million.
+The rounding has a known source. The one deliberate change to the math was swapping `expf` for the faster `__expf` in the falloff, the optimization from [the profiling post](https://sahilramani.com/2026/07/the-bottleneck-wasnt-the-sort/). That intrinsic is good to a couple of units in the last place, and the rest is floating-point arithmetic landing in a different order on two unrelated GPUs. The single change made to the renderer is also the only measurable difference it produces, and it comes to one level on eight pixels out of 1.24 million.
 
 ## What this settles
 
@@ -56,6 +56,7 @@ That closes the last open item in the ledger. A forward-only Gaussian Splatting 
 
 *The reference frame, the difference image, and the diff numbers are under
 `reference/` in the repo; the protocol is `docs/u3-validation.md`. The two
-machines coordinated through dated handoff docs on `main`.*
+machines coordinated through dated handoff docs on `main`.
+Next: [the backward pass the Nano deleted trains a better model than any prune](https://sahilramani.com/2026/08/the-backward-pass-i-deleted/).*
 
 {% include series-nav.html %}

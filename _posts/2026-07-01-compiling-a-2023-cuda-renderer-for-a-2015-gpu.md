@@ -88,6 +88,6 @@ The interesting work starts once it runs, when the question turns to how fast it
 
 
 *Source, the exact patches, and the on-device toolchain notes are in the slimgs
-repo. Next: profiling on the Nano, where every guess about the bottleneck was wrong.*
+repo. Next: [profiling on the Nano](https://sahilramani.com/2026/07/the-bottleneck-wasnt-the-sort/), where every guess about the bottleneck was wrong.*
 
 {% include series-nav.html %}

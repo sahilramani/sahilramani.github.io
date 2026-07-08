@@ -22,7 +22,7 @@ A Jetson Nano and an RTX 5080 built this renderer together, and the only channel
 
 ![The forward pass runs inference on the Nano, the backward pass runs training on the 5080, and the two exchange .ply files, frames, and diffs as commits on git main, with every cross-machine number graded on the Nano](/assets/images/slimgs/fig-two-machines.svg)
 
-This is how that worked and what it bought, because the split turned out to be the shape of the problem rather than a trick laid on top of it.
+This closes the series with how that worked and what it bought, because the split turned out to be the shape of the problem rather than a trick laid on top of it.
 
 ## The work was already split
 
@@ -42,7 +42,7 @@ Each agent watched the repository with a loop that fetched and slept, and woke w
 
 The handoff bought more than spare compute. It bought a check.
 
-Every result the 5080 produced was re-graded on the machine that actually ships it. The 5080 reported the port was bit-exact against the reference; the Nano re-ran the diff and found eight bytes of 1.2 million off by one. The 5080 reported a distilled model at a given quality and a projected frame rate; the Nano rendered that model on its own GPU and measured the real number, which came in lower than the projection and inside the target anyway. The claim and the verification came from different machines on different silicon, a Maxwell and a Blackwell. A bug that agreed with itself on one machine had nowhere to hide across two.
+Every result the 5080 produced was re-graded on the machine that actually ships it. The 5080 reported [the port was bit-exact against the reference](https://sahilramani.com/2026/07/the-same-image-on-two-gpus/); the Nano re-ran the diff and found eight bytes of 1.2 million off by one. The 5080 reported [a distilled model](https://sahilramani.com/2026/08/the-backward-pass-i-deleted/) at a given quality and a projected frame rate; the Nano rendered that model on its own GPU and measured the real number, which came in lower than the projection and inside the target anyway. The claim and the verification came from different machines on different silicon, a Maxwell and a Blackwell. A bug that agreed with itself on one machine had nowhere to hide across two.
 
 I did not take a number as true until I had rendered it myself. The orchestration made that rule cheap to keep: the other agent did the expensive work, and grading it was one render and one diff. The bit-exact result is worth something precisely because the machine that stripped the renderer is not the machine that checked it.
 
