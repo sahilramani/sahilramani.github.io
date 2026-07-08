@@ -1,0 +1,9 @@
+{%- comment -%}
+Links teaser text to the next part of the series only if that part is already
+published. site.posts excludes future-dated posts, so before the target's date
+this renders plain text; the weekly rebuild turns it into a link automatically.
+Usage: {% include series-next.html text="the next post" %}
+{%- endcomment -%}
+{%- assign next_order = page.series_order | plus: 1 -%}
+{%- assign next_post = site.posts | where: "series", page.series | where_exp: "p", "p.series_order == next_order" | first -%}
+{%- if next_post -%}[{{ include.text }}]({{ next_post.url | relative_url }}){%- else -%}{{ include.text }}{%- endif -%}
