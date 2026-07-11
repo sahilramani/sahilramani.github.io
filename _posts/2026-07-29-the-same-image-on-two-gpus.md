@@ -54,9 +54,7 @@ I did not write an approximation of the reference. The stripped renderer is the 
 That closes the last open item in the ledger. A forward-only Gaussian Splatting renderer, hand-patched onto a 2019 board, renders a real capture at about 17 frames a second, and does it pixel-for-pixel. The proof ran on a GPU from the other end of the decade, in the same repository, a few commits later.
 
 
-*The reference frame, the difference image, and the diff numbers are under
-`reference/` in the repo; the protocol is `docs/u3-validation.md`. The two
-machines coordinated through dated handoff docs on `main`.
+*The two machines coordinated through dated handoff docs on `main`.
 Next: {% include series-next.html text="the backward pass the Nano deleted trains a better model than any prune" %}.*
 
 {% include series-nav.html %}

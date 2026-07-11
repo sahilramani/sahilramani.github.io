@@ -65,8 +65,7 @@ Distillation wins at every point on it. The heuristic prune sorts the splats it 
 The shape is worth keeping. One rasterizer, split down the middle. The forward half, stripped and patched, runs inference on a 2019 board at the edge of what it can hold. The backward half, stock, runs training on a 2025 board built for it. They share a `.ply` and a git history, and a model trained on one renders pixel-for-pixel on the other. The board that cannot train runs a model that a board which cannot fit it made.
 
 
-*The distillation recipe (`reference/distill.py`), the model, and the on-device
-diffs are in the repo. The two machines coordinated through dated handoff docs on
+*The two machines coordinated through dated handoff docs on
 `main`; jetson rendered and graded the model the 5080 trained.
 Next: {% include series-next.html text="how two machines with no link between them built one renderer" %}.*
 

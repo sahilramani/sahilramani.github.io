@@ -105,7 +105,6 @@ Sort is slow. You're bandwidth-bound. That call must be a double. Three reasonab
 The 14% was worth having. The habit that found it was worth more.
 
 
-*Code, raw numbers, and a running ledger of what's verified versus still flagged
-are in the slimgs repo. Next: {% include series-next.html text="pruning a room-scale scene down to something a 4GB board can hold" %}, and what that does to the frame.*
+*Next: {% include series-next.html text="pruning a room-scale scene down to something a 4GB board can hold" %}, and what that does to the frame.*
 
 {% include series-nav.html %}
