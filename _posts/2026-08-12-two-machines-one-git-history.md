@@ -52,6 +52,8 @@ This shape fits a narrow class of problem. The tasks were cleanly separable, the
 
 What it bought, in the end, is that each machine did only what it was for. The Nano stayed the cheap, constrained target and proved things on the hardware that matters. The 5080 was the engine room and never had to pretend to be the product. Git made them one project with one history, and a markdown file told each what to do next.
 
+![The same train scene rendered on both machines side by side, the Jetson Nano on sm_53 from 2019 on the left and the RTX 5080 reference on the right, visually indistinguishable](/assets/images/slimgs/13-same-image-two-gpus.png)
+
 
 *The full exchange is in `handoff/jetson.md` and `handoff/5080.md`, dated and
 append-only; the git log is the rest of the record. Every cross-machine number in

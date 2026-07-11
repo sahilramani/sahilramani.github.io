@@ -87,7 +87,6 @@ Almost every error was the same finding. A thing the code leaned on was added af
 The interesting work starts once it runs, when the question turns to how fast it goes and why. That is the next post, and the profiler had three surprises waiting.
 
 
-*Source, the exact patches, and the on-device toolchain notes are in the slimgs
-repo. Next: {% include series-next.html text="profiling on the Nano" %}, where every guess about the bottleneck was wrong.*
+*Next: {% include series-next.html text="profiling on the Nano" %}, where every guess about the bottleneck was wrong.*
 
 {% include series-nav.html %}

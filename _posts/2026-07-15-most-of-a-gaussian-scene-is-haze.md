@@ -80,8 +80,4 @@ So the real answer, framed the way it was captured: a little under 20 FPS at 480
 Framing the scene the way it was shot needs the original cameras. Those ship inside a 14 GB archive nobody wants to download whole. Pulling one small file out of a remote zip, and the portrait of the 713 it unlocks, is {% include series-next.html text="the next post" %}.
 
 
-*Loader, the `--prune importance` path, the per-pixel comparison harness, and the
-running honesty ledger are in the slimgs repo. The camera limitation and every
-still-flagged claim are tracked there too.*
-
 {% include series-nav.html %}
