@@ -26,8 +26,8 @@ nav_id: post
 /* BODY */
 .post-wrap{max-width:940px;margin:0 auto;padding:64px 24px 96px;font-size:17px;line-height:1.75;color:var(--ink)}
 /* WIDE DESKTOP: roomy container, but hold prose + code to a readable measure; figures use the extra room */
-.post-wrap > p,.post-wrap > h2,.post-wrap > h3,.post-wrap > h4,.post-wrap > blockquote,.post-wrap > ul,.post-wrap > ol,.post-wrap > table,.post-wrap > .highlighter-rouge,.post-wrap > .notice,.post-wrap > .notice--info,.post-wrap > .footnotes{max-width:704px;margin-left:auto;margin-right:auto}
-.post-wrap > ul,.post-wrap > ol{padding-left:22px;box-sizing:border-box}
+.post-wrap > :is(p,h2,h3,h4,blockquote,ul,ol,table,.highlighter-rouge,.notice,.notice--info,.footnotes){max-width:704px;margin-left:auto;margin-right:auto}
+.post-wrap > :is(ul,ol){padding-left:22px;box-sizing:border-box}
 .post-wrap p{margin-bottom:22px;color:var(--ink)}
 .post-wrap p:last-child{margin-bottom:0}
 .post-wrap strong{color:var(--ink);font-weight:600}
@@ -112,6 +112,8 @@ nav_id: post
 }
 </style>
 {% include code-style.html scope=".post-wrap" %}
+<style>/* center code at the readable measure (overrides code-style, which loads above) */
+.post-wrap > div.highlighter-rouge{max-width:704px;margin-left:auto;margin-right:auto}</style>
 
 <div class="post-hero">
   <canvas data-field-canvas data-points="600" data-cx="0.78" data-cy="0.55" data-scale="0.22" data-rot-speed="0.0024" aria-hidden="true"></canvas>

@@ -36,7 +36,9 @@ A Gaussian scene has no canonical front. It is a cloud in whatever coordinate fr
 
 That returns real geometry in real color, green hills, blue sky, even the orange traffic cone from the reference photo. It does not return the locomotive. Every viewpoint comes out edge-on, the scene a thin bright band on black, or smeared into streaks.
 
-The streaks are the tell. A Gaussian optimized to look right from the captured angles is a stretched, anisotropic disk in space. View it near those angles and the disks line up into surfaces. View it from far off, from above, and each disk turns side-on and smears. The renderer is doing exactly what it should. The scene holds no information about the views nobody shot. A clean broadside waits on the original cameras, and so does any pixel-exact check against a reference renderer. Both are out of reach until that file turns up.
+The streaks are the tell. A Gaussian optimized to look right from the captured angles is a stretched, anisotropic disk in space. View it near those angles and the disks line up into surfaces. View it from far off, from above, and each disk turns side-on and smears. The renderer is doing exactly what it should.
+
+The scene holds no information about the views nobody shot. A clean broadside waits on the original cameras, and so does any pixel-exact check against a reference renderer. Both are out of reach until that file turns up.
 
 <figure><img src="/assets/images/slimgs/fig-streaks.svg" alt="A trained splat is a flat disk: from the angle it was fit it forms a surface; from any other it turns edge-on and smears into streaks"></figure>
 
@@ -44,7 +46,9 @@ The streaks are the tell. A Gaussian optimized to look right from the captured a
 
 The edge-on views render fast. About 54 frames a second at 480p for a 50,000-splat slice. For a moment that looks like the headline, well past the 15-to-30 target on a 2019 board.
 
-It is a measurement artifact, for the reason [the last post](https://sahilramani.com/2026/07/the-bottleneck-wasnt-the-sort/) spent its length on. The render step is bound by overlap, by how many splats crowd each tile, and an edge-on band where most of the frame is black is close to the cheapest case there is. Pulling the camera closer makes it worse as a measurement: more splats fall outside the view and get culled, and the rate climbs past 200 while showing even less. Timing the views you can get means timing the empty ones. The honest number needs a frame full of scene.
+It is a measurement artifact, for the reason [the last post](https://sahilramani.com/2026/07/the-bottleneck-wasnt-the-sort/) spent its length on. Render cost is bound by overlap, by how many splats crowd each tile, and an edge-on band that is mostly black is near the cheapest case there is.
+
+Pulling the camera closer makes it worse as a measurement: more splats fall outside the view and get culled, and the rate climbs past 200 while showing even less. Timing the views you can get means timing the empty ones. The honest number needs a frame full of scene.
 
 <figure><img src="/assets/images/slimgs/fig-empty.svg" alt="Frame rate rises as the scene empties out of the view: an edge-on slice runs about 54 FPS and pulling the camera in climbs past 200, while the captured framing that fills the screen is the honest ~17 FPS, inside the 15 to 30 FPS target band"></figure>
 
@@ -75,7 +79,11 @@ opacity alone                33.7
 stride (blind)               72.4     <- mostly black
 ```
 
-Importance pruning lands twelve times closer to the full scene than the stride, from the same 6.7% of the splats. Six levels out of 255 is below what an eye catches. The other 93% of the splats, by this measure, carried almost none of the image.
+Importance pruning lands twelve times closer to the full scene than the stride, from the same 6.7% of the splats.
+
+> Six levels out of 255 is below what an eye catches.
+
+The other 93% of the splats, by this measure, carried almost none of the image.
 
 <figure class="duo">
   <img src="/assets/images/slimgs/06-train-importance-prune-50k.png" alt="importance-pruned 50K: the scene survives">
@@ -87,7 +95,9 @@ Side by side, same camera and the same 50,000-splat budget: the importance rende
 
 ## The number, framed honestly
 
-The importance-pruned 50,000 fills the frame, so the timer finally runs on a view that is full of scene. How fast depends on how much the scene fills the frame, because render pays per covered pixel and per overlap. A loosely framed view runs in the low 40s. A view framed the way the cameras saw it, subject filling the frame, packs far more overlap onto each tile and runs about 17 frames a second at 480p. That is the honest number, and it sits inside the target. The full 742,000-splat scene from the same tight view manages 2.7.
+The importance-pruned 50,000 fills the frame, so the timer finally runs on a view that is full of scene. How fast depends on how much the scene fills the frame, because render pays per covered pixel and per overlap.
+
+A loosely framed view runs in the low 40s. A view framed the way the cameras saw it, subject filling the frame, packs far more overlap onto each tile and runs about 17 frames a second at 480p. That is the honest number, and it sits inside the target. The full 742,000-splat scene from the same tight view manages 2.7.
 
 <figure class="duo">
   <img src="/assets/images/slimgs/09-train-cam0-full-reference.png" alt="the full 742,000-splat scene at the captured framing">

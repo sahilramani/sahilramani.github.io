@@ -56,5 +56,5 @@
   <text x="350" y="262" class="xs t-mut" text-anchor="middle">loose framing</text>
   <text x="545" y="262" class="xs t-mut" text-anchor="middle">captured framing</text>
 
-  <text x="100" y="289" class="sm t-mut">Emptier frame, fewer splats per tile, higher FPS &#8212; and less of the scene on screen.</text>
+  <text x="100" y="289" class="sm t-mut">Emptier frame, fewer splats per tile, higher FPS, and less of the scene on screen.</text>
 </svg>
