@@ -51,6 +51,10 @@ nav_id: post
 .post-wrap img{max-width:100%;height:auto;display:block;margin:28px auto;border:1px solid var(--line2)}
 .post-wrap figure{margin:28px 0}
 .post-wrap figcaption{font-family:var(--mono);font-size:11px;color:var(--ink2);text-align:center;margin-top:8px;letter-spacing:0.06em;text-transform:uppercase}
+/* two-up comparison figures (kept side by side on all widths so the pairing reads) */
+.post-wrap figure.duo{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:28px 0;align-items:start}
+.post-wrap figure.duo img{margin:0;width:100%}
+.post-wrap figure.duo figcaption{grid-column:1 / -1}
 .post-wrap hr{border:0;border-top:1px solid var(--line);margin:40px 0}
 
 .post-wrap table{width:100%;border-collapse:collapse;margin:24px 0;font-size:14px}
