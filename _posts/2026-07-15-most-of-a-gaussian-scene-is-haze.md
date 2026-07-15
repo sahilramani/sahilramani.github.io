@@ -66,14 +66,23 @@ stride (blind)               72.4     <- mostly black
 
 Importance pruning lands twelve times closer to the full scene than the stride, from the same 6.7% of the splats. Six levels out of 255 is below what an eye catches. The other 93% of the splats, by this measure, carried almost none of the image.
 
-![importance-pruned 50K: the scene survives](/assets/images/slimgs/06-train-importance-prune-50k.png)
-![blind stride-pruned 50K: mostly black](/assets/images/slimgs/07-train-stride-prune-50k.png)
+<figure class="half">
+  <a href="/assets/images/slimgs/06-train-importance-prune-50k.png"><img src="/assets/images/slimgs/06-train-importance-prune-50k.png" alt="importance-pruned 50K: the scene survives"></a>
+  <a href="/assets/images/slimgs/07-train-stride-prune-50k.png"><img src="/assets/images/slimgs/07-train-stride-prune-50k.png" alt="blind stride-pruned 50K: mostly black"></a>
+  <figcaption>Importance-pruned 50K, 6/255 mean error (left); the same budget spent by a blind stride, 72/255 (right).</figcaption>
+</figure>
 
 Side by side, same camera and the same 50,000-splat budget: the importance render fills the frame the way the full scene does, and the stride render is a scatter of bright fragments on black.
 
 ## The number, framed honestly
 
 The importance-pruned 50,000 fills the frame, so the timer finally runs on a view that is full of scene. How fast depends on how much the scene fills the frame, because render pays per covered pixel and per overlap. A loosely framed view runs in the low 40s. A view framed the way the cameras saw it, subject filling the frame, packs far more overlap onto each tile and runs about 17 frames a second at 480p. That is the honest number, and it sits inside the target. The full 742,000-splat scene from the same tight view manages 2.7.
+
+<figure class="half">
+  <a href="/assets/images/slimgs/09-train-cam0-full-reference.png"><img src="/assets/images/slimgs/09-train-cam0-full-reference.png" alt="the full 742,000-splat scene at the captured framing"></a>
+  <a href="/assets/images/slimgs/08b-train-real-camera-50k.png"><img src="/assets/images/slimgs/08b-train-real-camera-50k.png" alt="the importance-pruned 50,000-splat scene at the same framing"></a>
+  <figcaption>The captured framing: the full 742,000-splat scene (left, 2.7 FPS) beside the importance-pruned 50,000 (right, about 17 FPS at 480p).</figcaption>
+</figure>
 
 So the real answer, framed the way it was captured: a little under 20 FPS at 480p, in the target band, from a model that is a fraction of the original. The kernel work from [the last post](https://sahilramani.com/2026/07/the-bottleneck-wasnt-the-sort/) helped. The lever here was upstream. It was noticing that most of the data was haze and keeping the part that was not.
 
