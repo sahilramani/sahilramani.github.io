@@ -21,6 +21,13 @@ series_title: "Real-time Gaussian Splatting on a $99 board"
 
 Drop 93% of a trained Gaussian scene and the picture barely changes. That is what lets a room-scale capture fit on a 4GB board, and it is the second of two surprises this post hit on the way from the synthetic scenes of [the port](https://sahilramani.com/2026/07/compiling-a-2023-cuda-renderer-for-a-2015-gpu/) and [the profile](https://sahilramani.com/2026/07/the-bottleneck-wasnt-the-sort/) to a real one. The first was humbling: I could not point the camera at the locomotive.
 
+<div class="statrow">
+  <div><b>742K &rarr; 50K</b><span>splats kept</span></div>
+  <div><b>93%</b><span>dropped as haze</span></div>
+  <div><b>6 / 255</b><span>error vs full render</span></div>
+  <div><b class="g">~17 FPS</b><span>480p on a $99 board</span></div>
+</div>
+
 The scene is the Tanks & Temples "train" from the official [3D Gaussian Splatting release](https://repo-sam.inria.fr/fungraph/3d-gaussian-splatting/), a green Western Pacific locomotive on a siding with hills behind it. The 7,000-iteration model, shipped in the release's [pretrained bundle](https://repo-sam.inria.fr/fungraph/3d-gaussian-splatting/datasets/pretrained/models.zip), is 742,000 splats, 175 MB of `.ply`. The loader built for the synthetic tests read it without complaint, the first good sign. Real captures use the same binary layout, just with the higher spherical-harmonic bands a degree-0 renderer ignores.
 
 ## The camera you cannot guess
@@ -31,7 +38,7 @@ That returns real geometry in real color, green hills, blue sky, even the orange
 
 The streaks are the tell. A Gaussian optimized to look right from the captured angles is a stretched, anisotropic disk in space. View it near those angles and the disks line up into surfaces. View it from far off, from above, and each disk turns side-on and smears. The renderer is doing exactly what it should. The scene holds no information about the views nobody shot. A clean broadside waits on the original cameras, and so does any pixel-exact check against a reference renderer. Both are out of reach until that file turns up.
 
-![A trained splat is a flat disk: from the angle it was fit it forms a surface; from any other it turns edge-on and smears into streaks](/assets/images/slimgs/fig-streaks.svg)
+<figure><img src="/assets/images/slimgs/fig-streaks.svg" alt="A trained splat is a flat disk: from the angle it was fit it forms a surface; from any other it turns edge-on and smears into streaks"></figure>
 
 ## The fast number is the empty view
 
@@ -39,13 +46,15 @@ The edge-on views render fast. About 54 frames a second at 480p for a 50,000-spl
 
 It is a measurement artifact, for the reason [the last post](https://sahilramani.com/2026/07/the-bottleneck-wasnt-the-sort/) spent its length on. The render step is bound by overlap, by how many splats crowd each tile, and an edge-on band where most of the frame is black is close to the cheapest case there is. Pulling the camera closer makes it worse as a measurement: more splats fall outside the view and get culled, and the rate climbs past 200 while showing even less. Timing the views you can get means timing the empty ones. The honest number needs a frame full of scene.
 
+<figure><img src="/assets/images/slimgs/fig-empty.svg" alt="Frame rate rises as the scene empties out of the view: an edge-on slice runs about 54 FPS and pulling the camera in climbs past 200, while the captured framing that fills the screen is the honest ~17 FPS, inside the 15 to 30 FPS target band"></figure>
+
 ## Most of it is haze
 
 Filling the frame at a count the board can hold means pruning, 742,000 down toward 50,000. The blind way is a stride: keep every fourteenth splat. The first stride came back almost black.
 
 That sent the question to the opacity values, and the scene explained itself. Average opacity across those 742,000 splats is 0.187. Most of a trained Gaussian scene is near-transparent haze, thousands of faint splats each nudging a pixel a little. A stride keeps them in proportion, so it spends a tight budget on fog and loses the surfaces underneath.
 
-![Histogram of activated opacity over all 741,883 splats: 30% sit in the faintest bin, 67% below 0.2, only 0.2% near-opaque](/assets/images/slimgs/fig-haze.svg)
+<figure><img src="/assets/images/slimgs/fig-haze.svg" alt="Histogram of activated opacity over all 741,883 splats: 30% sit in the faintest bin, 67% below 0.2, only 0.2% near-opaque"></figure>
 
 The fix is to spend the budget on splats that own pixels. Score each one by opacity times size, and keep the top 50,000:
 
