@@ -24,7 +24,10 @@ nav_id: post
 .post-rule{max-width:1100px;margin:0 auto;border-top:1px solid var(--line)}
 
 /* BODY */
-.post-wrap{max-width:720px;margin:0 auto;padding:64px 24px 96px;font-size:17px;line-height:1.75;color:var(--ink)}
+.post-wrap{max-width:940px;margin:0 auto;padding:64px 24px 96px;font-size:17px;line-height:1.75;color:var(--ink)}
+/* WIDE DESKTOP: roomy container, but hold prose + code to a readable measure; figures use the extra room */
+.post-wrap > :is(p,h2,h3,h4,blockquote,ul,ol,table,.highlighter-rouge,.notice,.notice--info,.footnotes){max-width:704px;margin-left:auto;margin-right:auto}
+.post-wrap > :is(ul,ol){padding-left:22px;box-sizing:border-box}
 .post-wrap p{margin-bottom:22px;color:var(--ink)}
 .post-wrap p:last-child{margin-bottom:0}
 .post-wrap strong{color:var(--ink);font-weight:600}
@@ -49,8 +52,20 @@ nav_id: post
 /* code styling (inline + fenced + diagrams) lives in _includes/code-style.html */
 
 .post-wrap img{max-width:100%;height:auto;display:block;margin:28px auto;border:1px solid var(--line2)}
-.post-wrap figure{margin:28px 0}
+.post-wrap figure{max-width:880px;margin:28px auto}
+.post-wrap figure img{margin:0}
 .post-wrap figcaption{font-family:var(--mono);font-size:11px;color:var(--ink2);text-align:center;margin-top:8px;letter-spacing:0.06em;text-transform:uppercase}
+/* two-up comparison figures (kept side by side on all widths so the pairing reads) */
+.post-wrap figure.duo{display:grid;grid-template-columns:1fr 1fr;gap:10px;align-items:start}
+.post-wrap figure.duo img{margin:0;width:100%}
+.post-wrap figure.duo figcaption{grid-column:1 / -1}
+/* result-at-a-glance strip */
+.post-wrap .statrow{max-width:704px;margin:34px auto;display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+.post-wrap .statrow > div{background:var(--bg);padding:15px 16px;display:flex;flex-direction:column;gap:5px}
+.post-wrap .statrow b{font-family:var(--sans);font-size:21px;font-weight:500;letter-spacing:-0.02em;color:var(--ink)}
+.post-wrap .statrow b.g{color:var(--g)}
+.post-wrap .statrow span{font-family:var(--mono);font-size:10px;letter-spacing:0.07em;text-transform:uppercase;color:var(--ink2)}
+@media(max-width:560px){.post-wrap .statrow{grid-template-columns:1fr 1fr}}
 .post-wrap hr{border:0;border-top:1px solid var(--line);margin:40px 0}
 
 .post-wrap table{width:100%;border-collapse:collapse;margin:24px 0;font-size:14px}
@@ -97,6 +112,8 @@ nav_id: post
 }
 </style>
 {% include code-style.html scope=".post-wrap" %}
+<style>/* center code at the readable measure (overrides code-style, which loads above) */
+.post-wrap > div.highlighter-rouge{max-width:704px;margin-left:auto;margin-right:auto}</style>
 
 <div class="post-hero">
   <canvas data-field-canvas data-points="600" data-cx="0.78" data-cy="0.55" data-scale="0.22" data-rot-speed="0.0024" aria-hidden="true"></canvas>

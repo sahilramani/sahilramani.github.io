@@ -21,6 +21,13 @@ series_title: "Real-time Gaussian Splatting on a $99 board"
 
 Drop 93% of a trained Gaussian scene and the picture barely changes. That is what lets a room-scale capture fit on a 4GB board, and it is the second of two surprises this post hit on the way from the synthetic scenes of [the port](https://sahilramani.com/2026/07/compiling-a-2023-cuda-renderer-for-a-2015-gpu/) and [the profile](https://sahilramani.com/2026/07/the-bottleneck-wasnt-the-sort/) to a real one. The first was humbling: I could not point the camera at the locomotive.
 
+<div class="statrow">
+  <div><b>742K &rarr; 50K</b><span>splats kept</span></div>
+  <div><b>93%</b><span>dropped as haze</span></div>
+  <div><b>6 / 255</b><span>error vs full render</span></div>
+  <div><b class="g">~17 FPS</b><span>480p on a $99 board</span></div>
+</div>
+
 The scene is the Tanks & Temples "train" from the official [3D Gaussian Splatting release](https://repo-sam.inria.fr/fungraph/3d-gaussian-splatting/), a green Western Pacific locomotive on a siding with hills behind it. The 7,000-iteration model, shipped in the release's [pretrained bundle](https://repo-sam.inria.fr/fungraph/3d-gaussian-splatting/datasets/pretrained/models.zip), is 742,000 splats, 175 MB of `.ply`. The loader built for the synthetic tests read it without complaint, the first good sign. Real captures use the same binary layout, just with the higher spherical-harmonic bands a degree-0 renderer ignores.
 
 ## The camera you cannot guess
@@ -29,13 +36,21 @@ A Gaussian scene has no canonical front. It is a cloud in whatever coordinate fr
 
 That returns real geometry in real color, green hills, blue sky, even the orange traffic cone from the reference photo. It does not return the locomotive. Every viewpoint comes out edge-on, the scene a thin bright band on black, or smeared into streaks.
 
-The streaks are the tell. A Gaussian optimized to look right from the captured angles is a stretched, anisotropic disk in space. View it near those angles and the disks line up into surfaces. View it from far off, from above, and each disk turns side-on and smears. The renderer is doing exactly what it should. The scene holds no information about the views nobody shot. A clean broadside waits on the original cameras, and so does any pixel-exact check against a reference renderer. Both are out of reach until that file turns up.
+The streaks are the tell. A Gaussian optimized to look right from the captured angles is a stretched, anisotropic disk in space. View it near those angles and the disks line up into surfaces. View it from far off, from above, and each disk turns side-on and smears. The renderer is doing exactly what it should.
+
+The scene holds no information about the views nobody shot. A clean broadside waits on the original cameras, and so does any pixel-exact check against a reference renderer. Both are out of reach until that file turns up.
+
+<figure><img src="/assets/images/slimgs/fig-streaks.svg" alt="A trained splat is a flat disk: from the angle it was fit it forms a surface; from any other it turns edge-on and smears into streaks"></figure>
 
 ## The fast number is the empty view
 
 The edge-on views render fast. About 54 frames a second at 480p for a 50,000-splat slice. For a moment that looks like the headline, well past the 15-to-30 target on a 2019 board.
 
-It is a measurement artifact, for the reason [the last post](https://sahilramani.com/2026/07/the-bottleneck-wasnt-the-sort/) spent its length on. The render step is bound by overlap, by how many splats crowd each tile, and an edge-on band where most of the frame is black is close to the cheapest case there is. Pulling the camera closer makes it worse as a measurement: more splats fall outside the view and get culled, and the rate climbs past 200 while showing even less. Timing the views you can get means timing the empty ones. The honest number needs a frame full of scene.
+It is a measurement artifact, for the reason [the last post](https://sahilramani.com/2026/07/the-bottleneck-wasnt-the-sort/) spent its length on. Render cost is bound by overlap, by how many splats crowd each tile, and an edge-on band that is mostly black is near the cheapest case there is.
+
+Pulling the camera closer makes it worse as a measurement: more splats fall outside the view and get culled, and the rate climbs past 200 while showing even less. Timing the views you can get means timing the empty ones. The honest number needs a frame full of scene.
+
+<figure><img src="/assets/images/slimgs/fig-empty.svg" alt="Frame rate rises as the scene empties out of the view: an edge-on slice runs about 54 FPS and pulling the camera in climbs past 200, while the captured framing that fills the screen is the honest ~17 FPS, inside the 15 to 30 FPS target band"></figure>
 
 ## Most of it is haze
 
@@ -43,7 +58,7 @@ Filling the frame at a count the board can hold means pruning, 742,000 down towa
 
 That sent the question to the opacity values, and the scene explained itself. Average opacity across those 742,000 splats is 0.187. Most of a trained Gaussian scene is near-transparent haze, thousands of faint splats each nudging a pixel a little. A stride keeps them in proportion, so it spends a tight budget on fog and loses the surfaces underneath.
 
-![Histogram of activated opacity over all 741,883 splats: 30% sit in the faintest bin, 67% below 0.2, only 0.2% near-opaque](/assets/images/slimgs/fig-haze.svg)
+<figure><img src="/assets/images/slimgs/fig-haze.svg" alt="Histogram of activated opacity over all 741,883 splats: 30% sit in the faintest bin, 67% below 0.2, only 0.2% near-opaque"></figure>
 
 The fix is to spend the budget on splats that own pixels. Score each one by opacity times size, and keep the top 50,000:
 
@@ -64,16 +79,31 @@ opacity alone                33.7
 stride (blind)               72.4     <- mostly black
 ```
 
-Importance pruning lands twelve times closer to the full scene than the stride, from the same 6.7% of the splats. Six levels out of 255 is below what an eye catches. The other 93% of the splats, by this measure, carried almost none of the image.
+Importance pruning lands twelve times closer to the full scene than the stride, from the same 6.7% of the splats.
 
-![importance-pruned 50K: the scene survives](/assets/images/slimgs/06-train-importance-prune-50k.png)
-![blind stride-pruned 50K: mostly black](/assets/images/slimgs/07-train-stride-prune-50k.png)
+> Six levels out of 255 is below what an eye catches.
+
+The other 93% of the splats, by this measure, carried almost none of the image.
+
+<figure class="duo">
+  <img src="/assets/images/slimgs/06-train-importance-prune-50k.png" alt="importance-pruned 50K: the scene survives">
+  <img src="/assets/images/slimgs/07-train-stride-prune-50k.png" alt="blind stride-pruned 50K: mostly black">
+  <figcaption>Importance-pruned 50K, 6/255 mean error (left); the same budget spent by a blind stride, 72/255 (right).</figcaption>
+</figure>
 
 Side by side, same camera and the same 50,000-splat budget: the importance render fills the frame the way the full scene does, and the stride render is a scatter of bright fragments on black.
 
 ## The number, framed honestly
 
-The importance-pruned 50,000 fills the frame, so the timer finally runs on a view that is full of scene. How fast depends on how much the scene fills the frame, because render pays per covered pixel and per overlap. A loosely framed view runs in the low 40s. A view framed the way the cameras saw it, subject filling the frame, packs far more overlap onto each tile and runs about 17 frames a second at 480p. That is the honest number, and it sits inside the target. The full 742,000-splat scene from the same tight view manages 2.7.
+The importance-pruned 50,000 fills the frame, so the timer finally runs on a view that is full of scene. How fast depends on how much the scene fills the frame, because render pays per covered pixel and per overlap.
+
+A loosely framed view runs in the low 40s. A view framed the way the cameras saw it, subject filling the frame, packs far more overlap onto each tile and runs about 17 frames a second at 480p. That is the honest number, and it sits inside the target. The full 742,000-splat scene from the same tight view manages 2.7.
+
+<figure class="duo">
+  <img src="/assets/images/slimgs/09-train-cam0-full-reference.png" alt="the full 742,000-splat scene at the captured framing">
+  <img src="/assets/images/slimgs/08b-train-real-camera-50k.png" alt="the importance-pruned 50,000-splat scene at the same framing">
+  <figcaption>The captured framing: the full 742,000-splat scene (left, 2.7 FPS) beside the importance-pruned 50,000 (right, about 17 FPS at 480p).</figcaption>
+</figure>
 
 So the real answer, framed the way it was captured: a little under 20 FPS at 480p, in the target band, from a model that is a fraction of the original. The kernel work from [the last post](https://sahilramani.com/2026/07/the-bottleneck-wasnt-the-sort/) helped. The lever here was upstream. It was noticing that most of the data was haze and keeping the part that was not.
 
