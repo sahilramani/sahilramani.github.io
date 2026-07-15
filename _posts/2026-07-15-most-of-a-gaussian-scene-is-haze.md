@@ -31,6 +31,8 @@ That returns real geometry in real color, green hills, blue sky, even the orange
 
 The streaks are the tell. A Gaussian optimized to look right from the captured angles is a stretched, anisotropic disk in space. View it near those angles and the disks line up into surfaces. View it from far off, from above, and each disk turns side-on and smears. The renderer is doing exactly what it should. The scene holds no information about the views nobody shot. A clean broadside waits on the original cameras, and so does any pixel-exact check against a reference renderer. Both are out of reach until that file turns up.
 
+![A trained splat is a flat disk: from the angle it was fit it forms a surface; from any other it turns edge-on and smears into streaks](/assets/images/slimgs/fig-streaks.svg)
+
 ## The fast number is the empty view
 
 The edge-on views render fast. About 54 frames a second at 480p for a 50,000-splat slice. For a moment that looks like the headline, well past the 15-to-30 target on a 2019 board.

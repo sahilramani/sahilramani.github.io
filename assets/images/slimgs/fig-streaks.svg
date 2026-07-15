@@ -1,0 +1,52 @@
+<svg width="100%" viewBox="0 0 680 300" xmlns="http://www.w3.org/2000/svg" role="img">
+  <title>Why a Gaussian scene smears from angles it was not captured at</title>
+  <desc>A trained splat is a flat, anisotropic disk. Viewed from the angle it was fit, many disks overlap into a continuous surface; viewed from an angle nobody photographed, each disk turns edge-on and reads as a thin streak, so the scene smears.</desc>
+  <style>
+    text{font-family:system-ui,-apple-system,'Segoe UI',Roboto,sans-serif}
+    .t-ink{fill:#1f2937}.t-mut{fill:#64748b}
+    .f-blue{fill:#dcebf8}.s-blue{stroke:#2f6fb0}.t-blue{fill:#1d4e80}.d-face{fill:#5b95cc}
+    .f-orange{fill:#fbe7d4}.s-orange{stroke:#d98a3d}.t-orange{fill:#9a5a1c}.d-edge{fill:#c8791f}
+    .lbl{font-size:14px}.sm{font-size:12px}.xs{font-size:11px}.b{font-weight:500}
+    @media (prefers-color-scheme:dark){
+      .t-ink{fill:#e6edf3}.t-mut{fill:#9aa7b4}
+      .f-blue{fill:#16293a}.s-blue{stroke:#5b9bd8}.t-blue{fill:#7db4e6}.d-face{fill:#3f6f9e}
+      .f-orange{fill:#3a2614}.s-orange{stroke:#e0a05c}.t-orange{fill:#e0a05c}.d-edge{fill:#e0a05c}
+    }
+  </style>
+
+  <text x="40" y="28" class="lbl b t-ink">The streaks are the tell</text>
+  <text x="40" y="48" class="sm t-mut">A trained splat is a flat, anisotropic disk: a surface head-on, a sliver from any other angle.</text>
+
+  <!-- LEFT: captured angle -> surface -->
+  <rect x="40" y="60" width="270" height="182" rx="12" class="f-blue s-blue" stroke-width="1"/>
+  <text x="175" y="84" class="sm b t-blue" text-anchor="middle">the angle it was fit from</text>
+  <g class="d-face" fill-opacity="0.5">
+    <ellipse cx="110" cy="140" rx="42" ry="20" transform="rotate(-6 110 140)"/>
+    <ellipse cx="152" cy="126" rx="44" ry="22" transform="rotate(4 152 126)"/>
+    <ellipse cx="196" cy="142" rx="46" ry="20" transform="rotate(-3 196 142)"/>
+    <ellipse cx="240" cy="130" rx="42" ry="22" transform="rotate(6 240 130)"/>
+    <ellipse cx="132" cy="166" rx="44" ry="21" transform="rotate(2 132 166)"/>
+    <ellipse cx="186" cy="176" rx="47" ry="22" transform="rotate(-4 186 176)"/>
+    <ellipse cx="236" cy="168" rx="42" ry="20" transform="rotate(3 236 168)"/>
+    <ellipse cx="168" cy="150" rx="50" ry="24" transform="rotate(0 168 150)"/>
+  </g>
+  <text x="175" y="262" class="sm t-ink" text-anchor="middle">splats line up into a surface</text>
+
+  <!-- RIGHT: novel angle -> streaks -->
+  <rect x="370" y="60" width="270" height="182" rx="12" class="f-orange s-orange" stroke-width="1"/>
+  <text x="505" y="84" class="sm b t-orange" text-anchor="middle">an angle nobody shot</text>
+  <g class="d-edge" fill-opacity="0.85">
+    <ellipse cx="442" cy="110" rx="46" ry="3" transform="rotate(-28 442 110)"/>
+    <ellipse cx="516" cy="102" rx="44" ry="3" transform="rotate(18 516 102)"/>
+    <ellipse cx="578" cy="128" rx="40" ry="3" transform="rotate(-12 578 128)"/>
+    <ellipse cx="430" cy="148" rx="46" ry="3" transform="rotate(22 430 148)"/>
+    <ellipse cx="500" cy="160" rx="48" ry="3" transform="rotate(-32 500 160)"/>
+    <ellipse cx="582" cy="172" rx="40" ry="3" transform="rotate(12 582 172)"/>
+    <ellipse cx="456" cy="192" rx="46" ry="3" transform="rotate(-18 456 192)"/>
+    <ellipse cx="540" cy="122" rx="44" ry="3" transform="rotate(34 540 122)"/>
+    <ellipse cx="598" cy="150" rx="36" ry="3" transform="rotate(-22 598 150)"/>
+  </g>
+  <text x="505" y="262" class="sm t-ink" text-anchor="middle">splats turn edge-on, and smear</text>
+
+  <text x="40" y="290" class="sm t-mut">The scene holds no information about the views nobody shot.</text>
+</svg>
