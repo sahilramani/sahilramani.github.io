@@ -1,72 +1,17 @@
 ---
-# Only the main Sass file needs front matter (the dashes are enough)
+# Front matter required so Jekyll runs this file through the Sass pipeline.
 ---
 
 @charset "utf-8";
 
-// https://github.com/mmistakes/minimal-mistakes/discussions/2726#discussioncomment-172732
+// "field" theme — the site's own theme. Order matters: it mirrors the cascade
+// the layouts used when these blocks were inline (base chrome, then post,
+// project, and code styling).
+@import "field/base";
+@import "field/post";
+@import "field/project";
+@import "field/code";
 
-/*
-GS: to override any SASS variables in "_variables.scss", you must place new values here, BEFORE
-the `@import` statements, as that is the point where the variables are used!
-See: https://github.com/mmistakes/minimal-mistakes/issues/2278#issuecomment-541484035
-*/
-
-/*
-- Let's override the stinking `$max-width` variable in "_variables.scss", which controls the
-  maximum width of the entire content on the screen, as it is currently set to `$x-large`, which
-  is only 1280px, which is too small to take up the entire width on a standard
-  1920 (px wide) x 1080 (px tall) display, and WAY TOO SMALL for a 3840 x 2160 4k display!
-This is what is currently in "_variables.scss" under the "Breakpoints" section:
-
-        $small: 600px !default;
-        $medium: 768px !default;
-        $medium-wide: 900px !default;
-        $large: 1024px !default;
-        $x-large: 1280px !default;
-        $max-width: $x-large !default;
-
-Override $max-width (don't forget the semicolon!):
-*/
-// $max-width: 80%;
-
-@import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}"; // skin
-@import "minimal-mistakes"; // main partials
-
-// SCSS file that worked, thanks to https://github.com/mmistakes/minimal-mistakes/discussions/1219#discussioncomment-172848
-
-/*
-GS: override any CSS with new CSS styles AFTER the `@import "minimal-mistakes";` line just above!
-See: https://github.com/mmistakes/minimal-mistakes/issues/1219#issuecomment-326809412
-Anything you place after this point will therefore "cascade and override" the previous CSS styles.
-*/
-
-/*
-GS: Decrease font sizes of the entire website.
-Defaults for small, medium, large, and x-large screens are:
-16, 18, 20, and 22px, in that order. All other font sizes are "em"
-[typography unit](https://en.wikipedia.org/wiki/Em_(typography)) multipliers of these pixel
-(px) values, and are therefore relative to and changed by these singular pixel values.
-See: https://github.com/mmistakes/minimal-mistakes/issues/1219#issuecomment-326809412
-- It looks like the screen pixel sizes to move into each new "size" category are defined in
-  the "Breakpoints" section of "_variables.scss"?
-*/
-html {
-  font-size: 12px; // change to whatever
-
-  @include breakpoint($small) {
-    font-size: 12px; // change to whatever
-  }
-
-  @include breakpoint($medium) {
-    font-size: 14px; // change to whatever
-  }
-
-  @include breakpoint($large) {
-    font-size: 16px; // change to whatever
-  }
-
-  @include breakpoint($x-large) {
-    font-size: 18px; // change to whatever
-  }
-}
+// Scoped code/diagram styling (was _includes/code-style.html).
+@include field-code('.post-wrap');
+@include field-code('.pj-body');
