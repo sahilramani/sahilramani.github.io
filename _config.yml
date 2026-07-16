@@ -31,6 +31,8 @@ search: true
 
 # Build settings
 markdown: kramdown
+sass:
+  style: expanded  # ruby-sass 3.x `compressed` mangles CSS custom properties; keep expanded
 remote_theme: mmistakes/minimal-mistakes
 # Outputting
 permalink: /:year/:month/:title/

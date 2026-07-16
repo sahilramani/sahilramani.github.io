@@ -1,0 +1,57 @@
+// Shared code-block + diagram styling for field layouts (was _includes/code-style.html).
+// $scope is the prose container selector (.post-wrap for posts, .pj-body for projects).
+@mixin field-code($scope) {
+/* inline code */
+#{$scope} code{font-family:var(--mono);font-size:0.9em;background:var(--bg2);border:1px solid var(--line2);padding:1px 6px;color:var(--ink);border-radius:2px}
+
+/* bare fenced block (no language): flat output panel */
+#{$scope} pre{background:#0a0a0c;border:1px solid var(--line2);border-radius:6px;padding:18px 20px;margin:28px 0;overflow-x:auto;font-family:var(--mono);font-size:13.5px;line-height:1.7;color:var(--ink2)}
+
+/* fenced code block: terminal-style panel with header bar + syntax palette */
+#{$scope} div.highlighter-rouge{position:relative;margin:28px 0;border:1px solid var(--line2);border-radius:6px;overflow:hidden;background:#0a0a0c}
+#{$scope} div.highlighter-rouge::before{content:'\25CF\2002\25CF\2002\25CF';display:block;height:36px;line-height:36px;padding:0 16px;background:var(--bg2);border-bottom:1px solid var(--line2);color:#3a3b44;font-size:9px;letter-spacing:0.25em}
+#{$scope} div.highlighter-rouge::after{content:'code';position:absolute;top:0;right:16px;height:36px;line-height:36px;font-family:var(--mono);font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--g)}
+#{$scope} div.language-cpp::after{content:'cpp'}
+#{$scope} div.language-c::after{content:'c'}
+#{$scope} div.language-glsl::after{content:'glsl'}
+#{$scope} div.language-cuda::after{content:'cuda'}
+#{$scope} div.language-python::after,#{$scope} div.language-py::after{content:'python'}
+#{$scope} div.language-bash::after,#{$scope} div.language-shell::after,#{$scope} div.language-sh::after,#{$scope} div.language-console::after{content:'shell'}
+#{$scope} div.language-js::after,#{$scope} div.language-javascript::after{content:'js'}
+#{$scope} div.language-json::after{content:'json'}
+#{$scope} div.language-yaml::after,#{$scope} div.language-yml::after{content:'yaml'}
+#{$scope} div.language-html::after{content:'html'}
+#{$scope} div.language-css::after{content:'css'}
+#{$scope} div.language-ruby::after,#{$scope} div.language-rb::after{content:'ruby'}
+#{$scope} div.language-docker::after,#{$scope} div.language-dockerfile::after{content:'docker'}
+#{$scope} div.language-diff::after{content:'diff'}
+#{$scope} div.language-ini::after,#{$scope} div.language-toml::after{content:'config'}
+#{$scope} div.highlighter-rouge .highlight{background:none;margin:0}
+#{$scope} div.highlighter-rouge pre,#{$scope} div.highlighter-rouge pre.highlight{background:none;border:0;border-radius:0;margin:0;padding:18px 20px;overflow-x:auto;font-family:var(--mono);font-size:13.5px;line-height:1.7;color:var(--ink)}
+#{$scope} pre code{background:none;border:0;padding:0;font-size:inherit;border-radius:0}
+
+/* rouge token palette (dark) */
+#{$scope} .highlight .c,#{$scope} .highlight .c1,#{$scope} .highlight .cm,#{$scope} .highlight .cs,#{$scope} .highlight .cd{color:#6b7280;font-style:italic}
+#{$scope} .highlight .cp{color:#8b95a7}
+#{$scope} .highlight .k,#{$scope} .highlight .kd,#{$scope} .highlight .kr,#{$scope} .highlight .kc,#{$scope} .highlight .kn,#{$scope} .highlight .kp{color:var(--g);font-weight:500}
+#{$scope} .highlight .kt{color:#7fd6ff}
+#{$scope} .highlight .nf,#{$scope} .highlight .nd,#{$scope} .highlight .nc,#{$scope} .highlight .nn{color:#e6c07b}
+#{$scope} .highlight .nb,#{$scope} .highlight .bp{color:#7fd6ff}
+#{$scope} .highlight .nt{color:#7fd6ff}
+#{$scope} .highlight .s,#{$scope} .highlight .s1,#{$scope} .highlight .s2,#{$scope} .highlight .se,#{$scope} .highlight .sb,#{$scope} .highlight .sc,#{$scope} .highlight .sd,#{$scope} .highlight .sx,#{$scope} .highlight .sr,#{$scope} .highlight .sh{color:#b7e8a0}
+#{$scope} .highlight .mi,#{$scope} .highlight .mf,#{$scope} .highlight .mh,#{$scope} .highlight .mo,#{$scope} .highlight .il{color:var(--m)}
+#{$scope} .highlight .o,#{$scope} .highlight .ow{color:#c7c7bf}
+#{$scope} .highlight .p{color:#b8b8b0}
+#{$scope} .highlight .n,#{$scope} .highlight .na,#{$scope} .highlight .nv,#{$scope} .highlight .nx{color:var(--ink)}
+#{$scope} .highlight .gp{color:#6b7280}
+#{$scope} .highlight .go{color:#9a9a92}
+#{$scope} .highlight .err{color:inherit;background:none}
+
+/* SVG diagrams: panel treatment so light/dark line art stays legible */
+#{$scope} img[src$=".svg"]{background:var(--bg2);border-radius:8px;padding:18px 20px}
+
+@media (max-width: 768px){
+  #{$scope} pre,#{$scope} div.highlighter-rouge pre,#{$scope} div.highlighter-rouge pre.highlight{font-size:12.5px;padding:14px 16px}
+  #{$scope} img[src$=".svg"]{padding:12px}
+}
+}
