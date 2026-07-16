@@ -25,15 +25,16 @@ github_username: sahilramani
 # used by jekyll-seo-tag for twitter:site / twitter:creator cards
 twitter:
   username: sahilramani
-minimal_mistakes_skin: dirt
-logo: "/assets/images/apple-touch-icon.png"
-search: true
+logo: "/assets/images/apple-touch-icon.png"  # jekyll-seo-tag publisher logo (JSON-LD)
 
 # Build settings
+# No `theme:`/`remote_theme:` on purpose - "field" is this repo's own theme
+# (_layouts/field*.html, _sass/field/, assets/js/). GitHub Pages injects
+# jekyll-theme-primer as a default when no theme is set; it's inert because
+# every page uses a local layout and nothing links its CSS.
 markdown: kramdown
 sass:
   style: expanded  # ruby-sass 3.x `compressed` mangles CSS custom properties; keep expanded
-remote_theme: mmistakes/minimal-mistakes
 # Outputting
 permalink: /:year/:month/:title/
 paginate: 10 # amount of posts to show
@@ -44,17 +45,15 @@ include:
   - _pages
   - .well-known
 
-# Exclude from processing.
-# The following items will not be processed, by default. Create a custom list
-# to override the default setting.
-# exclude:
-#   - Gemfile
-#   - Gemfile.lock
-#   - node_modules
-#   - vendor/bundle/
-#   - vendor/cache/
-#   - vendor/gems/
-#   - vendor/ruby/
+# Exclude from processing. Setting `exclude` replaces Jekyll's defaults,
+# so the default entries are repeated here alongside the repo-only files.
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+  - CLAUDE.md
+  - README.md
 
 # Plugins (previously gems:)
 plugins:
@@ -80,38 +79,9 @@ comments:
   disqus:
     shortname: "sahilramani"
 
+# used by layouts ({{ site.author.name }}) and jekyll-seo-tag
 author:
   name   : "Sahil Ramani"
-  avatar : "/assets/images/bio-photo.jpg"
-  bio    : "Software Engineer by day, avid gamer by night. Welcome to my wild side, programmatically speaking."
-  links:
-    - label: "Email"
-      icon: "fas fa-fw fa-envelope-square"
-      url: "mailto:sahilramani@gmail.com"
-    - label: "Twitter"
-      icon: "fab fa-fw fa-twitter-square"
-      url: "https://www.twitter.com/sahilramani"
-    - label: "GitHub"
-      icon: "fab fa-fw fa-github"
-      url: "https://www.github.com/sahilramani"
-    - label: "Instagram"
-      icon: "fab fa-fw fa-instagram"
-      url: "https://www.instagram.com/sahilramani"
-
-footer:
-  links:
-    - label: "Email"
-      icon: "fas fa-fw fa-envelope-square"
-      url: "mailto:sahilramani@gmail.com"
-    - label: "Twitter"
-      icon: "fab fa-fw fa-twitter-square"
-      url: "https://www.twitter.com/sahilramani"
-    - label: "GitHub"
-      icon: "fab fa-fw fa-github"
-      url: "https://www.github.com/sahilramani"
-    - label: "Instagram"
-      icon: "fab fa-fw fa-instagram"
-      url: "https://www.instagram.com/sahilramani"
 
 collections:
   projects:
@@ -151,8 +121,3 @@ year_archive:
 resume:
   type: liquid
   path: /resume/
-
-compress_html:
-  clippings: all
-  ignore:
-    envs: development  # disable compression in dev environment
