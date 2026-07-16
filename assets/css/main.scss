@@ -15,3 +15,6 @@
 // Scoped code/diagram styling (was _includes/code-style.html).
 @include field-code('.post-wrap');
 @include field-code('.pj-body');
+
+// Wide post layout: overrides post + code rules above, so it imports last.
+@import "field/post-wide";
