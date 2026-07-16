@@ -1,0 +1,40 @@
+/* WIDE POST LAYOUT
+   Prose stays a readable column; media/code break out to the site's 1100px
+   frame (matching .post-rule / .related, whose 24px-padded content is 1052px).
+   Imported after _post.scss and _code.scss so these overrides win the cascade. */
+
+.post-hero-inner{max-width:1100px}
+
+.post-wrap{
+  /* breakout width: the 1100px frame's content, clamped to the viewport */
+  --bw:min(1052px, calc(100vw - 48px));
+  max-width:760px;
+  /* gutters match .related so breakout edges align with the related grid */
+  padding-left:24px;
+  padding-right:24px;
+}
+
+/* full-frame elements: fenced code, bare pre, figures (incl. .duo pairs),
+   standalone images, tables. Direct children only - anything nested in
+   lists/quotes keeps prose width.
+   (:has() unsupported -> standalone images just stay at prose width.) */
+.post-wrap > div.highlighter-rouge,
+.post-wrap > pre,
+.post-wrap > figure,
+.post-wrap > p:has(> img:only-child){
+  width:var(--bw);
+  max-width:var(--bw);
+  margin-left:calc((100% - var(--bw)) / 2);
+}
+.post-wrap > table{
+  width:var(--bw);
+  max-width:var(--bw);
+  margin-left:calc((100% - var(--bw)) / 2);
+}
+
+@media (max-width: 1100px){
+  .post-wrap{--bw:calc(100vw - 64px);padding-left:32px;padding-right:32px}
+}
+@media (max-width: 768px){
+  .post-wrap{--bw:calc(100vw - 40px);padding-left:20px;padding-right:20px}
+}
