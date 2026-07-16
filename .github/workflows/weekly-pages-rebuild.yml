@@ -1,16 +1,16 @@
 name: Weekly Pages rebuild
 
 # Legacy GitHub Pages only rebuilds on a push, never on a schedule. The slimgs blog
-# posts are future-dated (weekly Wednesdays) and Jekyll's default `future: false`
+# posts are future-dated (Wednesdays and Saturdays) and Jekyll's default `future: false`
 # skips a post until the site is built on or after its date. This requests a Pages
-# build every Wednesday morning PT so that week's due post goes live on its own.
+# build every Wednesday and Saturday morning PT so each due post goes live on its own.
 #
 # Keep `future: false` in _config.yml so only the due post publishes, not the whole
-# series at once. Safe to delete this workflow after the last post (2026-08-12) ships.
+# series at once. Safe to delete this workflow after the last post (2026-07-29) ships.
 
 on:
   schedule:
-    - cron: '0 14 * * 3'   # 14:00 UTC = 07:00 America/Los_Angeles, every Wednesday
+    - cron: '0 14 * * 3,6'   # 14:00 UTC = 07:00 America/Los_Angeles, every Wednesday and Saturday
   workflow_dispatch:        # manual trigger from the Actions tab
 
 permissions:
