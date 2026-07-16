@@ -8,7 +8,7 @@
 .post-wrap{
   /* breakout width: the 1100px frame's content, clamped to the viewport */
   --bw:min(1052px, calc(100vw - 48px));
-  max-width:760px;
+  max-width:880px;
   /* gutters match .related so breakout edges align with the related grid */
   padding-left:24px;
   padding-right:24px;
