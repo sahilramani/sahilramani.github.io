@@ -19,15 +19,28 @@ bundle exec jekyll build             # one-off build into _site/
 
 `_config.yml` is **not** picked up by `jekyll serve` on save -- restart the server after editing it.
 
-The site uses the [Minimal Mistakes](https://github.com/mmistakes/minimal-mistakes) remote theme as a fallback for plumbing (feed, sitemap, etc.), but all rendering is driven by custom layouts in `_layouts/`. You don't need to learn Minimal Mistakes to work on the site.
+The site runs "Field", its own in-repo theme: layouts in `_layouts/field*.html`, styles in `_sass/field/` (compiled through `assets/css/main.scss` and `assets/css/home.scss`), and scripts in `assets/js/`. There is no `theme:`/`remote_theme:` in `_config.yml` on purpose -- GitHub Pages injects `jekyll-theme-primer` as a default when none is set, which is inert here because every page uses a local layout and nothing links primer's CSS. Don't "fix" that by adding a theme key.
+
+The site started life on the [Minimal Mistakes](https://github.com/mmistakes/minimal-mistakes) remote theme; the Field theme replaced it wholesale and no Minimal Mistakes code ships anymore.
 
 ## Structure
 
 ```
 index.html                       Home page (layout: null -- owns its own chrome)
 _layouts/
-  field.html                     Shared layout: nav, hamburger, footer, scanline, helpers
-  field-post.html                Post reader (sparse cloud hero + 720px body + related)
+  field.html                     Shared layout: nav, hamburger, footer, scanline
+  field-post.html                Post reader (sparse cloud hero + body + related)
+  field-project.html             Project detail page
+_includes/
+  analytics.html                 gtag snippet (shared by field.html and index.html)
+  series-nav.html                Series index box for multi-part posts
+  series-next.html               "Next part" teaser link
+_sass/field/
+  _base.scss                     Site chrome: tokens, nav, hero, footer
+  _post.scss                     Post reader styles
+  _project.scss                  Project page styles
+  _code.scss                     field-code($scope) mixin: code panels + rouge palette
+  _home.scss                     Home page styles (only home.css imports it)
 _pages/
   about.md     /about/           layout: field
   resume.md    /resume/          layout: field
@@ -37,14 +50,15 @@ _pages/
   404.md              /404.html
 _posts/YYYY-MM-DD-slug.md        Blog posts. Permalink: /:year/:month/:title/
 _data/
-  navigation.yml                 Top nav entries (Posts / Resume / About)
   work.yml                       Resume experience timeline (consumed by /resume/)
   skills.yml                     Resume skill groups (consumed by /resume/)
   education.yml                  Resume education list (consumed by /resume/)
 assets/
   images/                        bio-photo.jpg, post images, favicon
   files/                         Resume PDFs
-  css/                           (Minimal Mistakes overrides, mostly unused now)
+  css/main.scss                  Field stylesheet entry (imports _sass/field/*)
+  css/home.scss                  Home-only stylesheet entry
+  js/                            field.js, field-post.js, field-project.js, home.js
 .well-known/                     Published verbatim
 ```
 
@@ -71,7 +85,7 @@ Most fields are data-driven -- edit `_data/work.yml`, `_data/skills.yml`, or `_d
 
 ### The Field design
 
-Tokens, typography, and motion language are documented inline in `_layouts/field.html`. The home page's hero canvas (`#field`), portrait splat (`#splat-overlay`), and per-project card visualizations (`canvas[data-vis]`) live in `index.html`. The shared `[data-field-canvas]` helper in `_layouts/field.html` powers the sparser clouds on `/about/`, individual post heros, and `/404.html` -- configure via `data-points`, `data-cx`, `data-cy`, `data-scale`, `data-rot-speed` attributes.
+Design tokens (`--bg`, `--g`, fonts) live in `_sass/field/_base.scss`; page-specific styles sit next to it in `_sass/field/`. The home page's hero canvas (`#field`), portrait splat (`#splat-overlay`), and per-project card visualizations (`canvas[data-vis]`) live in `assets/js/home.js`. The shared `[data-field-canvas]` helper in `assets/js/field.js` powers the sparser clouds on `/about/`, individual post heros, and `/404.html` -- configure via `data-points`, `data-cx`, `data-cy`, `data-scale`, `data-rot-speed` attributes.
 
 ## Deploy
 
