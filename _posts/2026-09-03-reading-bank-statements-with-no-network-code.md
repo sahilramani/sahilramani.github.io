@@ -72,7 +72,7 @@ Statements that wrap a long description across two lines, put the amount in its 
 
 ## The ask
 
-Tabs is on TestFlight. It is an alpha, iPhone only, iOS 17 and up.
+[The TestFlight beta is open to anyone](https://testflight.apple.com/join/5kyPqh7J), no invite needed. It is an alpha, iPhone only, iOS 17 and up.
 
 It ships with four months of fictional statements from a bank that does not exist, readable in full before you import them, so you can watch the whole flow run without pointing it at anything real.
 
